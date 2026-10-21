@@ -6,7 +6,9 @@ const { javascriptFormatting } = require('../dist/code-formatting');
 const { parseExplanation } = require('../dist/explanation');
 
 const repositoryRoot = path.resolve(__dirname, '..');
-const directory = path.join(repositoryRoot, '.scratch', 'first-release', 'runtime', 'acceptance');
+const directoryArgs = process.argv.slice(2).filter(arg => arg.startsWith('--directory='));
+const runtimeDirectory = path.join(repositoryRoot, '.scratch', 'first-release', 'runtime');
+const directory = directoryArgs.length ? path.resolve(directoryArgs[0].slice('--directory='.length)) : path.join(runtimeDirectory, 'acceptance');
 const project = path.join(directory, 'project');
 const manifestPath = path.join(directory, 'manifest.json');
 const hooks = path.join(directory, 'empty-hooks');
@@ -215,12 +217,14 @@ function prepareFormattingLecture(manifest) {
 }
 
 function main() {
-  const args = process.argv.slice(2);
+  const args = process.argv.slice(2).filter(arg => !arg.startsWith('--directory='));
   if (args.includes('--help')) {
-    console.log('先构建插件，再执行 node tools/prepare-acceptance.cjs 创建独立验收工程；--reuse 只检查并保留；--formatting 为已有工程另建 lecture-formatting.md，不改源码或旧讲解。');
+    console.log('先构建插件，再执行 node tools/prepare-acceptance.cjs 创建独立验收工程；--reuse 只检查并保留；--formatting 另建格式讲解。--directory=<路径> 可选择本项目 .scratch/first-release/runtime 内的新目录，用于独立后台验收。');
     return;
   }
   if (args.some(arg => arg !== '--reuse' && arg !== '--formatting') || args.length > 1) throw new Error('只支持 --reuse、--formatting 或 --help 参数。');
+  const relativeDirectory = path.relative(runtimeDirectory, directory);
+  if (directoryArgs.length > 1 || !relativeDirectory || relativeDirectory === '..' || relativeDirectory.startsWith('..' + path.sep) || path.isAbsolute(relativeDirectory)) throw new Error('验收目录必须是本项目 .scratch/first-release/runtime 内的子目录。');
   if (fs.existsSync(directory)) {
     if (!args.length) throw new Error(`验收目录已经存在，未覆盖任何文件。确认要保留并复用现有工程后，使用 --reuse：${directory}`);
     const saved = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));

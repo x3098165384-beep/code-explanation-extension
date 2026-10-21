@@ -210,3 +210,39 @@ test('当前源码尚未读完时打开无效讲解，仍恢复已经接受的�
   assert.equal(env.errors.length, 1);
   env.reader.dispose();
 });
+
+test('打开另一份讲解期间，旧源码变化不能取消新的打开操作', async () => {
+  const env = environment();
+  await env.reader.open(env.file);
+  const another = env.Uri.file('test-project/another.md');
+  const pending = deferred();
+  env.setRead(file => file.toString() === another.toString() ? pending.promise : undefined);
+  const opening = env.reader.open(another);
+  await new Promise(resolve => setImmediate(resolve));
+  env.sourceChange();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(env.snapshots, []);
+  pending.resolve(document('another', '另一份讲解'));
+  await opening;
+  assert.equal(env.snapshots.length, 1);
+  assert.equal(env.snapshots[0].lecture, 'another');
+  env.reader.dispose();
+});
+
+test('新讲解读取失败后重新检查旧讲解期间收到的更新', async () => {
+  const env = environment();
+  await env.reader.open(env.file);
+  const another = env.Uri.file('test-project/another.md');
+  const pending = deferred();
+  env.setRead(file => file.toString() === another.toString() ? pending.promise : undefined);
+  const opening = env.reader.open(another);
+  await new Promise(resolve => setImmediate(resolve));
+  env.files.set(env.file.toString(), document('lecture', '等待期间保存的新正文'));
+  env.sourceChange();
+  await new Promise(resolve => setImmediate(resolve));
+  pending.resolve('没有写完的新讲解');
+  await opening;
+  assert.equal(env.errors.length, 1);
+  assert.equal(env.snapshots[0].body, '等待期间保存的新正文');
+  env.reader.dispose();
+});

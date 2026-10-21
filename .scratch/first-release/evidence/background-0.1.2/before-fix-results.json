@@ -1,0 +1,117 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.1.1",
+  "packageSha256": "A41D7E9DD4DE89DD129B50D62EA5EA8A83359928F4B35039B89FF49CE63992CC",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261021-173616-83668743\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261021-173616-83668743\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-21T09:36:22.116Z",
+      "result": "通过",
+      "finishedAt": "2026-10-21T09:36:22.160Z"
+    },
+    {
+      "name": "普通脚本定位与长 Markdown 原生显示",
+      "startedAt": "2026-10-21T09:36:22.161Z",
+      "screenshot": "01-current-markdown.png",
+      "result": "通过",
+      "finishedAt": "2026-10-21T09:36:23.489Z"
+    },
+    {
+      "name": "固定 Git 普通文件与 diff 左侧删除行",
+      "startedAt": "2026-10-21T09:36:23.490Z",
+      "screenshot": "03-diff-left.png",
+      "result": "通过",
+      "finishedAt": "2026-10-21T09:36:26.426Z"
+    },
+    {
+      "name": "同一真实 diff 右侧新增行",
+      "startedAt": "2026-10-21T09:36:26.427Z",
+      "screenshot": "04-diff-right.png",
+      "result": "通过",
+      "finishedAt": "2026-10-21T09:36:27.362Z"
+    },
+    {
+      "name": "两侧目标同时高亮且正文只在右侧",
+      "startedAt": "2026-10-21T09:36:27.363Z",
+      "screenshot": "05-diff-both.png",
+      "result": "通过",
+      "finishedAt": "2026-10-21T09:36:28.292Z"
+    },
+    {
+      "name": "暂存和未暂存内容同时出现在当前比较",
+      "startedAt": "2026-10-21T09:36:28.293Z",
+      "screenshot": "06-working.png",
+      "result": "通过",
+      "finishedAt": "2026-10-21T09:36:29.759Z"
+    },
+    {
+      "name": "整个新增文件和整个删除文件",
+      "startedAt": "2026-10-21T09:36:29.761Z",
+      "screenshot": "08-deleted.png",
+      "result": "通过",
+      "finishedAt": "2026-10-21T09:36:32.527Z"
+    },
+    {
+      "name": "最后一步不自动停止，停止清理及主动恢复",
+      "startedAt": "2026-10-21T09:36:32.528Z",
+      "screenshot": "11-resumed.png",
+      "result": "通过",
+      "finishedAt": "2026-10-21T09:36:43.413Z"
+    },
+    {
+      "name": "真实步骤列表选择和取消打开保留当前阅读",
+      "startedAt": "2026-10-21T09:36:43.414Z",
+      "result": "通过",
+      "finishedAt": "2026-10-21T09:36:48.137Z"
+    },
+    {
+      "name": "真实未保存文档参与 diff 且不写盘",
+      "startedAt": "2026-10-21T09:36:48.138Z",
+      "screenshot": "12-unsaved.png",
+      "result": "通过",
+      "finishedAt": "2026-10-21T09:36:51.103Z"
+    },
+    {
+      "name": "分号前空格和缩进变化自动继续",
+      "startedAt": "2026-10-21T09:36:51.104Z",
+      "screenshot": "13-formatting-accepted.png",
+      "result": "通过",
+      "finishedAt": "2026-10-21T09:36:52.138Z"
+    },
+    {
+      "name": "数字变化移除正文并回到 Markdown，恢复后自动回来",
+      "startedAt": "2026-10-21T09:36:52.138Z",
+      "screenshot": "15-code-restored.png",
+      "result": "通过",
+      "finishedAt": "2026-10-21T09:36:53.811Z"
+    },
+    {
+      "name": "停止和重新打开仍保留未保存内容",
+      "startedAt": "2026-10-21T09:36:53.812Z",
+      "result": "失败",
+      "error": "Error: 等待后台界面超时：回到当前格式化函数，并保留最后一步\n\tat wait (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:45:11)\n\tat async f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:232:7\n\tat async checkpoint (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:80:7)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:224:5)",
+      "finishedAt": "2026-10-21T09:37:20.146Z"
+    }
+  ],
+  "startedAt": "2026-10-21T09:36:21.880Z",
+  "decorationSample": [
+    {
+      "side": "file",
+      "x": 433.66668701171875,
+      "y": 143.6666717529297,
+      "height": 19,
+      "className": "cdr ced-1-TextEditorDecorationType15-0"
+    },
+    {
+      "side": "file",
+      "x": 433.66668701171875,
+      "y": 162.6666717529297,
+      "height": 19,
+      "className": "cdr ced-1-TextEditorDecorationType15-0"
+    }
+  ],
+  "result": "失败",
+  "error": "Error: 等待后台界面超时：回到当前格式化函数，并保留最后一步\n\tat wait (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:45:11)\n\tat async f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:232:7\n\tat async checkpoint (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:80:7)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:224:5)"
+}

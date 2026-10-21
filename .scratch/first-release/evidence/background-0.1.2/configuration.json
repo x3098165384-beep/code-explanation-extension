@@ -1,0 +1,10 @@
+﻿{
+    "fixture":  "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261021-183252-f9a1ab9e\\fixture",
+    "runName":  "20261021-183252-f9a1ab9e",
+    "otherProject":  "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261021-183252-f9a1ab9e\\other-fixture\\project",
+    "runRoot":  "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261021-183252-f9a1ab9e",
+    "codePath":  "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\vscode-1.142.0-archive\\app\\Code.exe",
+    "port":  3474,
+    "packagePath":  "F:\\Sync\\MyProjects\\code-explanation-extension\\code-explanation-extension-0.1.2.vsix",
+    "packageSha256":  "B047B505D57A697237AEFF33EA9CEB58FF792D0F19A2FBD14E4E30223B6EB943"
+}

@@ -11,15 +11,17 @@
 
 ## 当前状态
 
-2026-10-21 已接通正式插件的讲解读取、当前文件与 Git diff、代码对应检查、导航、自动更新及进度恢复。0.1.1 增加可确认的 JavaScript 空格、Tab 和缩进变化检查；其他语言与固定 Git 继续严格核对。构建、类型检查、32 项检查（含 12 项异步顺序和 20 项格式检查）及 VSIX 打包通过。正式插件的 26 项手动验收正在进行，新格式规则尚待新版界面验证。当前证据及限制见[首版实现记录](.scratch/first-release/implementation-results.md)。
+2026-10-21 已接通讲解读取、真实 Git diff、代码对应检查、导航、自动更新及进度恢复。JavaScript 支持可确认的空格、Tab 和缩进变化；其他语言与固定 Git 继续严格核对。0.1.2 修复了旧源码变化通知取消新讲解打开的问题。34 项自动检查及真实 VS Code 后台流程已通过，包含未保存内容、格式变化、更新、失效清理、停止和重启恢复。实际范围及截图见[首版验收记录](docs/first-release-acceptance.md)，不扩大为任意系统、主题和语言都已验证。
 
-当前工作依据见[首版规格](.scratch/first-release/spec.md)，文件约定见[Markdown 讲解文件格式](.scratch/first-release/explanation-format.md)，可阅读[完整讲解示例](.scratch/first-release/explanation.example.md)。规格和[8 项首版任务](.scratch/first-release/issues)保存在本地 Markdown 任务记录中。任务 02 至 07 已实现，手动验收待确认；任务 08 正在记录完整流程结果。
+当前工作依据见[首版规格](.scratch/first-release/spec.md)，文件约定见[Markdown 讲解文件格式](.scratch/first-release/explanation-format.md)，可阅读[完整讲解示例](.scratch/first-release/explanation.example.md)。规格和[8 项首版任务](.scratch/first-release/issues)保存在本地 Markdown 任务记录中。任务 02 至 07 已实现；任务 08 已记录实际安装包的后台流程结果，未单独运行的变体仍明确列出。
 
 ## 构建与使用
 
 需要 Node.js、Git 及 VS Code。执行 `npm.cmd install`、`npm.cmd run check`、`npm.cmd run build`；按 F5 可启动扩展开发窗口。执行 `npm.cmd run package` 可生成本地 VSIX，通过 VS Code 的“从 VSIX 安装”手动安装。扩展不会在启动时自动打开讲解。
 
 准备真实演示工程可执行 `node tools/prepare-acceptance.cjs`；已有目录使用 `--reuse` 保留现有修改。打开演示项目后，执行“行内代码讲解：打开讲解”并选择生成的 `.md`。具体操作、外部 agent 生成要求、未保存内容和错误提示见[首版使用说明](docs/first-release-usage.md)，当前人工结果见[26 项验收记录](docs/first-release-acceptance.md)。
+
+Windows 可执行 `npm.cmd run test:background`，在独立窗口环境中验证实际安装包并保存截图，不切换到测试窗口、不操作当前桌面。测试使用独立配置、共享数据和演示工程，结束后只清理本轮进程。运行方法与限制见[后台验收说明](docs/background-verification.md)。
 
 已确认选择的来源见[首版范围确认](docs/plans/first-release-scope.md)。原始目标、技术调查和此前建议见[最终讨论记录](docs/plans/initial-design/discussion-notes.md)。
 

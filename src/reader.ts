@@ -13,6 +13,8 @@ interface Reading {
   subscriptions: vscode.Disposable[];
 }
 
+type ReadingOperation = vscode.CancellationTokenSource & { kind: 'opening' | 'reading' };
+
 function sameUri(left: vscode.Uri, right: vscode.Uri): boolean {
   const a = left.toString();
   const b = right.toString();
@@ -30,7 +32,7 @@ function decodeMarkdown(bytes: Uint8Array): string {
 
 export class Reader implements vscode.Disposable {
   private reading?: Reading;
-  private operation?: vscode.CancellationTokenSource;
+  private operation?: ReadingOperation;
 
   constructor(
     private readonly sources: SourceReader,
@@ -38,10 +40,10 @@ export class Reader implements vscode.Disposable {
     private readonly progress: vscode.Memento,
   ) {}
 
-  private begin(): vscode.CancellationTokenSource {
+  private begin(kind: ReadingOperation['kind'] = 'reading'): ReadingOperation {
     this.operation?.cancel();
     this.operation?.dispose();
-    const operation = new vscode.CancellationTokenSource();
+    const operation = Object.assign(new vscode.CancellationTokenSource(), { kind });
     this.operation = operation;
     return operation;
   }
@@ -67,7 +69,9 @@ export class Reader implements vscode.Disposable {
     for (const subscription of reading.subscriptions) subscription.dispose();
     reading.subscriptions = [];
     const changed = (): void => {
-      if (this.reading === reading) void this.refresh();
+      if (this.reading !== reading) return;
+      if (this.operation?.kind === 'opening') this.presentation.clear();
+      else void this.refresh();
     };
     reading.subscriptions.push(this.sources.watch(reading.project, reading.explanation, changed));
     const parent = vscode.Uri.joinPath(reading.file, '..');
@@ -89,62 +93,58 @@ export class Reader implements vscode.Disposable {
   }
 
   async open(file?: vscode.Uri): Promise<void> {
-    const operation = this.begin();
-    const folders = vscode.workspace.workspaceFolders;
-    if (!folders?.length) {
-      void vscode.window.showWarningMessage('请先在 VS Code 中打开项目文件夹，再打开讲解。代码路径将相对所选项目解析。');
-      return;
-    }
-    const folder = folders.length === 1 ? folders[0] : await vscode.window.showQuickPick(
-      folders.map(value => ({ label: value.name, description: value.uri.fsPath, folder: value })),
-      { title: '选择讲解所对应的项目' }, operation.token,
-    ).then(value => value?.folder);
-    if (!this.current(operation)) return;
-    if (!folder) {
-      if (this.reading) {
-        this.presentation.clear();
-        await this.display(this.reading, operation);
-      }
-      return;
-    }
-    if (folder.uri.scheme !== 'file') {
-      void vscode.window.showWarningMessage('首版需要打开本机项目文件夹，才能读取本地文件和 Git 历史。');
-      return;
-    }
-    const chosen = file ?? (await vscode.window.showOpenDialog({ canSelectMany: false, canSelectFiles: true, canSelectFolders: false, filters: { 'Markdown 讲解文件': ['md'] }, title: '选择已保存的 Markdown 讲解文件' }))?.[0];
-    if (!this.current(operation)) return;
-    if (!chosen) {
-      if (this.reading) {
-        this.presentation.clear();
-        await this.display(this.reading, operation);
-      }
-      return;
-    }
+    const operation = this.begin('opening');
     try {
-      const explanation = await this.readSaved(chosen);
-      if (!this.current(operation)) return;
-      const previous = this.reading;
-      if (previous) {
-        this.saveProgress(previous);
-        for (const subscription of previous.subscriptions) subscription.dispose();
+      const folders = vscode.workspace.workspaceFolders;
+      if (!folders?.length) {
+        void vscode.window.showWarningMessage('请先在 VS Code 中打开项目文件夹，再打开讲解。代码路径将相对所选项目解析。');
+        return;
       }
-      this.presentation.clear();
-      this.presentation.releaseBody();
-      const reading: Reading = { project: folder.uri, file: chosen, explanation, index: 0, subscriptions: [] };
-      const saved = this.progress.get<string>(this.progressKey(reading));
-      const index = explanation.steps.findIndex(step => step.id === saved);
-      if (index >= 0) reading.index = index;
-      this.reading = reading;
-      this.presentation.setFileError();
-      this.subscribe(reading);
-      this.saveProgress(reading);
-      await this.display(reading, operation);
-    } catch (error) {
+      const folder = folders.length === 1 ? folders[0] : await vscode.window.showQuickPick(
+        folders.map(value => ({ label: value.name, description: value.uri.fsPath, folder: value })),
+        { title: '选择讲解所对应的项目' }, operation.token,
+      ).then(value => value?.folder);
       if (!this.current(operation)) return;
-      void vscode.window.showErrorMessage(`无法打开讲解“${chosen.fsPath}”：${message(error)}`);
-      if (this.reading) {
+      if (!folder) {
+        return;
+      }
+      if (folder.uri.scheme !== 'file') {
+        void vscode.window.showWarningMessage('首版需要打开本机项目文件夹，才能读取本地文件和 Git 历史。');
+        return;
+      }
+      const chosen = file ?? (await vscode.window.showOpenDialog({ canSelectMany: false, canSelectFiles: true, canSelectFolders: false, filters: { 'Markdown 讲解文件': ['md'] }, title: '选择已保存的 Markdown 讲解文件' }))?.[0];
+      if (!this.current(operation)) return;
+      if (!chosen) {
+        return;
+      }
+      try {
+        const explanation = await this.readSaved(chosen);
+        if (!this.current(operation)) return;
+        operation.kind = 'reading';
+        const previous = this.reading;
+        if (previous) {
+          this.saveProgress(previous);
+          for (const subscription of previous.subscriptions) subscription.dispose();
+        }
         this.presentation.clear();
-        await this.display(this.reading, operation);
+        this.presentation.releaseBody();
+        const reading: Reading = { project: folder.uri, file: chosen, explanation, index: 0, subscriptions: [] };
+        const saved = this.progress.get<string>(this.progressKey(reading));
+        const index = explanation.steps.findIndex(step => step.id === saved);
+        if (index >= 0) reading.index = index;
+        this.reading = reading;
+        this.presentation.setFileError();
+        this.subscribe(reading);
+        this.saveProgress(reading);
+        await this.display(reading, operation);
+      } catch (error) {
+        if (!this.current(operation)) return;
+        void vscode.window.showErrorMessage(`无法打开讲解“${chosen.fsPath}”：${message(error)}`);
+      }
+    } finally {
+      if (this.current(operation) && operation.kind === 'opening') {
+        operation.kind = 'reading';
+        if (this.reading) await this.refresh();
       }
     }
   }

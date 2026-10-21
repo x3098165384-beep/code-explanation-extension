@@ -1,0 +1,38 @@
+﻿{
+    "runRoot":  "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261021-183252-f9a1ab9e",
+    "sentInput":  false,
+    "finishedAt":  "2026-10-21T10:35:03.5579178Z",
+    "desktop":  "CodeExplanationTest_03db360ec3fb43f58a256938d097e776",
+    "phases":  [
+                   {
+                       "processId":  14892,
+                       "exitCode":  0,
+                       "name":  "首次流程",
+                       "desktop":  "CodeExplanationTest_03db360ec3fb43f58a256938d097e776"
+                   },
+                   {
+                       "processId":  56796,
+                       "exitCode":  0,
+                       "name":  "restore",
+                       "desktop":  "CodeExplanationTest_7dd01a70c30b42c8beac43962b4379a3"
+                   },
+                   {
+                       "processId":  60088,
+                       "exitCode":  0,
+                       "name":  "project",
+                       "desktop":  "CodeExplanationTest_6d6f20f5e16846ad858ffd4dcec178af"
+                   },
+                   {
+                       "processId":  48912,
+                       "exitCode":  0,
+                       "name":  "lecture-edit",
+                       "desktop":  "CodeExplanationTest_7e4d0a5be9854337bebdf786bd8e7b1d"
+                   }
+               ],
+    "inputDesktopAfter":  "Default",
+    "inputDesktopBefore":  "Default",
+    "processId":  14892,
+    "startedAt":  "2026-10-21T10:32:55.6030192Z",
+    "switchedDesktop":  false,
+    "exitCode":  0
+}

@@ -1,0 +1,11 @@
+{
+  "name": "code-explanation-background-driver",
+  "publisher": "XGH",
+  "version": "0.0.1",
+  "displayName": "行内代码讲解后台验收",
+  "description": "仅驱动独立演示工程中的后台验收，不随插件发布。",
+  "engines": { "vscode": "^1.140.0" },
+  "main": "./driver.cjs",
+  "activationEvents": ["onStartupFinished"],
+  "extensionDependencies": ["XGH.code-explanation-extension"]
+}

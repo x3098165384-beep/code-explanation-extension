@@ -2,7 +2,7 @@
   "name": "code-explanation-extension",
   "displayName": "行内代码讲解",
   "description": "读取独立 Markdown 讲解，在代码和真实 diff 旁按步骤阅读。",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "XGH",
   "author": "XGH",
   "license": "MIT",
@@ -22,7 +22,8 @@
     "check": "tsc -p . --noEmit",
     "watch": "tsc -p . --watch",
     "package": "npm run build && npx --yes @vscode/vsce@4.0.0 package",
-    "test": "npm run build && node --test test/*.test.cjs"
+    "test": "npm run build && node --test test/*.test.cjs",
+    "test:background": "npm run package && powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/verify-background.ps1"
   },
   "contributes": {
     "commands": [
