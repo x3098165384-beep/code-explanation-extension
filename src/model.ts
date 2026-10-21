@@ -1,12 +1,13 @@
 import type * as vscode from 'vscode';
 
 export type Source = ({ kind: 'workspace'; path: string } | { kind: 'git'; path: string; commit: string }) &
-  ({ exists: true; sha256: string } | { exists: false });
+  ({ exists: true; sha256: string; formattingSha256?: string } | { exists: false });
 
 export interface Target {
   startLine: number;
   endLine: number;
   sha256: string;
+  formattingSha256?: string;
 }
 
 interface StepBody {

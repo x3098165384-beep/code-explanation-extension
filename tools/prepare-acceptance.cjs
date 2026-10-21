@@ -2,6 +2,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const { execFileSync } = require('node:child_process');
+const { javascriptFormatting } = require('../dist/code-formatting');
+const { parseExplanation } = require('../dist/explanation');
 
 const repositoryRoot = path.resolve(__dirname, '..');
 const directory = path.join(repositoryRoot, '.scratch', 'first-release', 'runtime', 'acceptance');
@@ -53,7 +55,8 @@ function range(text, fragment) {
 }
 
 function reference(kind, relative, text, commit) {
-  return { kind, path: relative, exists: true, ...(kind === 'git' ? { commit } : {}), sha256: digest(normalize(text)) };
+  const formatting = kind === 'workspace' ? javascriptFormatting(text) : undefined;
+  return { kind, path: relative, exists: true, ...(kind === 'git' ? { commit } : {}), sha256: digest(normalize(text)), ...(formatting ? { formattingSha256: formatting.fileSha256 } : {}) };
 }
 
 function makeLecture(before, after, current, unsaved) {
@@ -145,6 +148,14 @@ function makeLecture(before, after, current, unsaved) {
   ];
   const ids = [];
   for (const step of steps) {
+    const metadata = step.metadata;
+    const sourceName = metadata.kind === 'file' ? metadata.source : metadata.right;
+    if (sources[sourceName].kind === 'workspace') {
+      const text = sourceName === 'charge-current' ? current : sourceName === 'invoice-current' ? invoice : formatter;
+      const target = metadata.kind === 'file' ? metadata.target : metadata.targets.right;
+      const formattingHash = target && javascriptFormatting(text)?.rangeSha256(target.startLine, target.endLine);
+      if (formattingHash) target.formattingSha256 = formattingHash;
+    }
     const stepId = crypto.randomUUID();
     ids.push(stepId);
     parts.push('<!-- step', JSON.stringify({ id: stepId, ...step.metadata }, null, 2), '-->', `## ${step.title}`, '', step.body, '');
@@ -163,15 +174,55 @@ function report(manifest, reused) {
   console.log(`记录位置：${manifestPath}`);
 }
 
+function prepareFormattingLecture(manifest) {
+  const output = path.join(directory, 'lecture-formatting.md');
+  if (fs.existsSync(output)) throw new Error(`格式验收讲解已存在，未覆盖：${output}`);
+  const input = fs.readFileSync(manifest.lectures.unsaved.path, 'utf8');
+  const lecture = parseExplanation(input);
+  const texts = {};
+  for (const [name, source] of Object.entries(lecture.sources)) {
+    if (source.kind !== 'workspace' || !source.exists) continue;
+    let text = normalize(fs.readFileSync(path.join(project, source.path), 'utf8'));
+    if (source.path === manifest.unsavedEdit.path) {
+      if (text.indexOf(manifest.unsavedEdit.find) < 0 || text.indexOf(manifest.unsavedEdit.find) !== text.lastIndexOf(manifest.unsavedEdit.find)) throw new Error('磁盘示例已变化，无法唯一准备预期未保存文本；未改写源码或讲解。');
+      text = text.replace(manifest.unsavedEdit.find, manifest.unsavedEdit.replace);
+    }
+    if (digest(text) !== source.sha256) throw new Error(`${source.path} 与原讲解基准不符，未创建新讲解。`);
+    texts[name] = text;
+  }
+  const header = JSON.parse(/^<!-- code-explanation\r?\n([\s\S]*?)\r?\n-->/.exec(input)[1]);
+  header.id = crypto.randomUUID();
+  for (const [name, text] of Object.entries(texts)) {
+    const formatting = javascriptFormatting(text);
+    if (formatting) header.sources[name].formattingSha256 = formatting.fileSha256;
+  }
+  const outputText = input.replace(/<!-- (code-explanation|step)\r?\n([\s\S]*?)\r?\n-->/g, (_block, kind, json) => {
+    const value = kind === 'code-explanation' ? header : JSON.parse(json);
+    if (kind === 'step') {
+      const name = value.kind === 'file' ? value.source : value.right;
+      const target = value.kind === 'file' ? value.target : value.targets.right;
+      if (target && header.sources[name].formattingSha256) {
+        const rangeHash = javascriptFormatting(texts[name])?.rangeSha256(target.startLine, target.endLine);
+        if (rangeHash) target.formattingSha256 = rangeHash;
+      }
+    }
+    return `<!-- ${kind}\n${JSON.stringify(value, null, 2)}\n-->`;
+  });
+  parseExplanation(outputText);
+  fs.writeFileSync(output, outputText, { flag: 'wx' });
+  console.log(`已另建格式变化验收讲解：${output}`);
+  console.log('旧讲解、代码、Git 和编辑器未保存内容未修改；第 6 步仍要求 return subtotal + 2;，允许分号前增加空格。');
+}
+
 function main() {
   const args = process.argv.slice(2);
   if (args.includes('--help')) {
-    console.log('在插件项目执行 node tools/prepare-acceptance.cjs 创建独立验收工程；已有工程使用 --reuse 只检查并保留，不覆盖或清空。');
+    console.log('先构建插件，再执行 node tools/prepare-acceptance.cjs 创建独立验收工程；--reuse 只检查并保留；--formatting 为已有工程另建 lecture-formatting.md，不改源码或旧讲解。');
     return;
   }
-  if (args.some(arg => arg !== '--reuse') || args.length > 1) throw new Error('只支持 --reuse 或 --help 参数。');
+  if (args.some(arg => arg !== '--reuse' && arg !== '--formatting') || args.length > 1) throw new Error('只支持 --reuse、--formatting 或 --help 参数。');
   if (fs.existsSync(directory)) {
-    if (!args.includes('--reuse')) throw new Error(`验收目录已经存在，未覆盖任何文件。确认要保留并复用现有工程后，使用 --reuse：${directory}`);
+    if (!args.length) throw new Error(`验收目录已经存在，未覆盖任何文件。确认要保留并复用现有工程后，使用 --reuse：${directory}`);
     const saved = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
     if (saved.version !== 1 || saved.kind !== 'code-explanation-acceptance' || !samePath(saved.projectRoot, project)) {
       throw new Error('现有目录没有匹配的验收记录，不能当作本工具生成的工程复用。');
@@ -187,10 +238,11 @@ function main() {
     for (const commit of [saved.beforeCommit, saved.afterCommit]) {
       if (typeof commit !== 'string' || !/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(commit) || git('cat-file', '-t', commit).trim() !== 'commit') throw new Error('现有验收记录中的提交无法确认，未修改任何文件。');
     }
-    report(saved, true);
+    if (args.includes('--formatting')) prepareFormattingLecture(saved);
+    else report(saved, true);
     return;
   }
-  if (args.includes('--reuse')) throw new Error('验收目录尚不存在，请先不带 --reuse 执行准备。');
+  if (args.length) throw new Error('验收目录尚不存在，请先不带参数执行准备。');
   let ancestor = path.dirname(directory);
   while (!fs.existsSync(ancestor)) ancestor = path.dirname(ancestor);
   const relativeAncestor = path.relative(fs.realpathSync(repositoryRoot), fs.realpathSync(ancestor));

@@ -182,7 +182,7 @@ export class Reader implements vscode.Disposable {
   private async display(reading: Reading, operation: vscode.CancellationTokenSource): Promise<void> {
     if (!this.current(operation)) return;
     const step = reading.explanation.steps[reading.index];
-    this.presentation.updateNavigation(reading.explanation, reading.index, reading.fileError);
+    this.presentation.updateNavigation(reading.explanation, reading.index, reading.fileError, true);
     try {
       const resolved = await this.sources.resolve(reading.project, reading.explanation, step, operation.token);
       if (!this.current(operation)) return;
@@ -198,7 +198,9 @@ export class Reader implements vscode.Disposable {
           this.presentation.clear();
           void this.refresh();
         }
+        return;
       }
+      if (this.current(operation)) this.presentation.updateNavigation(reading.explanation, reading.index, reading.fileError);
     } catch (error) {
       if (!this.current(operation)) return;
       this.presentation.clear();

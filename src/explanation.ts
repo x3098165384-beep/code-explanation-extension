@@ -1,7 +1,8 @@
-import { createHash } from 'node:crypto';
 import MarkdownIt from 'markdown-it';
 import { parseTree, type Node, type ParseError } from 'jsonc-parser';
 import type { Explanation, Source, Step, Target } from './model';
+import { javascriptFormatting, normalizeText, sha256, supportsJavaScriptFormatting } from './code-formatting';
+export { normalizeText, sha256 } from './code-formatting';
 
 const markdown = new MarkdownIt({ html: true });
 type MarkdownToken = ReturnType<typeof markdown.parse>[number];
@@ -12,15 +13,6 @@ interface Declaration {
   tokenIndex: number;
   startLine: number;
   value: JsonObject;
-}
-
-export function normalizeText(text: string): string {
-  return text.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
-}
-
-/** 调用方先按文档或范围约定规范化文本，再计算 UTF-8 摘要。 */
-export function sha256(text: string): string {
-  return createHash('sha256').update(text, 'utf8').digest('hex');
 }
 
 function object(value: unknown, name: string): JsonObject {
@@ -131,8 +123,14 @@ function parseSource(value: unknown, name: string): Source {
   const allowed = ['kind', 'path', 'exists'];
   if (source.kind === 'git') allowed.push('commit');
   if (source.exists) allowed.push('sha256');
+  if (source.exists && source.kind === 'workspace') allowed.push('formattingSha256');
   fields(source, allowed, name);
   const relative = sourcePath(source.path, `${name}的 path`);
+  let formattingSha256: string | undefined;
+  if (Object.prototype.hasOwnProperty.call(source, 'formattingSha256')) {
+    if (!supportsJavaScriptFormatting(relative)) throw new Error(`${name}的 formattingSha256 只支持 .js、.mjs、.cjs 当前文件。`);
+    formattingSha256 = hash(source.formattingSha256, `${name}的 formattingSha256`);
+  }
   let content: { kind: 'workspace'; path: string } | { kind: 'git'; path: string; commit: string };
   if (source.kind === 'git') {
     if (typeof source.commit !== 'string' || !/^(?:[a-fA-F0-9]{40}|[a-fA-F0-9]{64})$/.test(source.commit)) {
@@ -143,20 +141,25 @@ function parseSource(value: unknown, name: string): Source {
     content = { kind: 'workspace', path: relative };
   }
   return source.exists
-    ? { ...content, exists: true, sha256: hash(source.sha256, `${name}的 sha256`) }
+    ? { ...content, exists: true, sha256: hash(source.sha256, `${name}的 sha256`), ...(formattingSha256 ? { formattingSha256 } : {}) }
     : { ...content, exists: false };
 }
 
-function parseTarget(value: unknown, name: string): Target {
+function parseTarget(value: unknown, name: string, source: Source): Target {
   const target = object(value, name);
-  fields(target, ['startLine', 'endLine', 'sha256'], name);
+  fields(target, ['startLine', 'endLine', 'sha256', 'formattingSha256'], name);
   if (typeof target.startLine !== 'number' || !Number.isSafeInteger(target.startLine) || target.startLine < 1) {
     throw new Error(`${name}的 startLine 必须是从 1 开始的正整数。`);
   }
   if (typeof target.endLine !== 'number' || !Number.isSafeInteger(target.endLine) || target.endLine < target.startLine) {
     throw new Error(`${name}的 endLine 必须是整数，且不小于 startLine。`);
   }
-  return { startLine: target.startLine, endLine: target.endLine, sha256: hash(target.sha256, `${name}的 sha256`) };
+  let formattingSha256: string | undefined;
+  if (Object.prototype.hasOwnProperty.call(target, 'formattingSha256')) {
+    if (source.kind !== 'workspace' || !source.exists || !source.formattingSha256) throw new Error(`${name}的格式摘要需要对应当前文件先提供 formattingSha256。`);
+    formattingSha256 = hash(target.formattingSha256, `${name}的 formattingSha256`);
+  }
+  return { startLine: target.startLine, endLine: target.endLine, sha256: hash(target.sha256, `${name}的 sha256`), ...(formattingSha256 ? { formattingSha256 } : {}) };
 }
 
 function sourceName(value: unknown, sources: Record<string, Source>, name: string): string {
@@ -171,7 +174,7 @@ function parseStep(value: JsonObject, sources: Record<string, Source>, body: { t
     fields(value, ['id', 'kind', 'source', 'target'], name);
     const source = sourceName(value.source, sources, `${name}的 source`);
     if (!sources[source].exists) throw new Error(`${name}是普通脚本步骤，不能引用预期不存在的文件“${source}”。`);
-    return { ...body, id, kind: 'file', source, target: parseTarget(value.target, `${name}的 target`) };
+    return { ...body, id, kind: 'file', source, target: parseTarget(value.target, `${name}的 target`, sources[source]) };
   }
   if (value.kind !== 'diff') throw new Error(`${name}的 kind 必须是 file 或 diff。`);
   fields(value, ['id', 'kind', 'comparison', 'left', 'right', 'targets'], name);
@@ -195,7 +198,7 @@ function parseStep(value: JsonObject, sources: Record<string, Source>, body: { t
     if (!(side === 'left' ? before : after).exists) {
       throw new Error(`${name}的 ${side} 侧文件预期不存在，不能设置目标范围。`);
     }
-    targets[side] = parseTarget(rawTargets[side], `${name}的 targets.${side}`);
+    targets[side] = parseTarget(rawTargets[side], `${name}的 targets.${side}`, side === 'left' ? before : after);
   }
   return { ...body, id, kind: 'diff', comparison: value.comparison, left, right, targets };
 }
@@ -267,22 +270,30 @@ export function checkTarget(source: Source, text: string, target: Target): { sta
     return { startLine: target.startLine, endLine: target.endLine };
   }
   const height = target.endLine - target.startLine + 1;
+  const formatting = source.kind === 'workspace' && supportsJavaScriptFormatting(source.path) && source.formattingSha256 && target.formattingSha256
+    ? javascriptFormatting(normalized) : undefined;
+  const allowFormatting = formatting?.fileSha256 === source.formattingSha256 && !!formatting;
   let found: number | undefined;
   let count = 0;
   for (let start = 0; start + height <= lines.length; start++) {
     const range = lines.slice(start, start + height).join('\n');
-    if (range.trim() && sha256(range) === target.sha256) {
+    const matches = allowFormatting
+      ? formatting.rangeSha256(start + 1, start + height) === target.formattingSha256
+      : sha256(range) === target.sha256;
+    if (range.trim() && matches) {
       found = start;
       count++;
     }
   }
   if (count === 0 || found === undefined) {
-    throw new Error(`当前文件“${source.path}”已有变化，找不到原目标的完全相同文本，请更新该步骤的讲解及定位。`);
+    throw new Error(`当前文件“${source.path}”已有变化，找不到可确认对应的目标。仅有受支持且带格式摘要的空格、Tab 或缩进变化可以继续；请更新该步骤的讲解及定位。`);
   }
-  if (count > 1) throw new Error(`当前文件“${source.path}”有 ${count} 处与原目标完全相同的文本，不能唯一确定讲解位置，请更新该步骤的定位。`);
+  if (count > 1) throw new Error(`当前文件“${source.path}”有 ${count} 处与原目标对应的文本，不能唯一确定讲解位置，请更新该步骤的定位。`);
   return {
     startLine: found + 1,
     endLine: found + height,
-    notice: `文件“${source.path}”已有其他修改，本段文本仍一致；这不代表讲解的业务含义已经重新核对。`,
+    notice: allowFormatting && sha256(lines.slice(found, found + height).join('\n')) !== target.sha256
+      ? `文件“${source.path}”的代码格式已变化，本段代码符号、字面值、注释及换行仍对应；讲解含义未重新核对。`
+      : `文件“${source.path}”已有其他修改，本段文本仍一致；这不代表讲解的业务含义已经重新核对。`,
   };
 }

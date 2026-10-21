@@ -11,7 +11,7 @@
 
 ## 当前状态
 
-2026-10-21 已完成任务 01 的真实显示验证，并接通正式插件的讲解读取、当前文件与 Git diff、代码对应检查、导航、自动更新及进度恢复。构建、类型检查、12 条异步顺序检查及 VSIX 打包通过。正式插件的 26 项手动验收正在进行；任务 01 的固定案例截图不代替这轮完整验收。当前证据及限制见[首版实现记录](.scratch/first-release/implementation-results.md)。
+2026-10-21 已接通正式插件的讲解读取、当前文件与 Git diff、代码对应检查、导航、自动更新及进度恢复。0.1.1 增加可确认的 JavaScript 空格、Tab 和缩进变化检查；其他语言与固定 Git 继续严格核对。构建、类型检查、32 项检查（含 12 项异步顺序和 20 项格式检查）及 VSIX 打包通过。正式插件的 26 项手动验收正在进行，新格式规则尚待新版界面验证。当前证据及限制见[首版实现记录](.scratch/first-release/implementation-results.md)。
 
 当前工作依据见[首版规格](.scratch/first-release/spec.md)，文件约定见[Markdown 讲解文件格式](.scratch/first-release/explanation-format.md)，可阅读[完整讲解示例](.scratch/first-release/explanation.example.md)。规格和[8 项首版任务](.scratch/first-release/issues)保存在本地 Markdown 任务记录中。任务 02 至 07 已实现，手动验收待确认；任务 08 正在记录完整流程结果。
 

@@ -2,32 +2,71 @@
   "name": "code-explanation-extension",
   "displayName": "行内代码讲解",
   "description": "读取独立 Markdown 讲解，在代码和真实 diff 旁按步骤阅读。",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "XGH",
   "author": "XGH",
   "license": "MIT",
-  "repository": { "type": "git", "url": "https://github.com/x3098165384-beep/code-explanation-extension.git" },
-  "engines": { "vscode": "^1.140.0" },
-  "categories": ["Other"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/x3098165384-beep/code-explanation-extension.git"
+  },
+  "engines": {
+    "vscode": "^1.140.0"
+  },
+  "categories": [
+    "Other"
+  ],
   "main": "./dist/extension.js",
   "scripts": {
     "build": "tsc -p .",
     "check": "tsc -p . --noEmit",
     "watch": "tsc -p . --watch",
-    "package": "npm run build && npx --yes @vscode/vsce@4.0.0 package --out code-explanation-extension-0.1.0.vsix",
+    "package": "npm run build && npx --yes @vscode/vsce@4.0.0 package",
     "test": "npm run build && node --test test/*.test.cjs"
   },
   "contributes": {
     "commands": [
-      { "command": "codeExplanation.open", "title": "行内代码讲解：打开讲解" },
-      { "command": "codeExplanation.previous", "title": "行内代码讲解：上一步" },
-      { "command": "codeExplanation.next", "title": "行内代码讲解：下一步" },
-      { "command": "codeExplanation.select", "title": "行内代码讲解：选择步骤" },
-      { "command": "codeExplanation.body", "title": "行内代码讲解：查看步骤正文" },
-      { "command": "codeExplanation.stop", "title": "行内代码讲解：停止讲解" }
+      {
+        "command": "codeExplanation.open",
+        "title": "行内代码讲解：打开讲解"
+      },
+      {
+        "command": "codeExplanation.previous",
+        "title": "行内代码讲解：上一步"
+      },
+      {
+        "command": "codeExplanation.next",
+        "title": "行内代码讲解：下一步"
+      },
+      {
+        "command": "codeExplanation.select",
+        "title": "行内代码讲解：选择步骤"
+      },
+      {
+        "command": "codeExplanation.body",
+        "title": "行内代码讲解：查看步骤正文"
+      },
+      {
+        "command": "codeExplanation.stop",
+        "title": "行内代码讲解：停止讲解"
+      }
     ]
   },
-  "capabilities": { "untrustedWorkspaces": { "supported": false, "description": "读取本地项目和 Git 历史前，需要信任所选项目。" } },
-  "dependencies": { "jsonc-parser": "^3.3.1", "markdown-it": "^14.1.0" },
-  "devDependencies": { "@types/markdown-it": "^14.1.2", "@types/node": "^22.0.0", "@types/vscode": "1.140.0", "typescript": "^5.9.3" }
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false,
+      "description": "读取本地项目和 Git 历史前，需要信任所选项目。"
+    }
+  },
+  "dependencies": {
+    "acorn": "8.15.0",
+    "jsonc-parser": "^3.3.1",
+    "markdown-it": "^14.1.0"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.0.0",
+    "@types/vscode": "1.140.0",
+    "typescript": "^5.9.3"
+  }
 }

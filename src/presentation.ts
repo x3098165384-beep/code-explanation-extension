@@ -181,7 +181,7 @@ export class Presentation implements vscode.Disposable {
     }
   }
 
-  updateNavigation(explanation: Explanation, index: number, error?: string): void {
+  updateNavigation(explanation: Explanation, index: number, error?: string, loading = false): void {
     this.previous.text = '$(arrow-left) 上一步';
     this.previous.command = index > 0 ? 'codeExplanation.previous' : undefined;
     this.previous.color = index > 0 ? undefined : new vscode.ThemeColor('disabledForeground');
@@ -190,9 +190,9 @@ export class Presentation implements vscode.Disposable {
     this.next.command = index < explanation.steps.length - 1 ? 'codeExplanation.next' : undefined;
     this.next.color = index < explanation.steps.length - 1 ? undefined : new vscode.ThemeColor('disabledForeground');
     this.next.tooltip = index < explanation.steps.length - 1 ? '查看下一步讲解' : '已经是最后一步，讲解会保留到停止';
-    this.progress.text = `${error ? '$(warning)' : '$(list-unordered)'} ${index + 1}/${explanation.steps.length}：${explanation.steps[index].title}`;
+    this.progress.text = `${loading ? '$(loading~spin)' : error ? '$(warning)' : '$(list-unordered)'} ${index + 1}/${explanation.steps.length}：${loading ? '正在读取 ' : ''}${explanation.steps[index].title}`;
     this.progress.command = 'codeExplanation.select';
-    this.progress.tooltip = `${explanation.title}\n${error ?? '选择要阅读的步骤'}`;
+    this.progress.tooltip = `${explanation.title}\n${loading ? '正在读取并核对本步代码，完成后会显示讲解。读取期间可以选择其他步骤或停止。' : error ?? '选择要阅读的步骤'}`;
     this.body.text = '$(markdown) 查看正文';
     this.body.command = 'codeExplanation.body';
     this.body.tooltip = '在 Markdown 编辑器中查看当前步骤正文';

@@ -1,0 +1,27 @@
+{
+  "recordedAt": "2026-10-21T06:43:54.911Z",
+  "stage": "正式讲解第 1 至 5 步，只读状态核对",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\acceptance\\project",
+  "actual": {
+    "head": "ea58d697c80d2ec8b132c38591d92a2fd748371a",
+    "status": "MM src/charge.js\n",
+    "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+    "disk": {
+      "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+      "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+      "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+      "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+    },
+    "stagedDiffSha256": "7c06b08be7a759301c0b13d7533bae06a43d7a537f41c4768483e5a1e7a7c061",
+    "unstagedDiffSha256": "de55455355a8c797fe93235af089988bdc8288dca395be477e7e8c79c61651fc"
+  },
+  "matchesPreparedBaseline": {
+    "head": true,
+    "status": true,
+    "index": true,
+    "disk": true,
+    "stagedDiffSha256": true,
+    "unstagedDiffSha256": true
+  },
+  "limitation": "仅后台核对 Git 和磁盘；未读取当前 VS Code 未保存文档，不能代替停止后的界面和文档状态检查。"
+}
