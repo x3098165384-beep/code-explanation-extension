@@ -1,0 +1,23 @@
+{
+  "name": "code-explanation-inline-validation",
+  "displayName": "行内讲解验证",
+  "description": "只用于任务 01 的真实 VS Code 行内 Markdown 和 diff 定位验证。",
+  "version": "0.0.1",
+  "publisher": "XGH",
+  "license": "MIT",
+  "engines": { "vscode": "^1.100.0" },
+  "main": "./extension.js",
+  "activationEvents": ["onStartupFinished"],
+  "capabilities": { "untrustedWorkspaces": { "supported": true } },
+  "contributes": {
+    "commands": [
+      { "command": "inlineValidation.prepareUnsaved", "title": "行内讲解验证：准备未保存示例" },
+      { "command": "inlineValidation.start", "title": "行内讲解验证：开始" },
+      { "command": "inlineValidation.select", "title": "行内讲解验证：选择步骤" },
+      { "command": "inlineValidation.previous", "title": "行内讲解验证：上一步" },
+      { "command": "inlineValidation.next", "title": "行内讲解验证：下一步" },
+      { "command": "inlineValidation.capture", "title": "行内讲解验证：记录当前显示" },
+      { "command": "inlineValidation.stop", "title": "行内讲解验证：停止" }
+    ]
+  }
+}

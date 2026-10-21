@@ -1,0 +1,92 @@
+{
+  "event": "case-shown",
+  "recordedAt": "2026-10-21T05:51:33.478Z",
+  "vscodeVersion": "1.142.0",
+  "index": 4,
+  "title": "历史 diff：同一步指出两侧",
+  "activeTab": {
+    "kind": "diff",
+    "label": "行内讲解验证：PriceCalculator.cs",
+    "original": "inline-validation-git://b03b6f9e5cd00768d643a6413dc5c00af278349d/src/PriceCalculator.cs",
+    "modified": "inline-validation-git://bac0ea973f514442209c43f470eab991ec5234fc/src/PriceCalculator.cs",
+    "isDirty": false
+  },
+  "visibleEditors": [
+    {
+      "uri": "inline-validation-git://b03b6f9e5cd00768d643a6413dc5c00af278349d/src/PriceCalculator.cs",
+      "isDirty": false,
+      "lineCount": 8
+    },
+    {
+      "uri": "inline-validation-git://bac0ea973f514442209c43f470eab991ec5234fc/src/PriceCalculator.cs",
+      "isDirty": false,
+      "lineCount": 14
+    },
+    {
+      "uri": "comment://inline-validation/XGH.code-explanation-inline-validation/commentinput-c8376d2a-195a-4f50-b479-9a10f3baec63-inline-validation.6.md",
+      "isDirty": false,
+      "lineCount": 1
+    }
+  ],
+  "comment": {
+    "uri": "inline-validation-git://bac0ea973f514442209c43f470eab991ec5234fc/src/PriceCalculator.cs",
+    "range": {
+      "startLine": 5,
+      "endLine": 8
+    },
+    "count": 1
+  },
+  "highlightedTargets": [
+    {
+      "side": "left",
+      "uri": "inline-validation-git://b03b6f9e5cd00768d643a6413dc5c00af278349d/src/PriceCalculator.cs",
+      "startLine": 5,
+      "endLine": 5,
+      "actualText": "        return price * quantity;",
+      "isDirty": false
+    },
+    {
+      "side": "right",
+      "uri": "inline-validation-git://bac0ea973f514442209c43f470eab991ec5234fc/src/PriceCalculator.cs",
+      "startLine": 5,
+      "endLine": 8,
+      "actualText": "        if (quantity <= 0)\n        {\n            return 0;\n        }",
+      "isDirty": false
+    }
+  ],
+  "sourceState": {
+    "head": "bac0ea973f514442209c43f470eab991ec5234fc",
+    "status": "MM src/PriceCalculator.cs\n",
+    "index": "100644 087b2badafb7da4f206ae5e69acc1b1a29b0f737 0\tsrc/Checkout.cs\n100644 adffdc8f000411c48996cec5c10c54afd44afc84 0\tsrc/NewPrice.cs\n100644 3afd72627c2e8df420c87f642c44637d4adc6dca 0\tsrc/PriceCalculator.cs\n",
+    "stagedDiffSha256": "6b3fc32b04c3294ebe499e65b7121f4a2a2319c24c5cd2c5c3d4e26e3d530814",
+    "unstagedDiffSha256": "3fcf4fdfc7751ed20ea7d10b1a8e1bd2a95a1ed44e28c020062f0174587271ee",
+    "disk": {
+      "src/Checkout.cs": "0b4109f697e2fba9e224f23dbe53f043ee307e1c6b880e797faa30ee17f35ed8",
+      "src/NewPrice.cs": "e942a45817e491af990a805bc03acf05d1e1368fc8d49a3eb91b916763a478a8",
+      "src/PriceCalculator.cs": "eee93aa4e7803d86c50cd7e628d19ed848b8c3c3bd82d745a7b26b4f27a7505d"
+    },
+    "documents": [
+      {
+        "path": "src/Checkout.cs",
+        "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/verification/runtime/workspace/src/Checkout.cs",
+        "isDirty": false,
+        "sha256": "0b4109f697e2fba9e224f23dbe53f043ee307e1c6b880e797faa30ee17f35ed8",
+        "version": 1
+      },
+      {
+        "path": "src/PriceCalculator.cs",
+        "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/verification/runtime/workspace/src/PriceCalculator.cs",
+        "isDirty": true,
+        "sha256": "b63f4d0a102c462b40edada9f4145c13e60387a3f63fc79b0dc3dc599bf43971",
+        "version": 2
+      }
+    ]
+  },
+  "comparisonToBaseline": {
+    "gitAndDiskUnchanged": true,
+    "baselineDirtyDocumentCount": 1,
+    "currentDocumentCount": 2,
+    "preparedDirtyDocumentsUnchanged": true,
+    "noOtherDocumentChanged": true
+  }
+}
