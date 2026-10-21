@@ -1,0 +1,6 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "构建行内代码讲解", "type": "npm", "script": "build", "problemMatcher": "$tsc" }
+  ]
+}

@@ -1,0 +1,12 @@
+.git/**
+.scratch/**
+.vscode/**
+src/**
+test/**
+docs/**
+tsconfig.json
+**/*.map
+*.vsix
+tools/**
+node_modules/@types/**
+node_modules/typescript/**
