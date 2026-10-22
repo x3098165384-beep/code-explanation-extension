@@ -4,6 +4,7 @@
 src/**
 test/**
 docs/**
+releases/**
 tsconfig.json
 **/*.map
 *.vsix
