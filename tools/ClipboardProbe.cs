@@ -22,7 +22,7 @@ public static class ClipboardProbe {
     static string Name(IntPtr h) {
         uint size; var text = new StringBuilder(512);
         if (h == IntPtr.Zero || !GetUserObjectInformation(h, 2, text, 1024, out size))
-            throw new InvalidOperationException("Cannot inspect the test window station or desktop. Win32=" + Marshal.GetLastWin32Error());
+            throw new InvalidOperationException("无法检查测试进程的窗口站或桌面。Win32 错误=" + Marshal.GetLastWin32Error());
         return text.ToString();
     }
     static string Json(string value) {
@@ -42,7 +42,7 @@ public static class ClipboardProbe {
         try {
             string station = Name(GetProcessWindowStation());
             if (args.Length < 2 || station != args[0] || station.Equals("WinSta0", StringComparison.OrdinalIgnoreCase))
-                throw new InvalidOperationException("Refusing access outside the expected noninteractive test station.");
+                throw new InvalidOperationException("当前窗口站不是指定的非交互测试窗口站，已拒绝读取剪贴板。");
             if (args[1] == "identity") {
                 Console.Write("{\"station\":" + Json(station) + ",\"desktop\":" + Json(Name(GetThreadDesktop(GetCurrentThreadId()))) + "}");
             } else if (args[1] == "process" || args[1] == "process-info") {
@@ -60,7 +60,7 @@ public static class ClipboardProbe {
                 names.Append(']'); errors.Append(']');
                 Console.Write(args[1] == "process" ? names.ToString() : "{\"desktops\":" + names + ",\"inspectionErrors\":" + errors + "}");
             } else if (args[1] == "read") {
-                if (!OpenClipboard(IntPtr.Zero)) throw new InvalidOperationException("Cannot open the isolated clipboard.");
+                if (!OpenClipboard(IntPtr.Zero)) throw new InvalidOperationException("无法打开独立测试窗口站的剪贴板。");
                 try {
                     var memory = GetClipboardData(13); string text = "";
                     if (memory != IntPtr.Zero) {
@@ -72,7 +72,7 @@ public static class ClipboardProbe {
                     string ownerDesktop = ownerThread == 0 ? "" : Name(GetThreadDesktop(ownerThread));
                     Console.Write("{\"station\":" + Json(station) + ",\"sequence\":" + GetClipboardSequenceNumber() + ",\"ownerProcessId\":" + ownerProcess + ",\"ownerThreadDesktop\":" + Json(ownerDesktop) + ",\"text\":" + Json(text) + "}");
                 } finally { CloseClipboard(); }
-            } else throw new InvalidOperationException("Unknown test probe operation.");
+            } else throw new InvalidOperationException("未识别的测试检查操作。");
         } catch (Exception error) { Console.Error.Write(error.Message); Environment.Exit(1); }
     }
 }

@@ -1,6 +1,6 @@
 # Markdown 讲解文件格式
 
-本页保留 0.1.3 使用的旧格式。后续新版本按[JSON 格式约定](../reading-experience/explanation-format.md)统一读取 JSON；旧 Markdown 由 agent 一次性转换，不保留插件导入或旧格式阅读入口。新格式尚未实现。
+本页保留 0.1.3 使用的旧格式。0.2.0 按[JSON 格式约定](../reading-experience/explanation-format.md)统一读取 JSON；旧 Markdown 由 agent 一次性转换，不保留插件导入或旧格式阅读入口。实际完成情况见[本轮任务](../reading-experience/issues/README.md)。
 
 本约定供外部 agent 生成首版讲解文件及插件读取时使用，配合[首版规格](spec.md)和[完整示例](explanation.example.md)。正式读取器已按此约定实现，实际验证状态见[首版实现记录](implementation-results.md)；格式本身不作为界面已经通过的证据。
 
