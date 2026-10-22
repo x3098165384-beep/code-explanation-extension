@@ -1,8 +1,8 @@
 ﻿param([string]$CodePath, [int]$TimeoutSeconds = 600, [switch]$LayoutOnly,
     [string]$ExplanationPath, [string]$ExplanationProject, [switch]$CopyOnly, [switch]$JsonOnly,
-    [switch]$BodyOnly, [switch]$SidebarOnly)
+    [switch]$BodyOnly, [switch]$SidebarOnly, [switch]$RecentOnly)
 $ErrorActionPreference = 'Stop'
-$copyIsolation = $CopyOnly -or $JsonOnly -or $BodyOnly -or $SidebarOnly
+$copyIsolation = $CopyOnly -or $JsonOnly -or $BodyOnly -or $SidebarOnly -or $RecentOnly
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $runName = (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + [Guid]::NewGuid().ToString('N').Substring(0, 8)
 $runRoot = Join-Path $projectRoot ('.scratch/first-release/runtime/background/' + $runName)
@@ -61,7 +61,7 @@ $env:CODE_EXPLANATION_BACKGROUND_RUN = $runRoot
 $env:ELECTRON_RUN_AS_NODE = $null
 $env:VSCODE_IPC_HOOK_CLI = $null
 $env:VSCODE_PORTABLE = $null
-$env:CODE_EXPLANATION_BACKGROUND_PHASE = if ($BodyOnly) { 'body' } elseif ($SidebarOnly) { 'sidebar' } elseif ($JsonOnly) { 'json' } elseif ($CopyOnly) { 'copy' } elseif ($LayoutOnly) { 'layout' } else { $null }
+$env:CODE_EXPLANATION_BACKGROUND_PHASE = if ($RecentOnly) { 'recent' } elseif ($BodyOnly) { 'body' } elseif ($SidebarOnly) { 'sidebar' } elseif ($JsonOnly) { 'json' } elseif ($CopyOnly) { 'copy' } elseif ($LayoutOnly) { 'layout' } else { $null }
 Add-Type -Path (Join-Path $PSScriptRoot 'IsolatedDesktop.cs')
 if ($copyIsolation) {
     Add-Type -Path (Join-Path $PSScriptRoot 'ClipboardProbe.cs') -OutputAssembly (Join-Path $runRoot 'ClipboardProbe.exe') -OutputType ConsoleApplication
@@ -100,22 +100,22 @@ try {
     if ((Get-Content -LiteralPath (Join-Path $runRoot 'results.json') -Raw -Encoding UTF8 | ConvertFrom-Json).result -ne '通过') { throw '后台检查尚未全部通过。' }
     $record.phases = @(@{ name = '首次流程'; desktop = $session.DesktopName; processId = $session.ProcessId; exitCode = $session.ExitCode })
     $session.Dispose(); $session = $null
-    $phases = if ($SidebarOnly) { @('sidebar-multiple-roots', 'sidebar-no-project') } elseif ($LayoutOnly -or $CopyOnly -or $JsonOnly -or $BodyOnly) { @() } else { @('restore', 'project', 'lecture-edit', 'multiple-roots', 'no-project', 'layout') }
+    $phases = if ($RecentOnly) { @('recent-restore', 'recent-project', 'recent-multiple-roots', 'recent-restore-final') } elseif ($SidebarOnly) { @('sidebar-multiple-roots', 'sidebar-no-project') } elseif ($LayoutOnly -or $CopyOnly -or $JsonOnly -or $BodyOnly) { @() } else { @('restore', 'project', 'lecture-edit', 'multiple-roots', 'no-project', 'layout') }
     foreach ($phase in $phases) {
         $env:CODE_EXPLANATION_BACKGROUND_PHASE = $phase
         $phaseResult = Get-Content -LiteralPath (Join-Path $runRoot 'results.json') -Raw -Encoding UTF8 | ConvertFrom-Json
         $phaseResult.result = '进行中'
         [IO.File]::WriteAllText((Join-Path $runRoot 'results.json'), ($phaseResult | ConvertTo-Json -Depth 100))
         $phaseArguments = $arguments.Clone()
-        if ($phase -eq 'project' -or ($phase -eq 'sidebar-multiple-roots' -and -not $configuration.otherProject)) {
+        if (($phase -in @('project', 'recent-project', 'sidebar-multiple-roots', 'recent-multiple-roots')) -and -not $configuration.otherProject) {
             $otherFixture = Join-Path $runRoot 'other-fixture'
             & node (Join-Path $PSScriptRoot 'prepare-acceptance.cjs') ('--directory=' + $otherFixture)
             if ($LASTEXITCODE -ne 0) { throw '另一项目未准备完成。' }
             $configuration.otherProject = Join-Path $otherFixture 'project'
             $configuration | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runRoot 'configuration.json') -Encoding utf8
-            if ($phase -eq 'project') { $phaseArguments[$phaseArguments.Count - 1] = '"' + $configuration.otherProject + '"' }
         }
-        if ($phase -eq 'multiple-roots' -or $phase -eq 'sidebar-multiple-roots') {
+        if ($phase -in @('project', 'recent-project')) { $phaseArguments[$phaseArguments.Count - 1] = '"' + $configuration.otherProject + '"' }
+        if ($phase -in @('multiple-roots', 'sidebar-multiple-roots', 'recent-multiple-roots')) {
             $workspaceFile = Join-Path $runRoot 'two-projects.code-workspace'
             $workspace = @{ folders = @(
                 @{ name = '首个项目'; path = (Join-Path $fixture 'project') },

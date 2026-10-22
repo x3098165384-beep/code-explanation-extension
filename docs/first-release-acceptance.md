@@ -1,5 +1,7 @@
 # 首版验收记录
 
+本页保留 0.1.2、0.1.3 的历史验收。0.2.0 已改为 JSON、讲解侧栏和真实文字复制；本轮结果见[后台验收说明](background-verification.md)及[当前任务](../.scratch/reading-experience/issues/README.md)。下文的旧 Markdown 路径及图片显示只用于追溯历史，当前使用方式见[使用说明](first-release-usage.md)。
+
 记录日期：2026-10-21 至 2026-10-22。
 
 0.1.3 已完成[任务 09](../.scratch/first-release/issues/09-code-block-display.md)：代码框、简短翻译及原有阅读流程共 49 项后台检查通过。实际截图和未扩大的验证范围见[0.1.3 代码框验收](background-verification.md#013-代码框验收)。下方保留原 0.1.2 的逐项记录。

@@ -15,9 +15,9 @@ exports.activate = async context => {
     throw new Error('项目或被测扩展不在独立后台目录内，未执行测试或关闭窗口。');
   }
   const config = JSON.parse(fs.readFileSync(path.join(root, 'configuration.json'), 'utf8').replace(/^\uFEFF/, ''));
-  const expected = phase === 'project' ? config.otherProject : path.join(config.fixture, 'project');
+  const expected = phase === 'project' || phase === 'recent-project' ? config.otherProject : path.join(config.fixture, 'project');
   if (!noProject && path.resolve(project).toLowerCase() !== path.resolve(expected).toLowerCase()) return;
-  if (phase === 'multiple-roots' || phase === 'sidebar-multiple-roots') {
+  if (['multiple-roots', 'sidebar-multiple-roots', 'recent-multiple-roots'].includes(phase)) {
     const folders = vscode.workspace.workspaceFolders;
     if (folders.length !== 2 || !inside(vscode.workspace.workspaceFile?.fsPath || '') ||
       path.resolve(folders[1].uri.fsPath).toLowerCase() !== path.resolve(config.otherProject).toLowerCase()) return;

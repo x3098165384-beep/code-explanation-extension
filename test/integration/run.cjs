@@ -138,8 +138,8 @@ exports.run = async function () {
         disk, diskFile, diskRaw, unsaved, unsavedFile, manifest, project, git, open, go, shown, stop, edit, assertAnchor, activeDiff, assertBaseline });
       results.finishedAt = new Date().toISOString(); results.result = '通过'; save(); return;
     }
-    if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE === 'body' || process.env.CODE_EXPLANATION_BACKGROUND_PHASE?.startsWith('sidebar')) {
-      const module = process.env.CODE_EXPLANATION_BACKGROUND_PHASE === 'body' ? 'body' : 'sidebar';
+    if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE === 'body' || /^(sidebar|recent)/.test(process.env.CODE_EXPLANATION_BACKGROUND_PHASE ?? '')) {
+      const module = process.env.CODE_EXPLANATION_BACKGROUND_PHASE === 'body' ? 'body' : process.env.CODE_EXPLANATION_BACKGROUND_PHASE.startsWith('recent') ? 'recent' : 'sidebar';
       await require('./' + module + '.cjs').verify({
         config, renderer, checkpoint, wait, command, parseExplanation, sha256, normalizeText,
         disk, diskFile, diskRaw, unsaved, unsavedFile, manifest, project, git, open, go, shown, stop, edit, assertAnchor, activeDiff, assertBaseline,
