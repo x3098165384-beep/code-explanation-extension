@@ -1,8 +1,8 @@
 ﻿param([string]$CodePath, [int]$TimeoutSeconds = 600, [switch]$LayoutOnly,
     [string]$ExplanationPath, [string]$ExplanationProject, [switch]$CopyOnly, [switch]$JsonOnly,
-    [switch]$BodyOnly, [switch]$SidebarOnly, [switch]$RecentOnly)
+    [switch]$BodyOnly, [switch]$SidebarOnly, [switch]$RecentOnly, [switch]$ConversionOnly)
 $ErrorActionPreference = 'Stop'
-$copyIsolation = $CopyOnly -or $JsonOnly -or $BodyOnly -or $SidebarOnly -or $RecentOnly
+$copyIsolation = $CopyOnly -or $JsonOnly -or $BodyOnly -or $SidebarOnly -or $RecentOnly -or $ConversionOnly
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $runName = (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + [Guid]::NewGuid().ToString('N').Substring(0, 8)
 $runRoot = Join-Path $projectRoot ('.scratch/first-release/runtime/background/' + $runName)
@@ -61,7 +61,7 @@ $env:CODE_EXPLANATION_BACKGROUND_RUN = $runRoot
 $env:ELECTRON_RUN_AS_NODE = $null
 $env:VSCODE_IPC_HOOK_CLI = $null
 $env:VSCODE_PORTABLE = $null
-$env:CODE_EXPLANATION_BACKGROUND_PHASE = if ($RecentOnly) { 'recent' } elseif ($BodyOnly) { 'body' } elseif ($SidebarOnly) { 'sidebar' } elseif ($JsonOnly) { 'json' } elseif ($CopyOnly) { 'copy' } elseif ($LayoutOnly) { 'layout' } else { $null }
+$env:CODE_EXPLANATION_BACKGROUND_PHASE = if ($ConversionOnly) { 'conversion' } elseif ($RecentOnly) { 'recent' } elseif ($BodyOnly) { 'body' } elseif ($SidebarOnly) { 'sidebar' } elseif ($JsonOnly) { 'json' } elseif ($CopyOnly) { 'copy' } elseif ($LayoutOnly) { 'layout' } else { $null }
 Add-Type -Path (Join-Path $PSScriptRoot 'IsolatedDesktop.cs')
 if ($copyIsolation) {
     Add-Type -Path (Join-Path $PSScriptRoot 'ClipboardProbe.cs') -OutputAssembly (Join-Path $runRoot 'ClipboardProbe.exe') -OutputType ConsoleApplication
@@ -100,7 +100,7 @@ try {
     if ((Get-Content -LiteralPath (Join-Path $runRoot 'results.json') -Raw -Encoding UTF8 | ConvertFrom-Json).result -ne '通过') { throw '后台检查尚未全部通过。' }
     $record.phases = @(@{ name = '首次流程'; desktop = $session.DesktopName; processId = $session.ProcessId; exitCode = $session.ExitCode })
     $session.Dispose(); $session = $null
-    $phases = if ($RecentOnly) { @('recent-restore', 'recent-project', 'recent-multiple-roots', 'recent-restore-final') } elseif ($SidebarOnly) { @('sidebar-multiple-roots', 'sidebar-no-project') } elseif ($LayoutOnly -or $CopyOnly -or $JsonOnly -or $BodyOnly) { @() } else { @('restore', 'project', 'lecture-edit', 'multiple-roots', 'no-project', 'layout') }
+    $phases = if ($RecentOnly) { @('recent-restore', 'recent-project', 'recent-multiple-roots', 'recent-restore-final') } elseif ($SidebarOnly) { @('sidebar-multiple-roots', 'sidebar-no-project') } elseif ($LayoutOnly -or $CopyOnly -or $JsonOnly -or $BodyOnly -or $ConversionOnly) { @() } else { @('restore', 'project', 'lecture-edit', 'multiple-roots', 'no-project', 'layout') }
     foreach ($phase in $phases) {
         $env:CODE_EXPLANATION_BACKGROUND_PHASE = $phase
         $phaseResult = Get-Content -LiteralPath (Join-Path $runRoot 'results.json') -Raw -Encoding UTF8 | ConvertFrom-Json
