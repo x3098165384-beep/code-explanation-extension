@@ -10,8 +10,8 @@ exports.run = async function () {
   if (!root) throw new Error('缺少独立后台验收目录。');
   const config = JSON.parse(fs.readFileSync(path.join(root, 'configuration.json'), 'utf8').replace(/^\uFEFF/, ''));
   const manifest = JSON.parse(fs.readFileSync(path.join(config.fixture, 'manifest.json'), 'utf8'));
-  const diskFile = path.join(config.fixture, 'lecture-disk.md');
-  const unsavedFile = path.join(config.fixture, 'lecture-unsaved.md');
+  const diskFile = manifest.lectures.disk.path;
+  const unsavedFile = manifest.lectures.unsaved.path;
   const diskRaw = fs.readFileSync(diskFile, 'utf8');
   const project = manifest.projectRoot;
   const uri = relative => vscode.Uri.file(path.join(project, relative));
@@ -131,6 +131,11 @@ exports.run = async function () {
     }
     if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE === 'copy') {
       await require('./copy.cjs').verify({ config, renderer, checkpoint, wait, command, parseExplanation, sha256, normalizeText, disk, diskFile });
+      results.finishedAt = new Date().toISOString(); results.result = '通过'; save(); return;
+    }
+    if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE === 'json') {
+      await require('./json.cjs').verify({ config, renderer, checkpoint, wait, command, parseExplanation, sha256, normalizeText,
+        disk, diskFile, diskRaw, unsaved, unsavedFile, manifest, project, git, open, go, shown, stop, edit, assertAnchor, activeDiff, assertBaseline });
       results.finishedAt = new Date().toISOString(); results.result = '通过'; save(); return;
     }
     if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE) {

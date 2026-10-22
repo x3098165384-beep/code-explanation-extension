@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "kind": "code-explanation-acceptance",
+  "generatedAt": "2026-10-22T07:59:08.291Z",
+  "projectRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-155905-be3e1983\\fixture\\project",
+  "beforeCommit": "cf83512ef4c14cef8d715945847a18d2e6f84383",
+  "afterCommit": "0ba3fe5d975f5e655291eefa78059b5f7dd5f731",
+  "lectures": {
+    "disk": {
+      "path": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-155905-be3e1983\\fixture\\lecture-disk.json",
+      "id": "c8e00b25-2816-4267-86d5-c3855d779ac3",
+      "stepIds": [
+        "5768e749-e808-4cf0-a2c1-340c2eec6aa1",
+        "22e04c9e-7d6b-46aa-9bdb-a9156f7ccf58",
+        "d0cfc1ed-65a6-4201-b481-76b082959dd8",
+        "7c18be8c-51fc-4ac3-b121-2ec656998e20",
+        "12eb4bed-da29-455c-ae4e-6617e74329cc",
+        "e53eb38b-dfa8-467e-94de-5d26246778c0",
+        "c962fe69-6475-4147-974c-85333c4e72d6",
+        "903061a6-2eed-4f6e-b2b9-ef58734169db",
+        "8333e6d9-c6b0-44cb-84f7-97434d4c4e37"
+      ]
+    },
+    "unsaved": {
+      "path": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-155905-be3e1983\\fixture\\lecture-unsaved.json",
+      "id": "23448ae4-4044-4e36-b832-099cb36bb269",
+      "stepIds": [
+        "b67b2dc3-754a-4a98-ada9-b155966c1567",
+        "b6cf0d68-80ea-41cb-9eb4-7469861c9c83",
+        "ff3ea402-5a2d-4149-9c1c-9b411986bc78",
+        "345c9943-6efc-4671-a2b0-c9cfb30212dd",
+        "7e37b5de-ef71-4b42-9ef2-3a22acefd5a1",
+        "292f4cc7-b797-43fb-bc9f-683a81a4a24b",
+        "d831cf8c-5c34-4729-97fc-e751302e95e9",
+        "491221c4-c237-47b0-a07b-d054420e78e5",
+        "534dc77c-58f4-4f8d-b373-cbe45e83c377"
+      ]
+    }
+  },
+  "unsavedEdit": {
+    "path": "src/charge.js",
+    "find": "return subtotal;",
+    "replace": "return subtotal + 2;",
+    "expectedSha256": "df761227d15e3d4919be9effd25bef42e21d525bd74f3d2e9395001132e8993a"
+  },
+  "baseline": {
+    "head": "0ba3fe5d975f5e655291eefa78059b5f7dd5f731",
+    "status": "MM src/charge.js\n",
+    "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+    "disk": {
+      "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+      "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+      "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+      "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+    },
+    "stagedDiffSha256": "7c06b08be7a759301c0b13d7533bae06a43d7a537f41c4768483e5a1e7a7c061",
+    "unstagedDiffSha256": "de55455355a8c797fe93235af089988bdc8288dca395be477e7e8c79c61651fc"
+  }
+}

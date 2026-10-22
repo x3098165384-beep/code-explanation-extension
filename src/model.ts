@@ -14,8 +14,6 @@ interface StepBody {
   id: string;
   title: string;
   body: string;
-  /** 原 Markdown 二级标题所在行，从零开始。 */
-  headingLine: number;
 }
 
 export type Step = StepBody & (
@@ -26,10 +24,11 @@ export type Step = StepBody & (
 export interface Explanation {
   id: string;
   title: string;
+  description: string;
   sources: Record<string, Source>;
   steps: Step[];
-  /** 已成功读取的完整 Markdown，仅在当前阅读期间保留。 */
-  markdown: string;
+  /** 已成功读取的 JSON 原文，仅在当前阅读期间保留，用于确认保存更新。 */
+  text: string;
 }
 
 export interface CodeSnapshot {

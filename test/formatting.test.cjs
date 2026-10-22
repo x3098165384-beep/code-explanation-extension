@@ -86,16 +86,16 @@ test('解析失败和 JSX 不生成格式摘要，script 仍可解析', () => {
   assert.ok(javascriptFormatting('with (value) { work(); }'));
 });
 
-test('新增字段按来源校验并保留旧版本 1 文件兼容', () => {
+test('JSON 版本 2 的格式摘要按来源校验，缺少可选摘要仍可读取', () => {
   const original = 'function price(value) {\n  return value;\n}\n';
   const { source, target } = reference(original);
-  const markdown = () => `<!-- code-explanation\n${JSON.stringify({ version: 1, id: 'lecture', sources: { code: source } })}\n-->\n# 讲解\n\n<!-- step\n${JSON.stringify({ id: 'step', kind: 'file', source: 'code', target })}\n-->\n## 返回\n\n正文\n`;
-  assert.equal(parseExplanation(markdown()).steps[0].target.formattingSha256, target.formattingSha256);
+  const json = () => JSON.stringify({ version: 2, id: 'lecture', title: '讲解', sources: { code: source }, steps: [{ id: 'step', kind: 'file', title: '返回', body: '正文', source: 'code', target }] });
+  assert.equal(parseExplanation(json()).steps[0].target.formattingSha256, target.formattingSha256);
   source.path = 'example.py';
-  assert.throws(() => parseExplanation(markdown()), /只支持/);
+  assert.throws(() => parseExplanation(json()), /只支持/);
   source.path = 'example.js';
   delete source.formattingSha256;
-  assert.throws(() => parseExplanation(markdown()), /需要对应当前文件/);
+  assert.throws(() => parseExplanation(json()), /需要对应当前文件/);
   delete target.formattingSha256;
-  assert.equal(parseExplanation(markdown()).steps.length, 1);
+  assert.equal(parseExplanation(json()).steps.length, 1);
 });

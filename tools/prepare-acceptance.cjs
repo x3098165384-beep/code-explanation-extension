@@ -143,11 +143,9 @@ function makeLecture(before, after, current, unsaved) {
       body: '这一步从历史比较回到当前项目中的格式化函数。`return` 返回带两位小数和单位的字符串，不改变传入的数值。到达最后一步后，正文应继续显示，下一步不再前进；只有你选择停止时才清除正文和额外高亮。',
     },
   ];
-  const parts = [
-    '<!-- code-explanation', JSON.stringify({ version: 1, id, sources }, null, 2), '-->',
-    '# 席位账单的调用、历史修改和当前修改', '',
-    unsaved ? '本份讲解针对手动准备的未保存返回语句。先按使用说明修改编辑器，保持未保存，再打开本文件。' : '本份讲解针对工具实际生成的磁盘内容，可在选择演示项目后直接打开。', '',
-  ];
+  const output = { version: 2, id, title: '席位账单的调用、历史修改和当前修改',
+    description: unsaved ? '本份讲解针对手动准备的未保存返回语句。先按使用说明修改编辑器，保持未保存，再打开本文件。' : '本份讲解针对工具实际生成的磁盘内容，可在选择演示项目后直接打开。',
+    sources, steps: [] };
   const ids = [];
   for (const step of steps) {
     const metadata = step.metadata;
@@ -160,9 +158,9 @@ function makeLecture(before, after, current, unsaved) {
     }
     const stepId = crypto.randomUUID();
     ids.push(stepId);
-    parts.push('<!-- step', JSON.stringify({ id: stepId, ...step.metadata }, null, 2), '-->', `## ${step.title}`, '', step.body, '');
+    output.steps.push({ id: stepId, ...step.metadata, title: step.title, body: step.body });
   }
-  return { id, stepIds: ids, markdown: parts.join('\n') };
+  return { id, stepIds: ids, text: JSON.stringify(output, null, 2) + '\n' };
 }
 
 function report(manifest, reused) {
@@ -177,7 +175,7 @@ function report(manifest, reused) {
 }
 
 function prepareFormattingLecture(manifest) {
-  const output = path.join(directory, 'lecture-formatting.md');
+  const output = path.join(directory, 'lecture-formatting.json');
   if (fs.existsSync(output)) throw new Error(`格式验收讲解已存在，未覆盖：${output}`);
   const input = fs.readFileSync(manifest.lectures.unsaved.path, 'utf8');
   const lecture = parseExplanation(input);
@@ -192,24 +190,21 @@ function prepareFormattingLecture(manifest) {
     if (digest(text) !== source.sha256) throw new Error(`${source.path} 与原讲解基准不符，未创建新讲解。`);
     texts[name] = text;
   }
-  const header = JSON.parse(/^<!-- code-explanation\r?\n([\s\S]*?)\r?\n-->/.exec(input)[1]);
-  header.id = crypto.randomUUID();
+  const outputLecture = JSON.parse(input);
+  outputLecture.id = crypto.randomUUID();
   for (const [name, text] of Object.entries(texts)) {
     const formatting = javascriptFormatting(text);
-    if (formatting) header.sources[name].formattingSha256 = formatting.fileSha256;
+    if (formatting) outputLecture.sources[name].formattingSha256 = formatting.fileSha256;
   }
-  const outputText = input.replace(/<!-- (code-explanation|step)\r?\n([\s\S]*?)\r?\n-->/g, (_block, kind, json) => {
-    const value = kind === 'code-explanation' ? header : JSON.parse(json);
-    if (kind === 'step') {
+  for (const value of outputLecture.steps) {
       const name = value.kind === 'file' ? value.source : value.right;
       const target = value.kind === 'file' ? value.target : value.targets.right;
-      if (target && header.sources[name].formattingSha256) {
+      if (target && outputLecture.sources[name].formattingSha256) {
         const rangeHash = javascriptFormatting(texts[name])?.rangeSha256(target.startLine, target.endLine);
         if (rangeHash) target.formattingSha256 = rangeHash;
       }
-    }
-    return `<!-- ${kind}\n${JSON.stringify(value, null, 2)}\n-->`;
-  });
+  }
+  const outputText = JSON.stringify(outputLecture, null, 2) + '\n';
   parseExplanation(outputText);
   fs.writeFileSync(output, outputText, { flag: 'wx' });
   console.log(`已另建格式变化验收讲解：${output}`);
@@ -231,7 +226,7 @@ function main() {
     if (saved.version !== 1 || saved.kind !== 'code-explanation-acceptance' || !samePath(saved.projectRoot, project)) {
       throw new Error('现有目录没有匹配的验收记录，不能当作本工具生成的工程复用。');
     }
-    for (const [kind, filename] of [['disk', 'lecture-disk.md'], ['unsaved', 'lecture-unsaved.md']]) {
+    for (const [kind, filename] of [['disk', 'lecture-disk.json'], ['unsaved', 'lecture-unsaved.json']]) {
       const lecture = saved.lectures?.[kind];
       const expected = path.join(directory, filename);
       if (!lecture || typeof lecture.path !== 'string' || !samePath(lecture.path, expected) || !fs.existsSync(expected)) {
@@ -289,10 +284,10 @@ function main() {
   if (editorText === actual || actual.indexOf(unsavedEdit.find) !== actual.lastIndexOf(unsavedEdit.find)) throw new Error('不能唯一确定手动未保存修改的位置。');
   const diskLecture = makeLecture(before, after, actual, false);
   const unsavedLecture = makeLecture(before, after, editorText, true);
-  const diskPath = path.join(directory, 'lecture-disk.md');
-  const unsavedPath = path.join(directory, 'lecture-unsaved.md');
-  fs.writeFileSync(diskPath, diskLecture.markdown, { flag: 'wx' });
-  fs.writeFileSync(unsavedPath, unsavedLecture.markdown, { flag: 'wx' });
+  const diskPath = path.join(directory, 'lecture-disk.json');
+  const unsavedPath = path.join(directory, 'lecture-unsaved.json');
+  fs.writeFileSync(diskPath, diskLecture.text, { flag: 'wx' });
+  fs.writeFileSync(unsavedPath, unsavedLecture.text, { flag: 'wx' });
   const disk = {};
   for (const relative of git('ls-files', '-z').split('\0').filter(Boolean)) disk[relative] = digest(fs.readFileSync(path.join(project, relative)));
   const manifest = {

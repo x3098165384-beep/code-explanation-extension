@@ -12,11 +12,8 @@ function deferred() {
 
 function document(id = 'lecture', revision = '原正文', steps = ['first', 'second']) {
   const hash = '0'.repeat(64);
-  const header = { version: 1, id, sources: { code: { kind: 'workspace', path: 'example.js', exists: true, sha256: hash } } };
-  return `<!-- code-explanation\n${JSON.stringify(header)}\n-->\n# 讲解\n\n` + steps.map(step => {
-    const metadata = { id: step, kind: 'file', source: 'code', target: { startLine: 1, endLine: 1, sha256: hash } };
-    return `<!-- step\n${JSON.stringify(metadata)}\n-->\n## ${step}\n\n${revision}\n`;
-  }).join('\n');
+  return JSON.stringify({ version: 2, id, title: '讲解', sources: { code: { kind: 'workspace', path: 'example.js', exists: true, sha256: hash } },
+    steps: steps.map(step => ({ id: step, kind: 'file', title: step, body: revision, source: 'code', target: { startLine: 1, endLine: 1, sha256: hash } })) });
 }
 
 function environment() {
@@ -88,7 +85,7 @@ function environment() {
     Reader = require('../dist/reader.js').Reader;
   } finally { Module._load = originalLoad; }
   const reader = new Reader(sources, presentation, { get: key => storage.get(key), update: (key, value) => { storage.set(key, value); return Promise.resolve(); } });
-  const file = Uri.file('test-project/lecture.md');
+  const file = Uri.file('test-project/lecture.json');
   files.set(file.toString(), document());
   return { reader, file, files, snapshots, warnings, errors, storage, Uri,
     setRead: value => { beforeRead = value; }, setResolve: value => { beforeResolve = value; }, setCurrent: value => { beforeCurrent = value; },
@@ -137,7 +134,7 @@ for (const outcome of ['success', 'failure']) {
     const old = deferred();
     env.setRead(file => file.toString() === env.file.toString() ? old.promise : undefined);
     const older = env.reader.refresh();
-    const another = env.Uri.file('test-project/another.md');
+    const another = env.Uri.file('test-project/another.json');
     env.files.set(another.toString(), document('another', '另一份讲解'));
     await env.reader.open(another);
     if (outcome === 'success') old.resolve(document('lecture', '旧讲解')); else old.reject(new Error('旧文件失败'));
@@ -200,7 +197,7 @@ test('当前源码尚未读完时打开无效讲解，仍恢复已经接受的�
   env.setResolve(() => { if (first) { first = false; return old.promise; } });
   const opening = env.reader.open(env.file);
   await new Promise(resolve => setImmediate(resolve));
-  const invalid = env.Uri.file('test-project/invalid.md');
+  const invalid = env.Uri.file('test-project/invalid.json');
   env.files.set(invalid.toString(), '还没有写完的讲解');
   await env.reader.open(invalid);
   old.resolve();
@@ -215,7 +212,7 @@ test('当前源码尚未读完时打开无效讲解，仍恢复已经接受的�
 test('打开另一份讲解期间，旧源码变化不能取消新的打开操作', async () => {
   const env = environment();
   await env.reader.open(env.file);
-  const another = env.Uri.file('test-project/another.md');
+  const another = env.Uri.file('test-project/another.json');
   const pending = deferred();
   env.setRead(file => file.toString() === another.toString() ? pending.promise : undefined);
   const opening = env.reader.open(another);
@@ -233,7 +230,7 @@ test('打开另一份讲解期间，旧源码变化不能取消新的打开操�
 test('新讲解读取失败后重新检查旧讲解期间收到的更新', async () => {
   const env = environment();
   await env.reader.open(env.file);
-  const another = env.Uri.file('test-project/another.md');
+  const another = env.Uri.file('test-project/another.json');
   const pending = deferred();
   env.setRead(file => file.toString() === another.toString() ? pending.promise : undefined);
   const opening = env.reader.open(another);

@@ -25,7 +25,7 @@ function message(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
 
-function decodeMarkdown(bytes: Uint8Array): string {
+function decodeExplanation(bytes: Uint8Array): string {
   try { return new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes); }
   catch { throw new Error('讲解文件不是有效的 UTF-8 文本，请按 UTF-8 编码重新保存。'); }
 }
@@ -87,9 +87,9 @@ export class Reader implements vscode.Disposable {
   }
 
   private async readSaved(file: vscode.Uri): Promise<Explanation> {
-    if (!file.path.toLowerCase().endsWith('.md')) throw new Error('请选择按讲解文件格式生成的 .md 文件。');
+    if (!file.path.toLowerCase().endsWith('.json')) throw new Error('请选择版本 2 JSON 讲解文件；旧 Markdown 需要由 agent 转换后再打开。');
     const bytes = await vscode.workspace.fs.readFile(file);
-    const text = decodeMarkdown(bytes);
+    const text = decodeExplanation(bytes);
     return parseExplanation(text);
   }
 
@@ -113,7 +113,7 @@ export class Reader implements vscode.Disposable {
         void vscode.window.showWarningMessage('首版需要打开本机项目文件夹，才能读取本地文件和 Git 历史。');
         return;
       }
-      const chosen = file ?? (await vscode.window.showOpenDialog({ canSelectMany: false, canSelectFiles: true, canSelectFolders: false, filters: { 'Markdown 讲解文件': ['md'] }, title: '选择已保存的 Markdown 讲解文件' }))?.[0];
+      const chosen = file ?? (await vscode.window.showOpenDialog({ canSelectMany: false, canSelectFiles: true, canSelectFolders: false, filters: { 'JSON 讲解文件': ['json'] }, title: '选择已保存的 JSON 讲解文件' }))?.[0];
       if (!this.current(operation)) return;
       if (!chosen) {
         return;
@@ -158,8 +158,8 @@ export class Reader implements vscode.Disposable {
     try {
       const bytes = await vscode.workspace.fs.readFile(reading.file);
       if (!this.current(operation)) return;
-      const text = decodeMarkdown(bytes);
-      if (normalizeText(text) !== reading.explanation.markdown) {
+      const text = decodeExplanation(bytes);
+      if (normalizeText(text) !== reading.explanation.text) {
         const explanation = parseExplanation(text);
         const previous = reading.explanation;
         const stepId = previous.steps[reading.index].id;
