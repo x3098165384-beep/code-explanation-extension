@@ -2,6 +2,8 @@
 
 Status: ready-for-agent
 
+后续需求见[讲解侧栏、JSON 文件与行内复制规格](../reading-experience/spec.md)。该规格替换下一版本的文件封装、打开入口、正文回看与图片代码框相关决定；本页保留 0.1.3 及此前的历史范围和验收依据，不表示后续功能已实现。
+
 2026-10-21 整理，2026-10-22 更新验收结果。依据[首版范围确认](../../docs/plans/first-release-scope.md)，使用[项目术语](../../GLOSSARY.md)。本文件发布在本项目的本地 Markdown 任务记录中。任务 01 已完成真实显示验证，见[运行记录](verification/results.md)。请求者随后授权完成任务 02 至 08；全部任务已实现并记录验收勾选，0.1.2 通过 45 项真实 VS Code 后台检查及 34 项格式与异步顺序检查，具体范围见[首版实现记录](implementation-results.md)。
 
 ## 问题
