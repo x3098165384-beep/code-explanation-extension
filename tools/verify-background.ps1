@@ -100,22 +100,22 @@ try {
     if ((Get-Content -LiteralPath (Join-Path $runRoot 'results.json') -Raw -Encoding UTF8 | ConvertFrom-Json).result -ne '通过') { throw '后台检查尚未全部通过。' }
     $record.phases = @(@{ name = '首次流程'; desktop = $session.DesktopName; processId = $session.ProcessId; exitCode = $session.ExitCode })
     $session.Dispose(); $session = $null
-    $phases = if ($LayoutOnly -or $CopyOnly -or $JsonOnly -or $BodyOnly -or $SidebarOnly) { @() } else { @('restore', 'project', 'lecture-edit', 'multiple-roots', 'no-project', 'layout') }
+    $phases = if ($SidebarOnly) { @('sidebar-multiple-roots', 'sidebar-no-project') } elseif ($LayoutOnly -or $CopyOnly -or $JsonOnly -or $BodyOnly) { @() } else { @('restore', 'project', 'lecture-edit', 'multiple-roots', 'no-project', 'layout') }
     foreach ($phase in $phases) {
         $env:CODE_EXPLANATION_BACKGROUND_PHASE = $phase
         $phaseResult = Get-Content -LiteralPath (Join-Path $runRoot 'results.json') -Raw -Encoding UTF8 | ConvertFrom-Json
         $phaseResult.result = '进行中'
         [IO.File]::WriteAllText((Join-Path $runRoot 'results.json'), ($phaseResult | ConvertTo-Json -Depth 100))
         $phaseArguments = $arguments.Clone()
-        if ($phase -eq 'project') {
+        if ($phase -eq 'project' -or ($phase -eq 'sidebar-multiple-roots' -and -not $configuration.otherProject)) {
             $otherFixture = Join-Path $runRoot 'other-fixture'
             & node (Join-Path $PSScriptRoot 'prepare-acceptance.cjs') ('--directory=' + $otherFixture)
             if ($LASTEXITCODE -ne 0) { throw '另一项目未准备完成。' }
             $configuration.otherProject = Join-Path $otherFixture 'project'
             $configuration | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runRoot 'configuration.json') -Encoding utf8
-            $phaseArguments[$phaseArguments.Count - 1] = '"' + $configuration.otherProject + '"'
+            if ($phase -eq 'project') { $phaseArguments[$phaseArguments.Count - 1] = '"' + $configuration.otherProject + '"' }
         }
-        if ($phase -eq 'multiple-roots') {
+        if ($phase -eq 'multiple-roots' -or $phase -eq 'sidebar-multiple-roots') {
             $workspaceFile = Join-Path $runRoot 'two-projects.code-workspace'
             $workspace = @{ folders = @(
                 @{ name = '首个项目'; path = (Join-Path $fixture 'project') },
@@ -124,8 +124,11 @@ try {
             [IO.File]::WriteAllText($workspaceFile, ($workspace | ConvertTo-Json -Depth 5))
             $phaseArguments[$phaseArguments.Count - 1] = '"' + $workspaceFile + '"'
         }
-        if ($phase -eq 'no-project') { $phaseArguments = $phaseArguments[0..($phaseArguments.Count - 2)] }
-        $session = [CodeExplanationVerification.IsolatedDesktop]::Start($CodePath, ($phaseArguments -join ' '), $projectRoot, (Join-Path $runRoot ($phase + '.log')))
+        if ($phase -eq 'no-project' -or $phase -eq 'sidebar-no-project') { $phaseArguments = $phaseArguments[0..($phaseArguments.Count - 2)] }
+        $session = [CodeExplanationVerification.IsolatedDesktop]::Start($CodePath, ($phaseArguments -join ' '), $projectRoot, (Join-Path $runRoot ($phase + '.log')), [bool]$copyIsolation)
+        if ($copyIsolation) {
+            @{ station = $session.WindowStationName; desktop = $session.DesktopName; mainProcessId = $session.ProcessId; uniqueStationPerRun = $session.WindowStationName.StartsWith('CodeExplanationClipboard_') } | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runRoot 'copy-expected-isolation.json') -Encoding utf8
+        }
         $deadline = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
         while (-not $session.Wait(1000)) {
             if ((Test-Path -LiteralPath (Join-Path $runRoot 'stop')) -or [DateTime]::UtcNow -gt $deadline) { throw '重启检查停止或超时。' }

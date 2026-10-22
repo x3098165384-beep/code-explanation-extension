@@ -1,36 +1,29 @@
 # VS Code 行内代码讲解插件
 
-独立的小项目，用于在代码旁顺序阅读讲解，不修改被讲解的源码。
+在代码旁按步骤阅读讲解和真实 diff，不修改被讲解的源码。正文用简短中文说明代码中的对象、条件、调用和结果。
 
-## 已确认的方向
+## 0.2.0
 
-- 在代码行旁显示独立保存的讲解。
-- 按顺序浏览，能够阅读实际代码修改及 diff。
-- 用自然的逐句翻译说明代码名称、条件和调用的实际含义。
-- 独立开发，不以复刻 CodeTour 全部功能为目标。
+本轮按[讲解侧栏、JSON 文件与行内复制规格](.scratch/reading-experience/spec.md)实施。任务进展和实际证据见[任务列表](.scratch/reading-experience/issues/README.md)，最终安装包结果见[后台验收说明](docs/background-verification.md)。旧版本记录保留在[首版验收](docs/first-release-acceptance.md)，不作为本轮新功能已通过的依据。
 
-## 当前状态
+- 左侧活动栏提供项目讲解、继续上次和最近打开入口；展开查看步骤，点击标题恢复或点击步骤直接跳转。
+- 一份版本 2 JSON 保存标题、Markdown 正文及代码引用，默认放在项目的 `.code-explanations/`，可配置目录或手动选择其他位置。
+- 普通代码和真实 diff 旁显示当前步骤。代码为真实文字，可拖选复制，也可整块复制；“查看正文”提供完整排版阅读页。
+- 保存讲解后按稳定标识保持步骤；错误保存使用明确标注的上次成功内容。启动和列表更新不自动开始阅读。
+- 代码对应检查使用编辑器当前内容和固定 Git 版本，包括未保存修改；JavaScript 仅放宽可以确认的符号间空格、Tab 和缩进变化。
 
-截至 2026-10-22，首版讲解读取、真实 Git diff、代码对应检查、导航、自动更新及进度恢复均已完成。JavaScript 支持可确认的空格、Tab 和缩进变化；其他语言与固定 Git 继续严格核对。0.1.2 修复了旧源码变化通知取消新讲解打开的问题。34 项自动检查和 45 项真实 VS Code 检查通过，保存 37 张截图，覆盖未保存及新建未落盘源码、格式变化、更新、失效清理、停止、重启恢复和多目录选择。实际范围及限制见[首版验收记录](docs/first-release-acceptance.md)，不扩大为任意系统、主题和语言都已验证。
-
-当前工作依据见[首版规格](.scratch/first-release/spec.md)，文件约定见[Markdown 讲解文件格式](.scratch/first-release/explanation-format.md)，可阅读[完整讲解示例](.scratch/first-release/explanation.example.md)。规格和[8 项首版任务](.scratch/first-release/issues)保存在本地 Markdown 任务记录中。任务 01 至 08 已完成，验收勾选和对应证据已补齐；没有推送或发布扩展市场。
-
-0.1.3 按[确认的效果图](docs/plans/images/inline-explanation-approved.png)为行内代码块增加独立底色、细边框、留白和高亮，代码下方使用简短翻译。讲解仍是普通 Markdown，插件在内存中生成矢量代码框；原文可通过“查看正文”读取和复制，不修改主题或编辑器安装文件。实际运行结果见[后台验收说明](docs/background-verification.md)。
+新文件约定见 [JSON 格式](.scratch/reading-experience/explanation-format.md)及[完整示例](.scratch/reading-experience/explanation.example.json)。旧 Markdown 由外部 agent 一次性转换，原文件保留；插件不提供旧格式阅读、导入或 CodeTour 兼容。
 
 ## 构建与使用
 
-需要 Node.js、Git 及 VS Code。执行 `npm.cmd install`、`npm.cmd run check`、`npm.cmd run build`；按 F5 可启动扩展开发窗口。执行 `npm.cmd run package` 可生成本地 VSIX，通过 VS Code 的“从 VSIX 安装”手动安装。扩展不会在启动时自动打开讲解。
+需要 Node.js、Git 及 VS Code。执行 `npm.cmd install`、`npm.cmd test`、`npm.cmd run check`、`npm.cmd run package`，生成本地 VSIX。在你使用的 VS Code 中手动“从 VSIX 安装”并按提示重新加载；后台测试配置不会更新当前窗口。
 
-准备真实演示工程可执行 `node tools/prepare-acceptance.cjs`；已有目录使用 `--reuse` 保留现有修改。打开演示项目后，执行“行内代码讲解：打开讲解”并选择生成的 `.md`。具体操作、外部 agent 生成要求、未保存内容和错误提示见[首版使用说明](docs/first-release-usage.md)，当前人工结果见[26 项验收记录](docs/first-release-acceptance.md)。
+打开代码所属项目，点击左侧“行内代码讲解”图标；也可执行“行内代码讲解：打开讲解”选择 JSON。安装、生成、复制、更新与独立演示方法见[使用说明](docs/first-release-usage.md)。插件不调用模型，讲解由 **Teach with Code Explanation** skill 或其他外部工具准备。
 
-Windows 可执行 `npm.cmd run test:background`，在独立窗口环境中验证实际安装包并保存截图，不切换到测试窗口、不操作当前桌面。测试使用独立配置、共享数据和演示工程，结束后只清理本轮进程。运行方法与限制见[后台验收说明](docs/background-verification.md)。
+Windows 可执行 `npm.cmd run test:background`，对实际安装包做独立后台验收并保存截图。使用独立配置、扩展目录和案例工程；复制检查使用用户桌面以外的剪贴板。测试不切换或操作当前窗口，只清理本轮进程。结果、方法和限制见[后台验收说明](docs/background-verification.md)。
 
-已确认选择的来源见[首版范围确认](docs/plans/first-release-scope.md)。原始目标、技术调查和此前建议见[最终讨论记录](docs/plans/initial-design/discussion-notes.md)。
-
-[工作区交接](docs/handoff/2026-10-21-project-workspace.md) 保留迁移时的状态和后续工作边界；当前会话已在本项目目录继续。项目规则见 [AGENTS.md](AGENTS.md)，任务记录约定见 [docs/agents/issue-tracker.md](docs/agents/issue-tracker.md)。
-
-讨论中的 Vonimir 代码仅为讲解案例和原始需求来源，插件不依赖该 Unity 工程。
+已确认选择来源见[首版范围](docs/plans/first-release-scope.md)及[讨论记录](docs/plans/initial-design/discussion-notes.md)。[工作区交接](docs/handoff/2026-10-21-project-workspace.md)保留迁移时的状态。项目规则见 [AGENTS.md](AGENTS.md)，任务记录约定见 [issue-tracker.md](docs/agents/issue-tracker.md)。Vonimir 仅是案例来源，插件不依赖 Unity 工程。
 
 ## 开源协议
 
-本项目采用 [MIT 协议](LICENSE)，版权署名为 XGH。
+采用 [MIT 协议](LICENSE)，版权署名 XGH。
