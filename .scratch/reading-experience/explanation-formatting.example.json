@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "id": "javascript-formatting-example",
+  "title": "账单函数的调用与返回",
+  "description": "本例对应独立验收工程的 src/invoice.js，未保存源码副本。需要新版插件读取可选格式摘要。",
+  "sources": {
+    "invoice": {
+      "kind": "workspace",
+      "path": "src/invoice.js",
+      "exists": true,
+      "sha256": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784",
+      "formattingSha256": "d2de53bc90fa1156e06c36a49dac246390abf87a1ccb2f93cf9477af81af7cad"
+    }
+  },
+  "steps": [
+    {
+      "title": "计算金额后返回账单",
+      "body": "`calculateCharge(unitPrice, seats)` 使用单价和数量计算金额，把结果交给 `amount`，随后返回包含数量与金额的对象。\n\n在这两行的代码符号之间增减空格、Tab 或缩进，完整文件的其他代码、字面值、注释及换行仍对应时，可以继续阅读，并提示代码格式已变化。修改调用参数或返回内容则需要重新生成讲解；此处没有重新验证业务含义。",
+      "id": "invoice-call",
+      "kind": "file",
+      "source": "invoice",
+      "target": {
+        "startLine": 4,
+        "endLine": 5,
+        "sha256": "396a375f53975da16183d9884a0f372250fdb10e25f2d526eaf21d77d33c27d1",
+        "formattingSha256": "9d52d2bb2338c85bd40085f2d945801275784f89c5fd9c89213ae115c9cb5850"
+      }
+    }
+  ]
+}

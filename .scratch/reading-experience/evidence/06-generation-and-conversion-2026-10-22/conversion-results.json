@@ -1,0 +1,322 @@
+{
+  "legacyParserCommit": "c227738dcb21cd5c60e581d556c9c6505cf4859e",
+  "jsonParserCommit": "391ce05",
+  "newVersion": 2,
+  "readingMode": "disk-only",
+  "cases": [
+    {
+      "input": ".scratch/first-release/explanation.example.md",
+      "output": ".scratch/reading-experience/explanation.example.json",
+      "inputSha256": "7dbe6cc3e4808f6d760916f85452c90cbecc923dba152ef43d9def300592828e",
+      "outputSha256": "b040cede91bd04291ecf8e8090227261e70e0ddc2d5cdd9290f093cbbd6438f7",
+      "inputBytes": 5826,
+      "outputBytes": 6253,
+      "id": "price-calculation-example",
+      "stepCount": 5,
+      "comparison": {
+        "id": true,
+        "title": true,
+        "description": true,
+        "sourceNamesPathsCommitsHashes": true,
+        "stepIdsOrderTitlesBodiesTargets": true,
+        "oldFileUnchanged": true
+      },
+      "steps": [
+        {
+          "step": 1,
+          "id": "checkout-call",
+          "bodySha256": "c8bc883785f51d81d5679cd61a79fdc8790ccb696696cd9ad78896833f84ae15"
+        },
+        {
+          "step": 2,
+          "id": "committed-guard",
+          "bodySha256": "2261b1e92f898cdc1a73ae6db624545a84c3658af85797f72418cceaf7fd62ab"
+        },
+        {
+          "step": 3,
+          "id": "removed-direct-return",
+          "bodySha256": "845c5ea311d1e5536f323151c89ff37675257dc426a83683e6345d22500f4be3"
+        },
+        {
+          "step": 4,
+          "id": "added-total-variable",
+          "bodySha256": "aaa76bbe9afaad2ff915b6aa19d300501ce75c98d57d13d4c0933be83b065b29"
+        },
+        {
+          "step": 5,
+          "id": "current-price-guard",
+          "bodySha256": "2300b443d449b1e7ef476d58e7656c986c53d6f3e8ea1c9eb103d71bee82daa8"
+        }
+      ],
+      "externalChecker": {
+        "project": ".scratch/first-release/verification/runtime/workspace",
+        "exitCode": 1,
+        "readingMode": "disk-only",
+        "steps": [
+          {
+            "step": 1,
+            "result": "passed"
+          },
+          {
+            "step": 2,
+            "result": "failed",
+            "reason": "Git 读取失败：fatal: git cat-file: could not get object info"
+          },
+          {
+            "step": 3,
+            "result": "failed",
+            "reason": "Git 读取失败：fatal: git cat-file: could not get object info"
+          },
+          {
+            "step": 4,
+            "result": "failed",
+            "reason": "Git 读取失败：fatal: git cat-file: could not get object info"
+          },
+          {
+            "step": 5,
+            "result": "failed",
+            "reason": "Git 读取失败：fatal: git cat-file: could not get object info"
+          }
+        ]
+      }
+    },
+    {
+      "input": ".scratch/first-release/explanation-formatting.example.md",
+      "output": ".scratch/reading-experience/explanation-formatting.example.json",
+      "inputSha256": "b1768fcad16181d0caf4038fd8b150d96567b69737546e3b93940fc881c1eba3",
+      "outputSha256": "9dcac5760b32d24493413624b4980c8386e3fae22511613ad8356980abfd0d77",
+      "inputBytes": 1326,
+      "outputBytes": 1411,
+      "id": "javascript-formatting-example",
+      "stepCount": 1,
+      "comparison": {
+        "id": true,
+        "title": true,
+        "description": true,
+        "sourceNamesPathsCommitsHashes": true,
+        "stepIdsOrderTitlesBodiesTargets": true,
+        "oldFileUnchanged": true
+      },
+      "steps": [
+        {
+          "step": 1,
+          "id": "invoice-call",
+          "bodySha256": "6fbd708c06185176c7cec779c46b25850b7a7dd0afb57f7e15c16dbdf971b464"
+        }
+      ],
+      "externalChecker": {
+        "project": ".scratch/first-release/runtime/acceptance/project",
+        "exitCode": 0,
+        "readingMode": "disk-only",
+        "steps": [
+          {
+            "step": 1,
+            "result": "passed"
+          }
+        ]
+      }
+    },
+    {
+      "input": "F:/Sync/svnVO/trunk/Vonimir/docs/explanations/enemy-pre-spawn-presentation.md",
+      "output": "F:/Sync/svnVO/trunk/Vonimir/.code-explanations/enemy-pre-spawn-presentation.json",
+      "inputSha256": "ad1931d3904811e8b189ea6247cfbbc7203454d03248067b408854ccbcecb983",
+      "outputSha256": "2fbee240914d44a8593cc47c38cd656bd7bede0a3b6a19a1b50c17c7c3dacd63",
+      "inputBytes": 22186,
+      "outputBytes": 23444,
+      "id": "8988696d-1aaa-4ddc-809f-76f90a43d8ef",
+      "stepCount": 12,
+      "comparison": {
+        "id": true,
+        "title": true,
+        "description": true,
+        "sourceNamesPathsCommitsHashes": true,
+        "stepIdsOrderTitlesBodiesTargets": true,
+        "oldFileUnchanged": true
+      },
+      "steps": [
+        {
+          "step": 1,
+          "id": "7a998a68-5f75-4c0f-a117-b422de422b25",
+          "bodySha256": "61560528ee1f0e4c2632f9030eec97bb3dee0aa9c60e2f120444d8279d1b9a34"
+        },
+        {
+          "step": 2,
+          "id": "2eed508f-400d-485c-a317-5ef740f54df5",
+          "bodySha256": "aea0c3ee63822245e0e0d6f999f8de3c683614a973dc08d4b5ea0550b28be4d2"
+        },
+        {
+          "step": 3,
+          "id": "0dddf626-981e-434a-950a-30ccf0e9feec",
+          "bodySha256": "a92da8ccdb5f26552f1500ebd7197819aa76885b8c4fdf82721a0dafef3c78f1"
+        },
+        {
+          "step": 4,
+          "id": "f1f70c4b-78c5-4583-a4b7-6eca8cb2e89b",
+          "bodySha256": "d559053863a9f3627cd30e5e02eb9b7724bfbdffc90807cc879bcb36e3a070a5"
+        },
+        {
+          "step": 5,
+          "id": "ce029520-3b98-46df-9fad-8f39c6ccac3f",
+          "bodySha256": "d585780a9c9842278d736974c99f803ac9e0e37b798e3c2de2b79c858731b595"
+        },
+        {
+          "step": 6,
+          "id": "0a1ffd5f-1dba-430c-9760-603824fc75c4",
+          "bodySha256": "2f175690962f84ae982971b2fbb1e9615b34f2d6bb3292a71ab544c35f9cc04c"
+        },
+        {
+          "step": 7,
+          "id": "0551a7ea-a9d9-49e3-bd7b-03ddfad8cf69",
+          "bodySha256": "379674a20365f10b63cd8fbeff348f6fc3241ac3d2667e3485eb6669535eddff"
+        },
+        {
+          "step": 8,
+          "id": "f701413f-a85e-4d7f-9466-dab97a4efd43",
+          "bodySha256": "ae21d8e08e34b04688893d01b3358b15a186a504f55b10bef9133d4b850e3a2f"
+        },
+        {
+          "step": 9,
+          "id": "2feb1621-7069-4370-a5c3-a40dd00fa25c",
+          "bodySha256": "165437a0016ac3cde5ec62f913576f34e26b09874da4930b687666a0b4a1ab30"
+        },
+        {
+          "step": 10,
+          "id": "99605de0-36cd-4884-904b-d3434532ff56",
+          "bodySha256": "e3e475d25f0a3a5ca670c6f9990911dc439e088d11031080203d551e56f98310"
+        },
+        {
+          "step": 11,
+          "id": "a4e5c619-92df-4ee7-899e-a542ff2c5090",
+          "bodySha256": "7e8e6a7f7fabd305235498ae3ebcdcd566034f63108662cea523121e50e264e3"
+        },
+        {
+          "step": 12,
+          "id": "f5c6b5d2-b542-45e8-89e1-ad07d9e830e6",
+          "bodySha256": "53ca8309913cab42e896694c67c066f27c58aa7b88ac71fb5c81aaf65b8116a6"
+        }
+      ],
+      "diskTargets": [
+        {
+          "step": 1,
+          "id": "7a998a68-5f75-4c0f-a117-b422de422b25",
+          "title": "配置与字段：保存动作、进度和恢复位置",
+          "source": "presentation",
+          "startLine": 9,
+          "endLine": 47,
+          "result": "passed"
+        },
+        {
+          "step": 2,
+          "id": "2eed508f-400d-485c-a317-5ef740f54df5",
+          "title": "Play：记录原状态并启动第一项",
+          "source": "presentation",
+          "startLine": 49,
+          "endLine": 63,
+          "result": "passed"
+        },
+        {
+          "step": 3,
+          "id": "0dddf626-981e-434a-950a-30ccf0e9feec",
+          "title": "BeginStep：准备并启动当前动作",
+          "source": "presentation",
+          "startLine": 115,
+          "endLine": 145,
+          "result": "passed"
+        },
+        {
+          "step": 4,
+          "id": "f1f70c4b-78c5-4583-a4b7-6eca8cb2e89b",
+          "title": "PreparePath：准备路径坐标、长度和次数",
+          "source": "presentation",
+          "startLine": 147,
+          "endLine": 192,
+          "result": "passed"
+        },
+        {
+          "step": 5,
+          "id": "ce029520-3b98-46df-9fad-8f39c6ccac3f",
+          "title": "Update：继续移动、等待播片或结束当前项",
+          "source": "presentation",
+          "startLine": 89,
+          "endLine": 113,
+          "result": "passed"
+        },
+        {
+          "step": 6,
+          "id": "0a1ffd5f-1dba-430c-9760-603824fc75c4",
+          "title": "MoveAlongPath：推进距离，走满次数后换项",
+          "source": "presentation",
+          "startLine": 194,
+          "endLine": 220,
+          "result": "passed"
+        },
+        {
+          "step": 7,
+          "id": "0551a7ea-a9d9-49e3-bd7b-03ddfad8cf69",
+          "title": "PositionAtDistance：按进度取得世界位置",
+          "source": "presentation",
+          "startLine": 222,
+          "endLine": 241,
+          "result": "passed"
+        },
+        {
+          "step": 8,
+          "id": "f701413f-a85e-4d7f-9466-dab97a4efd43",
+          "title": "NextStep：换到下一项，全部完成后发事件",
+          "source": "presentation",
+          "startLine": 243,
+          "endLine": 256,
+          "result": "passed"
+        },
+        {
+          "step": 9,
+          "id": "2feb1621-7069-4370-a5c3-a40dd00fa25c",
+          "title": "StopCutscene：解除引用并结束当前播片",
+          "source": "presentation",
+          "startLine": 258,
+          "endLine": 273,
+          "result": "passed"
+        },
+        {
+          "step": 10,
+          "id": "99605de0-36cd-4884-904b-d3434532ff56",
+          "title": "Cancel：取消播放并恢复演员",
+          "source": "presentation",
+          "startLine": 65,
+          "endLine": 87,
+          "result": "passed"
+        },
+        {
+          "step": 11,
+          "id": "a4e5c619-92df-4ee7-899e-a542ff2c5090",
+          "title": "ClearPlayback 与 Finite：清理进度并检查数值",
+          "source": "presentation",
+          "startLine": 275,
+          "endLine": 284,
+          "result": "passed"
+        },
+        {
+          "step": 12,
+          "id": "f5c6b5d2-b542-45e8-89e1-ad07d9e830e6",
+          "title": "BindCompletion：把完成事件绑定到对应出生点",
+          "source": "authoring",
+          "startLine": 109,
+          "endLine": 126,
+          "result": "passed"
+        }
+      ],
+      "externalChecker": {
+        "project": "F:/Sync/svnVO/trunk/Vonimir",
+        "exitCode": 0,
+        "readingMode": "disk-only",
+        "stepCount": 12
+      }
+    }
+  ],
+  "checks": {
+    "skillQuickValidate": "passed",
+    "checkScriptSyntax": "passed",
+    "skillRepoDiffCheck": "passed",
+    "legacyMarkdownRejected": "passed"
+  }
+}
