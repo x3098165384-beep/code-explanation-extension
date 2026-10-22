@@ -1,0 +1,77 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.1.3",
+  "packageSha256": "6EFB903F1EDD285C8CCEEE7A617163188400F596D84DBAA55D3102BE11914286",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-154241-888c1aa5\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-154241-888c1aa5\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T07:42:50.287Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T07:42:50.346Z"
+    },
+    {
+      "name": "复制前确认主进程、扩展及读取进程属于非交互测试环境",
+      "startedAt": "2026-10-22T07:42:51.161Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T07:42:51.162Z"
+    },
+    {
+      "name": "普通行内代码真实拖选保留字符、跨行及 Tab，整块复制来自当前正文",
+      "startedAt": "2026-10-22T07:42:53.666Z",
+      "screenshot": "copy-file-dark.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T07:42:56.384Z"
+    },
+    {
+      "name": "受控复制入口不授予正文中其他命令执行权限",
+      "startedAt": "2026-10-22T07:42:56.385Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T07:42:56.502Z"
+    },
+    {
+      "name": "浅色主题保留文字选择，重建后旧复制入口失效",
+      "startedAt": "2026-10-22T07:42:56.504Z",
+      "screenshot": "copy-file-light.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T07:42:58.258Z"
+    },
+    {
+      "name": "删除行在实际 diff 正确一侧显示文字并可选择、整块复制",
+      "startedAt": "2026-10-22T07:42:58.296Z",
+      "screenshot": "copy-diff-3.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T07:43:03.090Z"
+    },
+    {
+      "name": "新增行在实际 diff 正确一侧显示文字并可选择、整块复制",
+      "startedAt": "2026-10-22T07:43:03.092Z",
+      "screenshot": "copy-diff-4.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T07:43:06.495Z"
+    },
+    {
+      "name": "双侧目标在实际 diff 正确一侧显示文字并可选择、整块复制",
+      "startedAt": "2026-10-22T07:43:06.497Z",
+      "screenshot": "copy-diff-5.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T07:43:11.262Z"
+    },
+    {
+      "name": "切换、更新、替换和停止后旧复制入口不读取错误代码",
+      "startedAt": "2026-10-22T07:43:11.263Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T07:43:11.987Z"
+    },
+    {
+      "name": "最小排版正文页可拖选原文并通过独立入口复制整块",
+      "startedAt": "2026-10-22T07:43:11.989Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T07:43:14.675Z"
+    }
+  ],
+  "startedAt": "2026-10-22T07:42:50.073Z",
+  "finishedAt": "2026-10-22T07:43:14.950Z",
+  "result": "通过"
+}

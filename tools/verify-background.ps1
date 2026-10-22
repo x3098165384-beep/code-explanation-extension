@@ -1,5 +1,5 @@
 ﻿param([string]$CodePath, [int]$TimeoutSeconds = 600, [switch]$LayoutOnly,
-    [string]$ExplanationPath, [string]$ExplanationProject)
+    [string]$ExplanationPath, [string]$ExplanationProject, [switch]$CopyOnly)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $runName = (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + [Guid]::NewGuid().ToString('N').Substring(0, 8)
@@ -59,8 +59,11 @@ $env:CODE_EXPLANATION_BACKGROUND_RUN = $runRoot
 $env:ELECTRON_RUN_AS_NODE = $null
 $env:VSCODE_IPC_HOOK_CLI = $null
 $env:VSCODE_PORTABLE = $null
-$env:CODE_EXPLANATION_BACKGROUND_PHASE = if ($LayoutOnly) { 'layout' } else { $null }
+$env:CODE_EXPLANATION_BACKGROUND_PHASE = if ($CopyOnly) { 'copy' } elseif ($LayoutOnly) { 'layout' } else { $null }
 Add-Type -Path (Join-Path $PSScriptRoot 'IsolatedDesktop.cs')
+if ($CopyOnly) {
+    Add-Type -Path (Join-Path $PSScriptRoot 'ClipboardProbe.cs') -OutputAssembly (Join-Path $runRoot 'ClipboardProbe.exe') -OutputType ConsoleApplication
+}
 $arguments = @(
     '--new-window', '--skip-welcome', '--skip-release-notes', '--disable-workspace-trust', '--locale=en',
     '--disable-updates', '--disable-telemetry', '--enable-automation',
@@ -75,9 +78,13 @@ $arguments = @(
 $session = $null
 $record = @{ runRoot = $runRoot; startedAt = [DateTime]::UtcNow.ToString('o'); switchedDesktop = $false; sentInput = $false }
 try {
-    $session = [CodeExplanationVerification.IsolatedDesktop]::Start($CodePath, ($arguments -join ' '), $projectRoot, (Join-Path $runRoot 'main.log'))
+    $session = [CodeExplanationVerification.IsolatedDesktop]::Start($CodePath, ($arguments -join ' '), $projectRoot, (Join-Path $runRoot 'main.log'), [bool]$CopyOnly)
     $record.desktop = $session.DesktopName; $record.inputDesktopBefore = $session.InputDesktopBefore
     $record.processId = $session.ProcessId
+    $record.windowStation = $session.WindowStationName; $record.clipboardIsolated = [bool]$CopyOnly
+    if ($CopyOnly) {
+        @{ station = $session.WindowStationName; desktop = $session.DesktopName; mainProcessId = $session.ProcessId; uniqueStationPerRun = $session.WindowStationName.StartsWith('CodeExplanationClipboard_') } | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runRoot 'copy-expected-isolation.json') -Encoding utf8
+    }
     Write-Output ('已在独立 Windows 窗口环境启动后台测试：' + $runRoot)
     $deadline = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
     while (-not $session.Wait(1000)) {
@@ -91,7 +98,7 @@ try {
     if ((Get-Content -LiteralPath (Join-Path $runRoot 'results.json') -Raw -Encoding UTF8 | ConvertFrom-Json).result -ne '通过') { throw '后台检查尚未全部通过。' }
     $record.phases = @(@{ name = '首次流程'; desktop = $session.DesktopName; processId = $session.ProcessId; exitCode = $session.ExitCode })
     $session.Dispose(); $session = $null
-    $phases = if ($LayoutOnly) { @() } else { @('restore', 'project', 'lecture-edit', 'multiple-roots', 'no-project', 'layout') }
+    $phases = if ($LayoutOnly -or $CopyOnly) { @() } else { @('restore', 'project', 'lecture-edit', 'multiple-roots', 'no-project', 'layout') }
     foreach ($phase in $phases) {
         $env:CODE_EXPLANATION_BACKGROUND_PHASE = $phase
         $phaseResult = Get-Content -LiteralPath (Join-Path $runRoot 'results.json') -Raw -Encoding UTF8 | ConvertFrom-Json

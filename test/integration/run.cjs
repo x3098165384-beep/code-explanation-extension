@@ -129,6 +129,10 @@ exports.run = async function () {
       await require('./layout.cjs').verify({ config, renderer, checkpoint, wait, command, parseExplanation, sha256, normalizeText, disk, diskFile });
       results.finishedAt = new Date().toISOString(); results.result = '通过'; save(); return;
     }
+    if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE === 'copy') {
+      await require('./copy.cjs').verify({ config, renderer, checkpoint, wait, command, parseExplanation, sha256, normalizeText, disk, diskFile });
+      results.finishedAt = new Date().toISOString(); results.result = '通过'; save(); return;
+    }
     if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE) {
       if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE === 'restore') {
         await checkpoint('真实重启后主动恢复进度，已记录步骤删除后回第一步', async () => {

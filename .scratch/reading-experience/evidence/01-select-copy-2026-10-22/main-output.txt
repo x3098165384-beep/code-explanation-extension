@@ -1,0 +1,23 @@
+
+
+DevTools listening on ws://127.0.0.1:12955/devtools/browser/ce779d1e-0225-437f-843f-dca66c4487f2
+Warning: 'enable-automation' is not in the list of known options, but still passed to Electron/Chromium.
+Warning: 'disable-renderer-backgrounding' is not in the list of known options, but still passed to Electron/Chromium.
+Warning: 'disable-background-timer-throttling' is not in the list of known options, but still passed to Electron/Chromium.
+Warning: 'disable-backgrounding-occluded-windows' is not in the list of known options, but still passed to Electron/Chromium.
+Warning: 'remote-debugging-port' is not in the list of known options, but still passed to Electron/Chromium.
+[main 2026-10-22T07:42:46.557Z] [node-compile-cache] main: packaged cache enabled (status: enabled, configured: F:\Sync\MyProjects\code-explanation-extension\.scratch\first-release\runtime\vscode-1.142.0-archive\app\6d62b1d5da\resources\app\node-compile-cache\main, active: F:\Sync\MyProjects\code-explanation-extension\.scratch\first-release\runtime\vscode-1.142.0-archive\app\6d62b1d5da\resources\app\node-compile-cache\main\v24.21.0-x64-c3a7e8f2)
+[main 2026-10-22T07:42:46.647Z] StorageMainService: creating application shared storage
+[main 2026-10-22T07:42:46.753Z] [shared storage] Creating shared storage database at 'f:\Sync\MyProjects\code-explanation-extension\.scratch\first-release\runtime\background\20261022-154241-888c1aa5\shared-data\sharedStorage\state.vscdb' (wasCreated: true)
+[main 2026-10-22T07:42:46.753Z] [shared storage] Initializing fallback application storage (path: f:\Sync\MyProjects\code-explanation-extension\.scratch\first-release\runtime\background\20261022-154241-888c1aa5\user-data\User\globalStorage\state.vscdb)
+[main 2026-10-22T07:42:46.755Z] [shared storage] Fallback application storage initialized with 3 items
+[main 2026-10-22T07:42:46.755Z] update#setState disabled
+[main 2026-10-22T07:42:46.755Z] update#ctor - updates are disabled by the environment
+[main 2026-10-22T07:42:47.870Z] AgentHostProcessManager: agent host started
+[main 2026-10-22T07:42:48.610Z] [AgentHost:stderr] (node:52468) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `Code --trace-deprecation ...` to show where the warning was created)
+
+Unknown channel: agentHostClientByokLm
+Unknown channel: agentHostClientProxy
+Unknown channel: agentHostClientProxy
+[main 2026-10-22T07:43:15.037Z] Extension host with pid 3972 exited with code: 0, signal: unknown.

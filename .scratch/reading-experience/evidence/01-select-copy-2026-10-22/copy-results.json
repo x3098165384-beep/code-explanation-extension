@@ -1,0 +1,260 @@
+[
+  {
+    "name": "普通代码部分字符",
+    "method": "CDP pointer drag and Ctrl+C",
+    "expected": "action",
+    "selected": "action",
+    "actual": "action",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1200,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "action"
+    },
+    "beforeSequence": 1192,
+    "passed": true
+  },
+  {
+    "name": "普通代码跨行含 Tab 和中文路径",
+    "method": "CDP pointer drag and Ctrl+C",
+    "expected": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";",
+    "selected": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";",
+    "actual": "var action = actions[_step];\r\n\tvar label = \"C:\\temp\\中文\";",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1213,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "var action = actions[_step];\r\n\tvar label = \"C:\\temp\\中文\";"
+    },
+    "beforeSequence": 1205,
+    "passed": true
+  },
+  {
+    "name": "普通代码跨空行",
+    "method": "CDP pointer drag and Ctrl+C",
+    "expected": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";\n\nif (_hasPath && !PreparePath(action)) return false;",
+    "selected": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";\n\nif (_hasPath && !PreparePath(action)) return false;",
+    "actual": "var action = actions[_step];\r\n\tvar label = \"C:\\temp\\中文\";\r\n\r\nif (_hasPath && !PreparePath(action)) return false;",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1226,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "var action = actions[_step];\r\n\tvar label = \"C:\\temp\\中文\";\r\n\r\nif (_hasPath && !PreparePath(action)) return false;"
+    },
+    "beforeSequence": 1218,
+    "passed": true
+  },
+  {
+    "name": "普通代码整块及长行",
+    "method": "Click restricted block copy link",
+    "expected": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";\n\nif (_hasPath && !PreparePath(action)) return false;\n// longLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLine",
+    "actual": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";\n\nif (_hasPath && !PreparePath(action)) return false;\n// longLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLine",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1236,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";\n\nif (_hasPath && !PreparePath(action)) return false;\n// longLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLine"
+    },
+    "passed": true
+  },
+  {
+    "name": "浅色行内部分代码",
+    "method": "CDP pointer drag and Ctrl+C",
+    "expected": "action",
+    "selected": "action",
+    "actual": "action",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1249,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "action"
+    },
+    "beforeSequence": 1241,
+    "passed": true
+  },
+  {
+    "name": "浅色行内整块代码",
+    "method": "Click restricted block copy link",
+    "expected": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";\n\nif (_hasPath && !PreparePath(action)) return false;\n// longLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLine",
+    "actual": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";\n\nif (_hasPath && !PreparePath(action)) return false;\n// longLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLine",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1259,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";\n\nif (_hasPath && !PreparePath(action)) return false;\n// longLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLine"
+    },
+    "passed": true
+  },
+  {
+    "name": "删除行局部选择",
+    "method": "CDP pointer drag and Ctrl+C",
+    "expected": "  retu",
+    "selected": "  retu",
+    "actual": "  retu",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1272,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "  retu"
+    },
+    "beforeSequence": 1264,
+    "passed": true
+  },
+  {
+    "name": "删除行整块复制",
+    "method": "Click restricted block copy link",
+    "expected": "  return unitPrice * seats;",
+    "actual": "  return unitPrice * seats;",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1282,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "  return unitPrice * seats;"
+    },
+    "passed": true
+  },
+  {
+    "name": "新增行局部选择",
+    "method": "CDP pointer drag and Ctrl+C",
+    "expected": "  cons",
+    "selected": "  cons",
+    "actual": "  cons",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1295,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "  cons"
+    },
+    "beforeSequence": 1287,
+    "passed": true
+  },
+  {
+    "name": "新增行整块复制",
+    "method": "Click restricted block copy link",
+    "expected": "  const subtotal = unitPrice * seats;\n  return subtotal;",
+    "actual": "  const subtotal = unitPrice * seats;\n  return subtotal;",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1305,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "  const subtotal = unitPrice * seats;\n  return subtotal;"
+    },
+    "passed": true
+  },
+  {
+    "name": "双侧目标局部选择",
+    "method": "CDP pointer drag and Ctrl+C",
+    "expected": "  if (",
+    "selected": "  if (",
+    "actual": "  if (",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1318,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "  if ("
+    },
+    "beforeSequence": 1310,
+    "passed": true
+  },
+  {
+    "name": "双侧目标整块复制",
+    "method": "Click restricted block copy link",
+    "expected": "  if (seats <= 0) {\n    return 0;\n  }",
+    "actual": "  if (seats <= 0) {\n    return 0;\n  }",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1328,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "  if (seats <= 0) {\n    return 0;\n  }"
+    },
+    "passed": true
+  },
+  {
+    "name": "窄 diff 选择",
+    "method": "CDP pointer drag and Ctrl+C",
+    "expected": "  if (",
+    "selected": "  if (",
+    "actual": "  if (",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1341,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "  if ("
+    },
+    "beforeSequence": 1333,
+    "passed": true
+  },
+  {
+    "name": "窄 diff 整块",
+    "method": "Click restricted block copy link",
+    "expected": "  if (seats <= 0) {\n    return 0;\n  }",
+    "actual": "  if (seats <= 0) {\n    return 0;\n  }",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1351,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "  if (seats <= 0) {\n    return 0;\n  }"
+    },
+    "passed": true
+  },
+  {
+    "name": "正文页局部代码",
+    "method": "CDP pointer drag and Ctrl+C",
+    "expected": "action",
+    "selected": "action",
+    "actual": "action",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1364,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "action"
+    },
+    "beforeSequence": 1356,
+    "passed": true
+  },
+  {
+    "name": "正文页跨行保留Tab",
+    "method": "CDP pointer drag and Ctrl+C",
+    "expected": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";",
+    "selected": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";",
+    "actual": "var action = actions[_step];\r\n\tvar label = \"C:\\temp\\中文\";",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1377,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "var action = actions[_step];\r\n\tvar label = \"C:\\temp\\中文\";"
+    },
+    "beforeSequence": 1369,
+    "passed": true
+  },
+  {
+    "name": "正文页整块复制",
+    "method": "Click webview copy button",
+    "expected": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";\n\nif (_hasPath && !PreparePath(action)) return false;\n// longLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLine",
+    "actual": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";\n\nif (_hasPath && !PreparePath(action)) return false;\n// longLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLine",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 1387,
+      "ownerProcessId": 50484,
+      "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "text": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";\n\nif (_hasPath && !PreparePath(action)) return false;\n// longLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLinelongLine"
+    },
+    "passed": true
+  }
+]

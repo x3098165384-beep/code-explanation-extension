@@ -1,5 +1,15 @@
 # 不切换窗口的后台验收
 
+## 后续版本：行内文字选择与复制验证
+
+2026-10-22，[任务 01](../.scratch/reading-experience/issues/01-select-and-copy-verification.md)已在独立后台 VS Code 1.142.0 中通过 10 项检查、17 次真实选择或整块复制比较；[实际结果](../.scratch/reading-experience/evidence/01-select-copy-2026-10-22/results.json)、[复制内容](../.scratch/reading-experience/evidence/01-select-copy-2026-10-22/copy-results.json)及[普通代码选区](../.scratch/reading-experience/evidence/01-select-copy-2026-10-22/copy-file-selected.png)已保留。验证驱动构造最小文字评论及正文页，既有 0.1.3 包只提供实际代码引用和 diff；生产插件尚未改为新方案。
+
+本轮确认可使用原生引用块底色及受控 `pre/code` 文字，适度简化外框；Tab 与换行先编码为 HTML 实体，避免 Markdown 预处理改变代码。普通围栏将 Tab 展为空格的失败调查保留，不计入通过数量。
+
+实际复制需要不同的 Windows 窗口站，单独 `CreateDesktop` 不能隔离剪贴板。新增 `-CopyOnly` 使用非交互窗口站和每轮独立桌面；本机实际使用系统生成的 `Service-0x0-54064$`，不宣称该窗口站随机独占。原生读取器仅在明确匹配的非交互窗口站内读取 `CF_UNICODETEXT`，核对代码、剪贴板所有者进程及线程桌面；不访问用户的 `WinSta0` 剪贴板。沙箱渲染线程无法直接读取的桌面信息如实记录，不将它误判为复制到了用户窗口站。
+
+只执行本项最小验证时，使用 `powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/verify-background.ps1 -CopyOnly`。驱动仅向确认属于本轮的页面发送鼠标与键盘事件，不调用当前桌面的系统输入或切换桌面。更换生产读取或显示后，还需按新规格对实际安装包复验，不能把本项结果直接当作全部后续功能完成。
+
 ## 0.1.3 代码框验收
 
 2026-10-22，VS Code 1.142.0 的七个独立进程阶段全部正常结束，49 项后台检查通过，共生成 42 张通过截图。保留的[逐项结果](../.scratch/first-release/evidence/background-0.1.3-2026-10-22/results.json)与[隔离记录](../.scratch/first-release/evidence/background-0.1.3-2026-10-22/isolation.json)对应安装包 SHA-256 `6efb903f1edd285c8cceee7a617163188400f596d84dbaa55d3102be11914286`。

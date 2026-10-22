@@ -43,6 +43,7 @@ exports.connect = async function (config) {
   if (!title.includes(config.runName)) { socket.close(); throw new Error('渲染进程标题与本次独立测试不符，未读取或操作界面。'); }
   await call('Emulation.setDeviceMetricsOverride', { width: 1600, height: 1100, deviceScaleFactor: 1, mobile: false });
   return {
+    protocol: call,
     evaluate,
     async scrollCommentToBottom() {
       return evaluate(`(() => {

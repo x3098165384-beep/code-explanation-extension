@@ -1,0 +1,167 @@
+{
+  "station": "Service-0x0-54064$",
+  "mainProcessId": 50484,
+  "uniqueStationPerRun": false,
+  "desktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+  "helper": {
+    "station": "Service-0x0-54064$",
+    "desktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd"
+  },
+  "clipboardWritten": true,
+  "extensionHost": {
+    "processId": 3972,
+    "desktops": [
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd"
+    ]
+  },
+  "main": {
+    "processId": 50484,
+    "desktops": [
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+      "CodeExplanationTest_544ffd23c31a48c3936702412da63edd"
+    ]
+  },
+  "renderers": [
+    {
+      "processId": 25220,
+      "desktops": [],
+      "inspectionErrors": [
+        {
+          "threadId": 54680,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 55536,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 26588,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 56688,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 57172,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 936,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 56676,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 56060,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 60824,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 27828,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 27284,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 59368,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 61316,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 45608,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 68108,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 32416,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 28608,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 63824,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 54756,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 46724,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 21108,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 58688,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 60444,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 51000,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 66444,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 53864,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 61668,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 54860,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 62920,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        },
+        {
+          "threadId": 44812,
+          "error": "Cannot inspect the test window station or desktop. Win32=1300"
+        }
+      ],
+      "desktopInspection": "无法从沙箱渲染进程读取线程桌面名称"
+    }
+  ],
+  "clipboardEvidence": "复制由本轮主进程处理；扩展接口与本轮窗口站的 Win32 CF_UNICODETEXT 实际结果逐项相同。未将不可读取的渲染线程名称宣称为已确认。"
+}

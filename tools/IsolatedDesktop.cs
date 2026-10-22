@@ -38,6 +38,10 @@ namespace CodeExplanationVerification {
         [DllImport("user32.dll", SetLastError = true)] static extern IntPtr OpenInputDesktop(uint flags, bool inherit, uint access);
         [DllImport("user32.dll")] static extern IntPtr GetProcessWindowStation();
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        static extern IntPtr CreateWindowStation(string name, uint flags, uint access, IntPtr security);
+        [DllImport("user32.dll", SetLastError = true)] static extern bool SetProcessWindowStation(IntPtr station);
+        [DllImport("user32.dll", SetLastError = true)] static extern bool CloseWindowStation(IntPtr station);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         static extern bool GetUserObjectInformation(IntPtr handle, int index, StringBuilder data, uint length, out uint required);
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         static extern bool CreateProcess(string app, StringBuilder command, IntPtr processSecurity, IntPtr threadSecurity,
@@ -58,8 +62,9 @@ namespace CodeExplanationVerification {
         [DllImport("kernel32.dll")] static extern bool TerminateProcess(IntPtr process, uint code);
         [DllImport("kernel32.dll")] static extern bool CloseHandle(IntPtr handle);
 
-        IntPtr desktopHandle, jobHandle, processHandle;
+        IntPtr desktopHandle, windowStationHandle, jobHandle, processHandle;
         public string DesktopName { get; private set; }
+        public string WindowStationName { get; private set; }
         public string InputDesktopBefore { get; private set; }
         public uint ProcessId { get; private set; }
 
@@ -77,12 +82,35 @@ namespace CodeExplanationVerification {
         static void Require(bool result) { if (!result) throw new Win32Exception(Marshal.GetLastWin32Error()); }
 
         public static IsolatedDesktop Start(string executable, string arguments, string directory, string outputFile) {
+            return Start(executable, arguments, directory, outputFile, false);
+        }
+        public static IsolatedDesktop Start(string executable, string arguments, string directory, string outputFile, bool isolateClipboard) {
             var session = new IsolatedDesktop();
             try {
                 session.InputDesktopBefore = InputDesktopName();
                 session.DesktopName = "CodeExplanationTest_" + Guid.NewGuid().ToString("N");
-                session.desktopHandle = CreateDesktop(session.DesktopName, IntPtr.Zero, IntPtr.Zero, 0, 0xF01FF, IntPtr.Zero);
-                if (session.desktopHandle == IntPtr.Zero) throw new Win32Exception(Marshal.GetLastWin32Error());
+                var originalStation = GetProcessWindowStation();
+                session.WindowStationName = ObjectName(originalStation);
+                if (isolateClipboard) {
+                    session.WindowStationName = "CodeExplanationClipboard_" + Guid.NewGuid().ToString("N");
+                    session.windowStationHandle = CreateWindowStation(session.WindowStationName, 1, 0xF037F, IntPtr.Zero);
+                    if (session.windowStationHandle == IntPtr.Zero && Marshal.GetLastWin32Error() == 5)
+                        session.windowStationHandle = CreateWindowStation(null, 0, 0xF037F, IntPtr.Zero);
+                    if (session.windowStationHandle == IntPtr.Zero) throw new Win32Exception(Marshal.GetLastWin32Error(), "CreateWindowStation");
+                    session.WindowStationName = ObjectName(session.windowStationHandle);
+                    if (session.WindowStationName.Equals(ObjectName(originalStation), StringComparison.OrdinalIgnoreCase) ||
+                        session.WindowStationName.Equals("WinSta0", StringComparison.OrdinalIgnoreCase))
+                        throw new InvalidOperationException("Clipboard station is not isolated from the interactive station.");
+                    if (!SetProcessWindowStation(session.windowStationHandle)) throw new Win32Exception(Marshal.GetLastWin32Error(), "SetProcessWindowStation private");
+                }
+                int desktopError = 0;
+                try {
+                    session.desktopHandle = CreateDesktop(session.DesktopName, IntPtr.Zero, IntPtr.Zero, 0, 0xF01FF, IntPtr.Zero);
+                    if (session.desktopHandle == IntPtr.Zero) desktopError = Marshal.GetLastWin32Error();
+                } finally {
+                    if (isolateClipboard && !SetProcessWindowStation(originalStation)) throw new Win32Exception(Marshal.GetLastWin32Error(), "SetProcessWindowStation restore");
+                }
+                if (session.desktopHandle == IntPtr.Zero) throw new Win32Exception(desktopError, "CreateDesktop");
                 if (InputDesktopName() != session.InputDesktopBefore) throw new InvalidOperationException("输入桌面已变化，未启动测试。");
                 session.jobHandle = CreateJobObject(IntPtr.Zero, null);
                 if (session.jobHandle == IntPtr.Zero) throw new Win32Exception(Marshal.GetLastWin32Error());
@@ -91,7 +119,7 @@ namespace CodeExplanationVerification {
                 Require(SetInformationJobObject(session.jobHandle, 9, ref limits, (uint)Marshal.SizeOf(typeof(ExtendedLimits))));
                 var startup = new StartupInfoEx();
                 startup.info.cb = (uint)Marshal.SizeOf(typeof(StartupInfoEx));
-                startup.info.desktop = ObjectName(GetProcessWindowStation()) + "\\" + session.DesktopName;
+                startup.info.desktop = session.WindowStationName + "\\" + session.DesktopName;
                 startup.info.flags = 0x101; startup.info.show = 0;
                 ProcessInfo process;
                 var security = new SecurityAttributes { size = Marshal.SizeOf(typeof(SecurityAttributes)), inherit = true };
@@ -140,6 +168,7 @@ namespace CodeExplanationVerification {
             if (jobHandle != IntPtr.Zero) { CloseHandle(jobHandle); jobHandle = IntPtr.Zero; }
             if (processHandle != IntPtr.Zero) { CloseHandle(processHandle); processHandle = IntPtr.Zero; }
             if (desktopHandle != IntPtr.Zero) { CloseDesktop(desktopHandle); desktopHandle = IntPtr.Zero; }
+            if (windowStationHandle != IntPtr.Zero) { CloseWindowStation(windowStationHandle); windowStationHandle = IntPtr.Zero; }
         }
     }
 }

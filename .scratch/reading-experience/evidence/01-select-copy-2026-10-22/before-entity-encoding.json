@@ -1,0 +1,18 @@
+{
+  "result": {
+    "name": "普通代码跨行含 Tab 和中文路径",
+    "method": "CDP pointer drag and Ctrl+C",
+    "expected": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";",
+    "selected": "var action = actions[_step];\n    var label = \"C:\\temp\\中",
+    "actual": "var action = actions[_step];\r\n    var label = \"C:\\temp\\中",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 47,
+      "text": "var action = actions[_step];\r\n    var label = \"C:\\temp\\中"
+    },
+    "beforeSequence": 39,
+    "passed": false
+  },
+  "sourceRun": "20261022-153004-2dcd9558",
+  "note": "编码换行和Tab为HTML实体之前的实际失败，不计入最终通过项。"
+}

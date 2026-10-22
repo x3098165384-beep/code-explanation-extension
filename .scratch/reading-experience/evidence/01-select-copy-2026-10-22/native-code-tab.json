@@ -1,0 +1,20 @@
+{
+  "name": "原生围栏代码 Tab 调查（不是最终方案）",
+  "method": "CDP pointer drag and Ctrl+C",
+  "expected": "var action = actions[_step];\n    var label = \"C:\\temp\\中文\";",
+  "selected": "var action = actions[_step];\n    var label = \"C:\\temp\\中文\";",
+  "actual": "var action = actions[_step];\r\n    var label = \"C:\\temp\\中文\";",
+  "native": {
+    "station": "Service-0x0-54064$",
+    "sequence": 1187,
+    "ownerProcessId": 50484,
+    "ownerThreadDesktop": "CodeExplanationTest_544ffd23c31a48c3936702412da63edd",
+    "text": "var action = actions[_step];\r\n    var label = \"C:\\temp\\中文\";"
+  },
+  "beforeSequence": 1179,
+  "passed": true,
+  "sourceExpected": "var action = actions[_step];\n\tvar label = \"C:\\temp\\中文\";",
+  "sourcePreserved": false,
+  "diagnostic": true,
+  "accepted": false
+}
