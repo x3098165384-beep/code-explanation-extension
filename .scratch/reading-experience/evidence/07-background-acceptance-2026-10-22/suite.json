@@ -1,0 +1,68 @@
+{
+  "finishedAt": "2026-10-22T09:13:25.6027379Z",
+  "groups": [
+    {
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-165216-e2835d28",
+      "name": "CoreOnly",
+      "checks": 52,
+      "result": "通过",
+      "reusedAfterFailure": true,
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA"
+    },
+    {
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170144-98299cc7",
+      "name": "JsonOnly",
+      "checks": 9,
+      "result": "通过",
+      "reusedAfterFailure": true,
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA"
+    },
+    {
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170354-80e9c083",
+      "name": "BodyOnly",
+      "checks": 8,
+      "result": "通过",
+      "reusedAfterFailure": true,
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA"
+    },
+    {
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170710-e6ebf731",
+      "name": "SidebarOnly",
+      "checks": 15,
+      "result": "通过",
+      "reusedAfterFailure": false,
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA"
+    },
+    {
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9",
+      "name": "RecentOnly",
+      "checks": 20,
+      "result": "通过",
+      "reusedAfterFailure": false,
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA"
+    },
+    {
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-171226-55cd5458",
+      "name": "ConversionOnly",
+      "checks": 18,
+      "result": "通过",
+      "reusedAfterFailure": false,
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA"
+    }
+  ],
+  "startedAt": "2026-10-22T09:07:04.7899196Z",
+  "result": "通过",
+  "supplementalGroups": [
+    {
+      "name": "LayoutOnly",
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-171741-37c6a626",
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+      "result": "通过",
+      "checks": 4,
+      "uniqueChecks": 4,
+      "passedAttempts": 4,
+      "retainedFailedAttempts": 0,
+      "supplementalActualSideBySideCheck": true
+    }
+  ]
+}

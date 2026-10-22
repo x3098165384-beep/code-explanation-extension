@@ -1,0 +1,25 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.2.0",
+  "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-171606-85bf245f\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-171606-85bf245f\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:16:17.027Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:16:17.163Z"
+    },
+    {
+      "name": "深色行内代码是真实文字，边线与翻译区分且不使用图片",
+      "startedAt": "2026-10-22T09:16:18.005Z",
+      "result": "失败",
+      "error": "AssertionError [ERR_ASSERTION]: Expected \"actual\" to be strictly unequal to: 2700\n\tat copied (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\layout.cjs:24:12)\n\tat async copy (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\layout.cjs:40:5)\n\tat async f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\layout.cjs:59:5\n\tat async checkpoint (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:85:7)\n\tat async exports.verify (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\layout.cjs:55:3)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:131:7)\n\tat async exports.activate (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\driver.cjs:26:5)\n\tat async BI._activate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16068)\n\tat async BI._waitForDepsThenActivate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16010)\n\tat async BI._initialize (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:15377)",
+      "finishedAt": "2026-10-22T09:16:22.956Z"
+    }
+  ],
+  "startedAt": "2026-10-22T09:16:16.655Z",
+  "result": "失败",
+  "error": "AssertionError [ERR_ASSERTION]: Expected \"actual\" to be strictly unequal to: 2700\n\tat copied (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\layout.cjs:24:12)\n\tat async copy (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\layout.cjs:40:5)\n\tat async f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\layout.cjs:59:5\n\tat async checkpoint (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:85:7)\n\tat async exports.verify (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\layout.cjs:55:3)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:131:7)\n\tat async exports.activate (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\driver.cjs:26:5)\n\tat async BI._activate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16068)\n\tat async BI._waitForDepsThenActivate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16010)\n\tat async BI._initialize (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:15377)"
+}

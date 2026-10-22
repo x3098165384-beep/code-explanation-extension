@@ -149,10 +149,7 @@ exports.verify = async context => {
       const source = lecture.sources[lecture.steps[0].source];
       const original = fs.readFileSync(path.join(project, source.path), 'utf8');
       await edit(source.path, original.replace('calculateCharge(unitPrice, seats);', 'calculateCharge(unitPrice + 1, seats);'));
-      await wait('目标失效后可读正文', state => state.comments.length === 0 && state.highlights.length === 0 &&
-        vscode.window.activeTextEditor?.document.uri.scheme === 'code-explanation-body');
-      assert.ok(vscode.window.activeTextEditor.document.getText().includes(lecture.steps[0].title));
-      assert.ok(!vscode.window.activeTextEditor.document.getText().includes('"sources"'));
+      await wait('目标失效后可读正文', async state => { const body = await require('./body.cjs').readBody(config); return state.comments.length === 0 && state.highlights.length === 0 && body?.current === lecture.steps[0].id && body.text.includes(lecture.steps[0].title) && !body.text.includes('\"sources\"'); });
       await edit(source.path, original); await shown(lecture, 1);
     }, 'json-source-recovered.png');
     await checkpoint('JSON 保存自动更新及重排按步骤标识保持，删除当前步骤回第一步', async () => {
@@ -179,9 +176,7 @@ exports.verify = async context => {
       await command('open', vscode.Uri.file(invalid)); await shown(lecture, 1);
       await command('open', vscode.Uri.file(legacy)); await shown(lecture, 1);
       await command('body');
-      assert.equal(vscode.window.activeTextEditor.document.uri.scheme, 'code-explanation-body');
-      assert.ok(vscode.window.activeTextEditor.document.getText().includes(value.title));
-      assert.ok(!vscode.window.activeTextEditor.document.getText().includes('"version"'));
+      await wait('正式排版正文显示讲解', async () => { const body = await require('./body.cjs').readBody(config); return body?.id === value.id && body.text.includes(value.title) && !body.text.includes('\"version\"'); });
     }, 'json-body-fallback.png');
     await checkpoint('停止后清除正文、范围及旧复制入口，源码和 Git 保持', async () => {
       const before = await beforeCopy(); await stop(); assert.equal(await command('copyCodeBlock', originalToken), false);

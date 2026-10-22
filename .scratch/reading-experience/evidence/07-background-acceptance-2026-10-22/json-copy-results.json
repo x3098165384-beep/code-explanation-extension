@@ -1,0 +1,218 @@
+[
+  {
+    "name": "普通代码部分字符",
+    "expected": "const ",
+    "actual": "const ",
+    "selected": "const ",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2353,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "const "
+    },
+    "passed": true
+  },
+  {
+    "name": "普通源码整块复制",
+    "expected": "  const amount = calculateCharge(unitPrice, seats);\n  return { seats, amount };\n",
+    "actual": "  const amount = calculateCharge(unitPrice, seats);\n  return { seats, amount };\n",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2363,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  const amount = calculateCharge(unitPrice, seats);\n  return { seats, amount };\n"
+    },
+    "passed": true
+  },
+  {
+    "name": "假设文本跨行及Tab",
+    "expected": "\tconst path = \"C:\\temp\\中文\";\n\n// 引号 \"、反斜杠 \\ 和空行",
+    "actual": "\tconst path = \"C:\\temp\\中文\";\r\n\r\n// 引号 \"、反斜杠 \\ 和空行",
+    "selected": "\tconst path = \"C:\\temp\\中文\";\n\n// 引号 \"、反斜杠 \\ 和空行",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2376,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "\tconst path = \"C:\\temp\\中文\";\r\n\r\n// 引号 \"、反斜杠 \\ 和空行"
+    },
+    "passed": true
+  },
+  {
+    "name": "假设文本整块保真",
+    "expected": "\tconst path = \"C:\\temp\\中文\";\n\n// 引号 \"、反斜杠 \\ 和空行\nconst longLine = \"longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong\";\n",
+    "actual": "\tconst path = \"C:\\temp\\中文\";\n\n// 引号 \"、反斜杠 \\ 和空行\nconst longLine = \"longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong\";\n",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2386,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "\tconst path = \"C:\\temp\\中文\";\n\n// 引号 \"、反斜杠 \\ 和空行\nconst longLine = \"longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong\";\n"
+    },
+    "passed": true
+  },
+  {
+    "name": "第2步局部复制",
+    "expected": "  return",
+    "actual": "  return",
+    "selected": "  return",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2399,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  return"
+    },
+    "passed": true
+  },
+  {
+    "name": "第2步整块复制",
+    "expected": "  return unitPrice * seats;\n",
+    "actual": "  return unitPrice * seats;\n",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2409,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  return unitPrice * seats;\n"
+    },
+    "passed": true
+  },
+  {
+    "name": "第3步局部复制",
+    "expected": "  return",
+    "actual": "  return",
+    "selected": "  return",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2422,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  return"
+    },
+    "passed": true
+  },
+  {
+    "name": "第3步整块复制",
+    "expected": "  return unitPrice * seats;\n",
+    "actual": "  return unitPrice * seats;\n",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2432,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  return unitPrice * seats;\n"
+    },
+    "passed": true
+  },
+  {
+    "name": "第4步局部复制",
+    "expected": "  const ",
+    "actual": "  const ",
+    "selected": "  const ",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2445,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  const "
+    },
+    "passed": true
+  },
+  {
+    "name": "第4步整块复制",
+    "expected": "  const subtotal = unitPrice * seats;\n  return subtotal;\n",
+    "actual": "  const subtotal = unitPrice * seats;\n  return subtotal;\n",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2455,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  const subtotal = unitPrice * seats;\n  return subtotal;\n"
+    },
+    "passed": true
+  },
+  {
+    "name": "第5步局部复制",
+    "expected": "  if (se",
+    "actual": "  if (se",
+    "selected": "  if (se",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2468,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  if (se"
+    },
+    "passed": true
+  },
+  {
+    "name": "第5步整块复制",
+    "expected": "  if (seats <= 0) {\n    return 0;\n  }\n",
+    "actual": "  if (seats <= 0) {\n    return 0;\n  }\n",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2478,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  if (seats <= 0) {\n    return 0;\n  }\n"
+    },
+    "passed": true
+  },
+  {
+    "name": "第7步局部复制",
+    "expected": "  return",
+    "actual": "  return",
+    "selected": "  return",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2491,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  return"
+    },
+    "passed": true
+  },
+  {
+    "name": "第7步整块复制",
+    "expected": "  return `${amount.toFixed(2)} 元`;\n",
+    "actual": "  return `${amount.toFixed(2)} 元`;\n",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2501,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  return `${amount.toFixed(2)} 元`;\n"
+    },
+    "passed": true
+  },
+  {
+    "name": "第8步局部复制",
+    "expected": "  return",
+    "actual": "  return",
+    "selected": "  return",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2514,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  return"
+    },
+    "passed": true
+  },
+  {
+    "name": "第8步整块复制",
+    "expected": "  return unitPrice * seats;\n",
+    "actual": "  return unitPrice * seats;\n",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2524,
+      "ownerProcessId": 57284,
+      "ownerThreadDesktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7",
+      "text": "  return unitPrice * seats;\n"
+    },
+    "passed": true
+  }
+]

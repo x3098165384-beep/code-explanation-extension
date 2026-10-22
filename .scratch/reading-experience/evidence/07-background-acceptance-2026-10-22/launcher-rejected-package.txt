@@ -1,0 +1,7 @@
+安装包已改变，不能借原运行结果继续。
+At F:\Sync\MyProjects\code-explanation-extension\tools\verify-background.ps1:114 char:105
++ ... Hash -ne $configuration.packageSha256) { throw '安装包已改变，不能借原运行结果继续。' }
++                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (安装包已改变，不能借原运行结果继续。:String) [], RuntimeException
+    + FullyQualifiedErrorId : 安装包已改变，不能借原运行结果继续。
+ 

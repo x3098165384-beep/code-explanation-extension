@@ -1,0 +1,15 @@
+﻿{
+    "startedAt":  "2026-10-22T08:49:16.3846926Z",
+    "switchedDesktop":  false,
+    "inputDesktopAfter":  "Default",
+    "desktop":  "CodeExplanationTest_8e8275bd62d641f2b1f1b8dd563c4128",
+    "sentInput":  false,
+    "inputDesktopBefore":  "Default",
+    "error":  "后台检查尚未全部通过。",
+    "processId":  67928,
+    "clipboardIsolated":  true,
+    "finishedAt":  "2026-10-22T08:50:29.4946663Z",
+    "windowStation":  "Service-0x0-54064$",
+    "runRoot":  "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-164911-0c433b71",
+    "exitCode":  0
+}

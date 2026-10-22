@@ -1,0 +1,247 @@
+{
+  "inputFile": "F:\\Sync\\svnVO\\trunk\\Vonimir\\.code-explanations\\enemy-pre-spawn-presentation.json",
+  "sourceProject": "F:\\Sync\\svnVO\\trunk\\Vonimir",
+  "originalInputs": [
+    {
+      "file": "F:\\Sync\\svnVO\\trunk\\Vonimir\\.code-explanations\\enemy-pre-spawn-presentation.json",
+      "bytes": 23444,
+      "sha256Before": "2fbee240914d44a8593cc47c38cd656bd7bede0a3b6a19a1b50c17c7c3dacd63",
+      "sha256After": "2fbee240914d44a8593cc47c38cd656bd7bede0a3b6a19a1b50c17c7c3dacd63"
+    },
+    {
+      "file": "F:\\Sync\\svnVO\\trunk\\Vonimir\\Assets\\Scripts\\BattleLogic\\Unit\\MixSpawn\\EnemyPreSpawnPresentation.cs",
+      "bytes": 11286,
+      "sha256Before": "7e424e85bbc4b235d6b124368d04bfee7d589a7bb37a12ceaf9e97fbca89665a",
+      "sha256After": "7e424e85bbc4b235d6b124368d04bfee7d589a7bb37a12ceaf9e97fbca89665a"
+    },
+    {
+      "file": "F:\\Sync\\svnVO\\trunk\\Vonimir\\Assets\\Editor\\Task\\ActorTools\\EnemyPreSpawnAuthoring.cs",
+      "bytes": 11269,
+      "sha256Before": "f913512dca3f67325393c8d665956c8c6297e7d3220ea3942e4e10924b67574e",
+      "sha256After": "f913512dca3f67325393c8d665956c8c6297e7d3220ea3942e4e10924b67574e"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "id": "7a998a68-5f75-4c0f-a117-b422de422b25",
+      "title": "配置与字段：保存动作、进度和恢复位置",
+      "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-171226-55cd5458/fixture/project/Assets/Scripts/BattleLogic/Unit/MixSpawn/EnemyPreSpawnPresentation.cs",
+      "startLine": 9,
+      "endLine": 47,
+      "passed": true
+    },
+    {
+      "step": 2,
+      "id": "2eed508f-400d-485c-a317-5ef740f54df5",
+      "title": "Play：记录原状态并启动第一项",
+      "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-171226-55cd5458/fixture/project/Assets/Scripts/BattleLogic/Unit/MixSpawn/EnemyPreSpawnPresentation.cs",
+      "startLine": 49,
+      "endLine": 63,
+      "passed": true
+    },
+    {
+      "step": 3,
+      "id": "0dddf626-981e-434a-950a-30ccf0e9feec",
+      "title": "BeginStep：准备并启动当前动作",
+      "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-171226-55cd5458/fixture/project/Assets/Scripts/BattleLogic/Unit/MixSpawn/EnemyPreSpawnPresentation.cs",
+      "startLine": 115,
+      "endLine": 145,
+      "passed": true
+    },
+    {
+      "step": 4,
+      "id": "f1f70c4b-78c5-4583-a4b7-6eca8cb2e89b",
+      "title": "PreparePath：准备路径坐标、长度和次数",
+      "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-171226-55cd5458/fixture/project/Assets/Scripts/BattleLogic/Unit/MixSpawn/EnemyPreSpawnPresentation.cs",
+      "startLine": 147,
+      "endLine": 192,
+      "passed": true
+    },
+    {
+      "step": 5,
+      "id": "ce029520-3b98-46df-9fad-8f39c6ccac3f",
+      "title": "Update：继续移动、等待播片或结束当前项",
+      "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-171226-55cd5458/fixture/project/Assets/Scripts/BattleLogic/Unit/MixSpawn/EnemyPreSpawnPresentation.cs",
+      "startLine": 89,
+      "endLine": 113,
+      "passed": true
+    },
+    {
+      "step": 6,
+      "id": "0a1ffd5f-1dba-430c-9760-603824fc75c4",
+      "title": "MoveAlongPath：推进距离，走满次数后换项",
+      "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-171226-55cd5458/fixture/project/Assets/Scripts/BattleLogic/Unit/MixSpawn/EnemyPreSpawnPresentation.cs",
+      "startLine": 194,
+      "endLine": 220,
+      "passed": true
+    },
+    {
+      "step": 7,
+      "id": "0551a7ea-a9d9-49e3-bd7b-03ddfad8cf69",
+      "title": "PositionAtDistance：按进度取得世界位置",
+      "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-171226-55cd5458/fixture/project/Assets/Scripts/BattleLogic/Unit/MixSpawn/EnemyPreSpawnPresentation.cs",
+      "startLine": 222,
+      "endLine": 241,
+      "passed": true
+    },
+    {
+      "step": 8,
+      "id": "f701413f-a85e-4d7f-9466-dab97a4efd43",
+      "title": "NextStep：换到下一项，全部完成后发事件",
+      "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-171226-55cd5458/fixture/project/Assets/Scripts/BattleLogic/Unit/MixSpawn/EnemyPreSpawnPresentation.cs",
+      "startLine": 243,
+      "endLine": 256,
+      "passed": true
+    },
+    {
+      "step": 9,
+      "id": "2feb1621-7069-4370-a5c3-a40dd00fa25c",
+      "title": "StopCutscene：解除引用并结束当前播片",
+      "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-171226-55cd5458/fixture/project/Assets/Scripts/BattleLogic/Unit/MixSpawn/EnemyPreSpawnPresentation.cs",
+      "startLine": 258,
+      "endLine": 273,
+      "passed": true
+    },
+    {
+      "step": 10,
+      "id": "99605de0-36cd-4884-904b-d3434532ff56",
+      "title": "Cancel：取消播放并恢复演员",
+      "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-171226-55cd5458/fixture/project/Assets/Scripts/BattleLogic/Unit/MixSpawn/EnemyPreSpawnPresentation.cs",
+      "startLine": 65,
+      "endLine": 87,
+      "passed": true
+    },
+    {
+      "step": 11,
+      "id": "a4e5c619-92df-4ee7-899e-a542ff2c5090",
+      "title": "ClearPlayback 与 Finite：清理进度并检查数值",
+      "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-171226-55cd5458/fixture/project/Assets/Scripts/BattleLogic/Unit/MixSpawn/EnemyPreSpawnPresentation.cs",
+      "startLine": 275,
+      "endLine": 284,
+      "passed": true
+    },
+    {
+      "step": 12,
+      "id": "f5c6b5d2-b542-45e8-89e1-ad07d9e830e6",
+      "title": "BindCompletion：把完成事件绑定到对应出生点",
+      "uri": "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-171226-55cd5458/fixture/project/Assets/Editor/Task/ActorTools/EnemyPreSpawnAuthoring.cs",
+      "startLine": 109,
+      "endLine": 126,
+      "passed": true
+    }
+  ],
+  "copies": [
+    {
+      "name": "转换后的路径判断局部代码",
+      "expected": "_hasPath",
+      "actual": "_hasPath",
+      "selected": "_hasPath",
+      "native": {
+        "station": "Service-0x0-54064$",
+        "sequence": 2636,
+        "ownerProcessId": 34168,
+        "ownerThreadDesktop": "CodeExplanationTest_dcff83fdb0a04ae794726396b394db16",
+        "text": "_hasPath"
+      },
+      "passed": true
+    },
+    {
+      "name": "转换后的路径判断整块代码",
+      "expected": "_hasPath = action.path != null;\n",
+      "actual": "_hasPath = action.path != null;\n",
+      "native": {
+        "station": "Service-0x0-54064$",
+        "sequence": 2646,
+        "ownerProcessId": 34168,
+        "ownerThreadDesktop": "CodeExplanationTest_dcff83fdb0a04ae794726396b394db16",
+        "text": "_hasPath = action.path != null;\n"
+      },
+      "passed": true
+    },
+    {
+      "name": "diff 第 3 步局部复制",
+      "expected": "  return",
+      "actual": "  return",
+      "selected": "  return",
+      "native": {
+        "station": "Service-0x0-54064$",
+        "sequence": 2659,
+        "ownerProcessId": 34168,
+        "ownerThreadDesktop": "CodeExplanationTest_dcff83fdb0a04ae794726396b394db16",
+        "text": "  return"
+      },
+      "passed": true
+    },
+    {
+      "name": "diff 第 4 步局部复制",
+      "expected": "  const ",
+      "actual": "  const ",
+      "selected": "  const ",
+      "native": {
+        "station": "Service-0x0-54064$",
+        "sequence": 2672,
+        "ownerProcessId": 34168,
+        "ownerThreadDesktop": "CodeExplanationTest_dcff83fdb0a04ae794726396b394db16",
+        "text": "  const "
+      },
+      "passed": true
+    },
+    {
+      "name": "diff 第 5 步局部复制",
+      "expected": "  if (se",
+      "actual": "  if (se",
+      "selected": "  if (se",
+      "native": {
+        "station": "Service-0x0-54064$",
+        "sequence": 2685,
+        "ownerProcessId": 34168,
+        "ownerThreadDesktop": "CodeExplanationTest_dcff83fdb0a04ae794726396b394db16",
+        "text": "  if (se"
+      },
+      "passed": true
+    },
+    {
+      "name": "双侧 diff 整块代码",
+      "expected": "  if (seats <= 0) {\n    return 0;\n  }\n",
+      "actual": "  if (seats <= 0) {\n    return 0;\n  }\n",
+      "native": {
+        "station": "Service-0x0-54064$",
+        "sequence": 2695,
+        "ownerProcessId": 34168,
+        "ownerThreadDesktop": "CodeExplanationTest_dcff83fdb0a04ae794726396b394db16",
+        "text": "  if (seats <= 0) {\n    return 0;\n  }\n"
+      },
+      "passed": true
+    }
+  ],
+  "clipboardIsolation": {
+    "identity": {
+      "station": "Service-0x0-54064$",
+      "desktop": "CodeExplanationTest_dcff83fdb0a04ae794726396b394db16"
+    },
+    "expected": {
+      "station": "Service-0x0-54064$",
+      "mainProcessId": 34168,
+      "uniqueStationPerRun": false,
+      "desktop": "CodeExplanationTest_dcff83fdb0a04ae794726396b394db16"
+    }
+  },
+  "lectureId": "8988696d-1aaa-4ddc-809f-76f90a43d8ef",
+  "stepIds": [
+    "7a998a68-5f75-4c0f-a117-b422de422b25",
+    "2eed508f-400d-485c-a317-5ef740f54df5",
+    "0dddf626-981e-434a-950a-30ccf0e9feec",
+    "f1f70c4b-78c5-4583-a4b7-6eca8cb2e89b",
+    "ce029520-3b98-46df-9fad-8f39c6ccac3f",
+    "0a1ffd5f-1dba-430c-9760-603824fc75c4",
+    "0551a7ea-a9d9-49e3-bd7b-03ddfad8cf69",
+    "f701413f-a85e-4d7f-9466-dab97a4efd43",
+    "2feb1621-7069-4370-a5c3-a40dd00fa25c",
+    "99605de0-36cd-4884-904b-d3434532ff56",
+    "a4e5c619-92df-4ee7-899e-a542ff2c5090",
+    "f5c6b5d2-b542-45e8-89e1-ad07d9e830e6"
+  ],
+  "originalInputsUnchanged": true,
+  "fixtureBaselineUnchanged": true
+}

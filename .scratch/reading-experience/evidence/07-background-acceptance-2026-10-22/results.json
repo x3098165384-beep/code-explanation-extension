@@ -1,0 +1,95 @@
+{
+  "result": "通过",
+  "extensionVersion": "0.2.0",
+  "vscodeVersion": "1.142.0",
+  "startingCommit": "d2c465faaddae235028642d0bf24fdec707aa9da",
+  "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+  "suiteRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-165214-13e82fbb",
+  "groups": [
+    {
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-165216-e2835d28",
+      "name": "CoreOnly",
+      "checks": 52,
+      "result": "通过",
+      "reusedAfterFailure": true,
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+      "uniqueChecks": 43,
+      "passedAttempts": 52,
+      "retainedFailedAttempts": 1
+    },
+    {
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170144-98299cc7",
+      "name": "JsonOnly",
+      "checks": 9,
+      "result": "通过",
+      "reusedAfterFailure": true,
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+      "uniqueChecks": 9,
+      "passedAttempts": 9,
+      "retainedFailedAttempts": 0
+    },
+    {
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170354-80e9c083",
+      "name": "BodyOnly",
+      "checks": 8,
+      "result": "通过",
+      "reusedAfterFailure": true,
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+      "uniqueChecks": 8,
+      "passedAttempts": 8,
+      "retainedFailedAttempts": 0
+    },
+    {
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170710-e6ebf731",
+      "name": "SidebarOnly",
+      "checks": 15,
+      "result": "通过",
+      "reusedAfterFailure": false,
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+      "uniqueChecks": 13,
+      "passedAttempts": 15,
+      "retainedFailedAttempts": 0
+    },
+    {
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9",
+      "name": "RecentOnly",
+      "checks": 20,
+      "result": "通过",
+      "reusedAfterFailure": false,
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+      "uniqueChecks": 16,
+      "passedAttempts": 20,
+      "retainedFailedAttempts": 0
+    },
+    {
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-171226-55cd5458",
+      "name": "ConversionOnly",
+      "checks": 18,
+      "result": "通过",
+      "reusedAfterFailure": false,
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+      "uniqueChecks": 18,
+      "passedAttempts": 18,
+      "retainedFailedAttempts": 0
+    },
+    {
+      "name": "LayoutOnly",
+      "runRoot": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-171741-37c6a626",
+      "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+      "result": "通过",
+      "checks": 4,
+      "uniqueChecks": 4,
+      "passedAttempts": 4,
+      "retainedFailedAttempts": 0,
+      "supplementalActualSideBySideCheck": true
+    }
+  ],
+  "originalMarkdownRetained": {
+    "path": "F:\\Sync\\svnVO\\trunk\\Vonimir\\docs\\explanations\\enemy-pre-spawn-presentation.md",
+    "sha256": "ad1931d3904811e8b189ea6247cfbbc7203454d03248067b408854ccbcecb983"
+  },
+  "passedAttempts": 126,
+  "uniqueChecks": 111,
+  "actualClipboardComparisons": 41,
+  "all22OperationsPassed": true
+}

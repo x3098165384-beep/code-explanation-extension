@@ -1,0 +1,80 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.2.0",
+  "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170456-a8ca5257\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170456-a8ca5257\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:05:15.545Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:05:15.695Z"
+    },
+    {
+      "name": "活动栏图标打开专用侧栏，缺少默认目录显示实际路径且不创建目录",
+      "startedAt": "2026-10-22T09:05:16.164Z",
+      "screenshot": "sidebar-empty.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:05:17.824Z"
+    },
+    {
+      "name": "子目录和同名文件均列出，无效JSON显示文件名并保持其他文件可读",
+      "startedAt": "2026-10-22T09:05:17.846Z",
+      "screenshot": "sidebar-expanded.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:05:18.934Z"
+    },
+    {
+      "name": "点击步骤在真实代码旁阅读，现有上下步同步侧栏，标题恢复保存步骤",
+      "startedAt": "2026-10-22T09:05:18.936Z",
+      "screenshot": "sidebar-file-progress.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:05:28.302Z"
+    },
+    {
+      "name": "跨讲解点击diff步骤，代码比较和侧栏当前步骤一致",
+      "startedAt": "2026-10-22T09:05:28.304Z",
+      "screenshot": "sidebar-diff-progress.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:05:34.432Z"
+    },
+    {
+      "name": "新增、修改、删除和恢复其他文件只刷新列表，不抢当前diff",
+      "startedAt": "2026-10-22T09:05:34.435Z",
+      "screenshot": "sidebar-watch.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:05:35.780Z"
+    },
+    {
+      "name": "旧步骤标识或被替换讲解不能按旧编号打开，失败保留当前阅读",
+      "startedAt": "2026-10-22T09:05:35.782Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:05:38.749Z"
+    },
+    {
+      "name": "项目目录设置立即重读，新旧目录更新均不切换当前阅读",
+      "startedAt": "2026-10-22T09:05:38.758Z",
+      "screenshot": "sidebar-directory-setting.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:05:41.519Z"
+    },
+    {
+      "name": "配置位置实际不是目录时显示读取错误，恢复目录设置后仍可继续",
+      "startedAt": "2026-10-22T09:05:41.520Z",
+      "screenshot": "sidebar-directory-unreadable.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:05:43.921Z"
+    },
+    {
+      "name": "停止保留侧栏和代码页，目录外手动打开仍使用原阅读入口",
+      "startedAt": "2026-10-22T09:05:43.927Z",
+      "screenshot": "sidebar-light.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:05:45.374Z"
+    }
+  ],
+  "startedAt": "2026-10-22T09:05:15.079Z",
+  "result": "失败",
+  "error": "Error: ENOTEMPTY, Directory not empty: \\\\?\\F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170456-a8ca5257\\fixture\\project\\.code-explanations '\\\\?\\F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170456-a8ca5257\\fixture\\project\\.code-explanations'\n\tat Object.rmSync (node:fs:1283:18)\n\tat exports.verify (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\sidebar.cjs:192:49)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:146:7)\n\tat async exports.activate (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\driver.cjs:26:5)\n\tat async BI._activate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16068)\n\tat async BI._waitForDepsThenActivate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16010)\n\tat async BI._initialize (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:15377)"
+}

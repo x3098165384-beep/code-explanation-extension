@@ -34,6 +34,21 @@ async function browserConnection(config) {
   };
 }
 
+exports.readBody = async config => {
+  const browser = await browserConnection(config);
+  try {
+    const { targetInfos } = await browser.call('Target.getTargets');
+    for (const info of targetInfos.filter(info => info.type === 'iframe' && info.url.startsWith('vscode-webview:'))) {
+      const { sessionId } = await browser.call('Target.attachToTarget', { targetId: info.targetId, flatten: true });
+      try {
+        const result = await browser.call('Runtime.evaluate', { expression: `(()=>{const d=document.getElementById('active-frame')?.contentDocument;const e=d?.getElementById('explanation-body');return e?{id:e.dataset.explanationId,text:d.body.innerText,current:d.querySelector('[data-current-step]')?.dataset.stepId}:null;})()`, returnByValue: true }, sessionId);
+        if (result.result.value) return result.result.value;
+      } finally { await browser.call('Target.detachFromTarget', { sessionId }); }
+    }
+    return null;
+  } finally { browser.close(); }
+};
+
 exports.verify = async context => {
   const { config, renderer, checkpoint, wait, command, parseExplanation, normalizeText, diskFile, diskRaw,
     project, open, go, shown, stop, edit, assertBaseline } = context;

@@ -1,0 +1,376 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.2.0",
+  "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-165216-e2835d28\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-165216-e2835d28\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T08:52:28.696Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:52:28.765Z"
+    },
+    {
+      "name": "普通脚本定位与长 Markdown 原生显示",
+      "startedAt": "2026-10-22T08:52:28.767Z",
+      "screenshot": "02-markdown-bottom.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:52:34.375Z"
+    },
+    {
+      "name": "固定 Git 普通文件与 diff 左侧删除行",
+      "startedAt": "2026-10-22T08:52:34.378Z",
+      "screenshot": "03-diff-left.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:52:38.380Z"
+    },
+    {
+      "name": "同一真实 diff 右侧新增行",
+      "startedAt": "2026-10-22T08:52:38.382Z",
+      "screenshot": "04-diff-right.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:52:39.471Z"
+    },
+    {
+      "name": "两侧目标同时高亮且正文只在右侧",
+      "startedAt": "2026-10-22T08:52:39.472Z",
+      "screenshot": "05-diff-both.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:52:40.485Z"
+    },
+    {
+      "name": "暂存和未暂存内容同时出现在当前比较",
+      "startedAt": "2026-10-22T08:52:40.487Z",
+      "screenshot": "06-working.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:52:41.974Z"
+    },
+    {
+      "name": "整个新增文件和整个删除文件",
+      "startedAt": "2026-10-22T08:52:41.975Z",
+      "screenshot": "08-deleted.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:52:45.412Z"
+    },
+    {
+      "name": "最后一步不自动停止，停止清理及主动恢复",
+      "startedAt": "2026-10-22T08:52:45.417Z",
+      "screenshot": "11-resumed.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:53:11.927Z"
+    },
+    {
+      "name": "真实步骤列表选择和取消打开保留当前阅读",
+      "startedAt": "2026-10-22T08:53:11.932Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:53:22.554Z"
+    },
+    {
+      "name": "新建未落盘源码可普通阅读和比较，修改后立即重检",
+      "startedAt": "2026-10-22T08:53:22.555Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:53:27.576Z"
+    },
+    {
+      "name": "BOM 和 CRLF 可读，正文中的步骤标记不创建步骤",
+      "startedAt": "2026-10-22T08:53:27.580Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:53:43.151Z"
+    },
+    {
+      "name": "讲解正文中的命令链接和 HTML 不获得执行或插入代码权限",
+      "startedAt": "2026-10-22T08:53:43.153Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:53:44.776Z"
+    },
+    {
+      "name": "真实未保存文档参与 diff 且不写盘",
+      "startedAt": "2026-10-22T08:53:44.779Z",
+      "screenshot": "12-unsaved.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:53:53.375Z"
+    },
+    {
+      "name": "分号前空格和缩进变化自动继续",
+      "startedAt": "2026-10-22T08:53:53.378Z",
+      "screenshot": "13-formatting-accepted.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:53:56.881Z"
+    },
+    {
+      "name": "数字变化移除正文并回到 Markdown，恢复后自动回来",
+      "startedAt": "2026-10-22T08:53:56.882Z",
+      "screenshot": "15-code-restored.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:54:00.932Z"
+    },
+    {
+      "name": "停止和重新打开仍保留未保存内容",
+      "startedAt": "2026-10-22T08:54:00.934Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:54:14.884Z"
+    },
+    {
+      "name": "插行后的唯一重新定位与重复目标拒绝",
+      "startedAt": "2026-10-22T08:54:14.886Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:54:16.632Z"
+    },
+    {
+      "name": "目标外修改允许唯一原文继续，模板内部空格不放宽",
+      "startedAt": "2026-10-22T08:54:16.635Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:54:32.353Z"
+    },
+    {
+      "name": "双侧目标任一失效时清除整步",
+      "startedAt": "2026-10-22T08:54:32.356Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:54:42.037Z"
+    },
+    {
+      "name": "保存正文和重排后保留步骤标识，删除后回第一步",
+      "startedAt": "2026-10-22T08:54:42.039Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:54:46.022Z"
+    },
+    {
+      "name": "讲解标识改变从第一步开始",
+      "startedAt": "2026-10-22T08:54:46.024Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:54:49.931Z"
+    },
+    {
+      "name": "无效更新保留旧正文，源码变化仍检查，只读正文及恢复",
+      "startedAt": "2026-10-22T08:54:49.933Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:54:56.670Z"
+    },
+    {
+      "name": "讲解暂时不可读时提供只读正文并自动恢复",
+      "startedAt": "2026-10-22T08:54:56.672Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:54:57.597Z"
+    },
+    {
+      "name": "首次无效文件和另一份无效讲解不替换有效阅读",
+      "startedAt": "2026-10-22T08:54:57.599Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:54:58.186Z"
+    },
+    {
+      "name": "同标识讲解移到新位置不混用进度",
+      "startedAt": "2026-10-22T08:54:58.188Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:55:03.807Z"
+    },
+    {
+      "name": "不存在的固定提交提示错误，恢复后继续",
+      "startedAt": "2026-10-22T08:55:03.809Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:55:07.996Z"
+    },
+    {
+      "name": "不存在的 Git 文件路径不被当作空白成功",
+      "startedAt": "2026-10-22T08:55:07.997Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:55:10.112Z"
+    },
+    {
+      "name": "未加载的当前源码缺失，恢复文件后自动继续",
+      "startedAt": "2026-10-22T08:55:10.114Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:55:13.547Z"
+    },
+    {
+      "name": "目标删除清除行内正文，恢复后重新显示",
+      "startedAt": "2026-10-22T08:55:13.549Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:55:14.164Z"
+    },
+    {
+      "name": "真实空文件按存在处理，不冒充不存在侧",
+      "startedAt": "2026-10-22T08:55:14.166Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:55:15.699Z"
+    },
+    {
+      "name": "新 HEAD 使未提交比较失效，固定历史仍可读",
+      "startedAt": "2026-10-22T08:55:15.702Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:55:28.596Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T08:55:38.288Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:55:38.476Z"
+    },
+    {
+      "name": "真实重启后主动恢复进度，已记录步骤删除后回第一步",
+      "startedAt": "2026-10-22T08:55:38.479Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:55:59.497Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T08:56:11.133Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:56:11.233Z"
+    },
+    {
+      "name": "同一讲解在另一项目中不混用进度",
+      "startedAt": "2026-10-22T08:56:11.236Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:56:16.521Z"
+    },
+    {
+      "name": "固定 Git 中真实存在的空文件保持存在状态",
+      "startedAt": "2026-10-22T08:56:16.524Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:56:23.168Z"
+    },
+    {
+      "name": "明确重命名前后路径可比较，固定摘要和存在状态错误不借用内容",
+      "startedAt": "2026-10-22T08:56:23.170Z",
+      "result": "失败",
+      "error": "Error: 等待后台界面超时：固定引用错误清除正文\n\tat wait (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:45:11)\n\tat async f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:281:13\n\tat async checkpoint (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:85:7)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:246:9)\n\tat async exports.activate (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\driver.cjs:26:5)\n\tat async BI._activate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16068)\n\tat async BI._waitForDepsThenActivate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16010)\n\tat async BI._initialize (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:15377)",
+      "finishedAt": "2026-10-22T08:57:00.589Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T08:58:51.358Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:58:51.480Z"
+    },
+    {
+      "name": "同一讲解在另一项目中不混用进度",
+      "startedAt": "2026-10-22T08:58:51.486Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:58:55.313Z"
+    },
+    {
+      "name": "固定 Git 中真实存在的空文件保持存在状态",
+      "startedAt": "2026-10-22T08:58:55.315Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:59:05.405Z"
+    },
+    {
+      "name": "明确重命名前后路径可比较，固定摘要和存在状态错误不借用内容",
+      "startedAt": "2026-10-22T08:59:05.408Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:59:28.029Z"
+    },
+    {
+      "name": "当前整个文件删除时右侧确实为空，已有文件不能冒充不存在",
+      "startedAt": "2026-10-22T08:59:28.035Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:59:33.874Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T08:59:44.625Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:59:44.779Z"
+    },
+    {
+      "name": "未保存的讲解编辑不替换正文，回看使用只读成功内容",
+      "startedAt": "2026-10-22T08:59:44.783Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:00:03.201Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:00:15.752Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:00:15.893Z"
+    },
+    {
+      "name": "多个项目明确选择，讲解文件的位置不决定代码项目",
+      "startedAt": "2026-10-22T09:00:15.896Z",
+      "screenshot": "30-selected-project.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:00:20.301Z"
+    },
+    {
+      "name": "取消项目选择保留原讲解，重新选择首个项目使用其源码",
+      "startedAt": "2026-10-22T09:00:20.304Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:00:36.105Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:00:45.619Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:00:45.742Z"
+    },
+    {
+      "name": "没有项目时说明先打开文件夹，不创建活动讲解",
+      "startedAt": "2026-10-22T09:00:45.745Z",
+      "screenshot": "35-no-project.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:00:46.817Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:00:58.049Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:00:58.199Z"
+    },
+    {
+      "name": "深色行内代码是真实文字，边线与翻译区分且不使用图片",
+      "startedAt": "2026-10-22T09:00:58.320Z",
+      "screenshot": "layout-dark.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:01:08.186Z"
+    },
+    {
+      "name": "浅色主题代码文字、缩进与翻译保持清楚",
+      "startedAt": "2026-10-22T09:01:08.188Z",
+      "screenshot": "layout-light.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:01:11.335Z"
+    },
+    {
+      "name": "窄双侧diff保留真实比较、两侧目标和一份文字讲解",
+      "startedAt": "2026-10-22T09:01:11.337Z",
+      "screenshot": "layout-narrow-diff.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:01:22.412Z"
+    }
+  ],
+  "startedAt": "2026-10-22T08:52:28.515Z",
+  "decorationSample": [
+    {
+      "side": "file",
+      "x": 433.66668701171875,
+      "y": 143.6666717529297,
+      "height": 19,
+      "className": "cdr ced-1-TextEditorDecorationType29-0"
+    },
+    {
+      "side": "file",
+      "x": 433.66668701171875,
+      "y": 162.6666717529297,
+      "height": 19,
+      "className": "cdr ced-1-TextEditorDecorationType29-0"
+    }
+  ],
+  "markdownScroll": {
+    "scrollTop": 80.66666412353516,
+    "scrollHeight": 345,
+    "clientHeight": 264,
+    "lastVisible": true
+  },
+  "untrustedBody": {
+    "external": true,
+    "script": false,
+    "executed": false
+  },
+  "invalidUpdateVariants": 10,
+  "finishedAt": "2026-10-22T09:01:22.775Z",
+  "result": "通过",
+  "otherProject": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-165216-e2835d28\\other-fixture-retry-fcd072cf\\project",
+  "error": "Error: 等待后台界面超时：固定引用错误清除正文\n\tat wait (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:45:11)\n\tat async f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:281:13\n\tat async checkpoint (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:85:7)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:246:9)\n\tat async exports.activate (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\driver.cjs:26:5)\n\tat async BI._activate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16068)\n\tat async BI._waitForDepsThenActivate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16010)\n\tat async BI._initialize (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:15377)"
+}

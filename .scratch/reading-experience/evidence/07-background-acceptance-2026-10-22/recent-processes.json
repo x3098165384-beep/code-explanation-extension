@@ -1,0 +1,485 @@
+[
+  {
+    "phase": "recent",
+    "extensionHostProcessId": 31176,
+    "sessionId": "someValue.sessionId",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\fixture\\project",
+    "mainProcessId": 66460,
+    "desktop": "CodeExplanationTest_f40cd12ddb5c495387a172c3fc0325b9",
+    "userDataDirectory": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data",
+    "databases": [
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data\\User\\globalStorage\\state.vscdb",
+        "size": 192512,
+        "modifiedAt": "2026-10-22T09:10:10.146Z",
+        "sha256": "dd186b8d32c9302bcfae62eaa420c8489c566e2a3e6c4c664261e73752624bf3"
+      },
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\shared-data\\sharedStorage\\state.vscdb",
+        "size": 12288,
+        "modifiedAt": "2026-10-22T09:09:18.351Z",
+        "sha256": "5b2782a89bde3d84df77b52503a2a2cba9b569705fa50dfc3d9b478ccb15907a"
+      }
+    ],
+    "records": [
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data\\User\\globalStorage\\state.vscdb",
+        "key": "XGH.code-explanation-extension",
+        "values": {
+          "codeExplanation.progress.596e927f6873048219ce1078e50397793b1370a70e8bc9264a7d84419b1bdaa1": "a2fe0db7-1a00-40ad-8da5-94ccdee86cdf",
+          "codeExplanation.recent.279298c61eee3db873da7d634a9aeddea6f91641b2145700f14c4fb70fc656d1": [
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/external-b.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/fixture/project/.code-explanations/recent-a.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-21.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-20.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-19.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-18.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-17.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-16.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-15.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-14.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-13.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-12.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-11.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-10.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-9.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-8.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-7.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-6.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-5.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-4.json"
+          ],
+          "codeExplanation.progress.69b17ec3f168f818b8190135770081c8030bd5fd904286a8fb372f85a055da3f": "af5d94f5-a97e-42cd-affd-62912f7ef77c",
+          "codeExplanation.progress.2133291d36e65f4265ae246fdc74b3b6a0f438dbe7ad9f17f61c36be77e4c8dc": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.ce63891744c78c233dedb4d101579b9b6ca0a17a5c322688c8292a22b0f29a24": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.d259b3679853374b0e658c1ec82b415d93a8792d09595d178bf27a298da8fd41": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.fb73565e7dbb5ba987dcadda92513c99254c93a2c275d33595322e74041c961e": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.27553bf4c61b92cfcad0c58e974c04a080d54a3350ea5f8ebe829d69a8abee42": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.c8115da0590fdc2383c4e4f7622b7dde6d8186247802b3cf4b9035c3ef4a8ba1": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9065befc537764f5edb512df89e7aa7bb9cdee24f6e0979a2b9248b8619d0dfb": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.3df092c9e7a56067c1920f67d233c4eb21a7087299285f30f581c63d1350fa34": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.efb851ee0ada5a968130244db8895c6e84d33507f6750b52631cd5f6937c72d9": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.554e3d1522fd1795001ad33a59121b53e11780cbea6e449bc2ea7e761f964e3d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9474d4524c97e4bf4aa5503768216a28706c0b8555c9572bb68a0b5a994c07da": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.62ef435145aa06568c43865beff9f957087c709d17302d45d598a892ed1e8aa0": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.aa642f1e6a54ea71b64b4811b50dc4427e635a604e11ac995844883fe7c7a971": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9ca57f19243fc46acde36ad37c41f14287d4d8151b3ef78275ee245ab9dfa3f8": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.30972ddad9167ff6201cdaa26794d060e916add96ac3705154ce941674b8b990": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4cbfc79d24f69179cc64dc3120035cb2cda145d0a7bf2167f28c042c95580b3e": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4cdb2afbf80cf57a9f9752edfdef3db9f105a17fecb54a7da5d3149c079a5286": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.c7cbd8618be5dc1db7ff685531b3fb2ab208e7cad16d80b960250ae9ed1f3649": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.da02196e724d0a598a6c707bc6285ed52cc96cbf418fb80fa5113f14594dbeae": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.f7cda970c47b7e15b84054bf78c66b757238083cb370807c89b71e6bcc28273d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.733d77d762ee31c48f7f434be32ec5f03c3a7b5df5643ae154ecf5843765647d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.15dadbec4ca299d3f04ab2b40ca5a67efbbfa8a092738fb3241c8a4f72d760ef": "b079a802-5580-4510-b9e9-98a3ca49c496"
+        }
+      }
+    ]
+  },
+  {
+    "phase": "recent-restore",
+    "extensionHostProcessId": 21964,
+    "sessionId": "someValue.sessionId",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\fixture\\project",
+    "mainProcessId": 66592,
+    "desktop": "CodeExplanationTest_4915d9c5a71b4dc488c041533e9ca489",
+    "userDataDirectory": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data",
+    "databases": [
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data\\User\\globalStorage\\state.vscdb",
+        "size": 200704,
+        "modifiedAt": "2026-10-22T09:11:00.443Z",
+        "sha256": "5bf69926d806fe114b84f3aa1140a4013b0228c0983873c0eff29a6e279e6295"
+      },
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\shared-data\\sharedStorage\\state.vscdb",
+        "size": 12288,
+        "modifiedAt": "2026-10-22T09:10:20.751Z",
+        "sha256": "fb05836209baef294f2b902e800e0f6d31d6b56f9172083e4bd072a154ff1d5a"
+      }
+    ],
+    "records": [
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data\\User\\globalStorage\\state.vscdb",
+        "key": "XGH.code-explanation-extension",
+        "values": {
+          "codeExplanation.progress.596e927f6873048219ce1078e50397793b1370a70e8bc9264a7d84419b1bdaa1": "a2fe0db7-1a00-40ad-8da5-94ccdee86cdf",
+          "codeExplanation.recent.279298c61eee3db873da7d634a9aeddea6f91641b2145700f14c4fb70fc656d1": [
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/fixture/project/.code-explanations/recent-a.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/external-b.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-21.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-20.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-19.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-18.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-17.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-16.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-15.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-14.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-13.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-12.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-11.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-10.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-9.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-8.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-7.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-6.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-5.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-4.json"
+          ],
+          "codeExplanation.progress.69b17ec3f168f818b8190135770081c8030bd5fd904286a8fb372f85a055da3f": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.2133291d36e65f4265ae246fdc74b3b6a0f438dbe7ad9f17f61c36be77e4c8dc": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.ce63891744c78c233dedb4d101579b9b6ca0a17a5c322688c8292a22b0f29a24": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.d259b3679853374b0e658c1ec82b415d93a8792d09595d178bf27a298da8fd41": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.fb73565e7dbb5ba987dcadda92513c99254c93a2c275d33595322e74041c961e": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.27553bf4c61b92cfcad0c58e974c04a080d54a3350ea5f8ebe829d69a8abee42": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.c8115da0590fdc2383c4e4f7622b7dde6d8186247802b3cf4b9035c3ef4a8ba1": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9065befc537764f5edb512df89e7aa7bb9cdee24f6e0979a2b9248b8619d0dfb": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.3df092c9e7a56067c1920f67d233c4eb21a7087299285f30f581c63d1350fa34": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.efb851ee0ada5a968130244db8895c6e84d33507f6750b52631cd5f6937c72d9": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.554e3d1522fd1795001ad33a59121b53e11780cbea6e449bc2ea7e761f964e3d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9474d4524c97e4bf4aa5503768216a28706c0b8555c9572bb68a0b5a994c07da": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.62ef435145aa06568c43865beff9f957087c709d17302d45d598a892ed1e8aa0": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.aa642f1e6a54ea71b64b4811b50dc4427e635a604e11ac995844883fe7c7a971": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9ca57f19243fc46acde36ad37c41f14287d4d8151b3ef78275ee245ab9dfa3f8": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.30972ddad9167ff6201cdaa26794d060e916add96ac3705154ce941674b8b990": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4cbfc79d24f69179cc64dc3120035cb2cda145d0a7bf2167f28c042c95580b3e": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4cdb2afbf80cf57a9f9752edfdef3db9f105a17fecb54a7da5d3149c079a5286": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.c7cbd8618be5dc1db7ff685531b3fb2ab208e7cad16d80b960250ae9ed1f3649": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.da02196e724d0a598a6c707bc6285ed52cc96cbf418fb80fa5113f14594dbeae": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.f7cda970c47b7e15b84054bf78c66b757238083cb370807c89b71e6bcc28273d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.733d77d762ee31c48f7f434be32ec5f03c3a7b5df5643ae154ecf5843765647d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.15dadbec4ca299d3f04ab2b40ca5a67efbbfa8a092738fb3241c8a4f72d760ef": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.60a678cf7b0decfc7215963df60c6d5af898fe127d79a8fa4058e7ee3b139e91": "b079a802-5580-4510-b9e9-98a3ca49c496"
+        }
+      }
+    ]
+  },
+  {
+    "phase": "recent-project",
+    "extensionHostProcessId": 66604,
+    "sessionId": "someValue.sessionId",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\other-fixture\\project",
+    "mainProcessId": 71836,
+    "desktop": "CodeExplanationTest_1ded80bd045e4d7fb3ebb96e8d397c21",
+    "userDataDirectory": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data",
+    "databases": [
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data\\User\\globalStorage\\state.vscdb",
+        "size": 200704,
+        "modifiedAt": "2026-10-22T09:11:25.972Z",
+        "sha256": "b65fe1a44069797ab146834bfcc21ecc38c596b29aa87f611e486ec9d34809b4"
+      },
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\shared-data\\sharedStorage\\state.vscdb",
+        "size": 12288,
+        "modifiedAt": "2026-10-22T09:11:10.562Z",
+        "sha256": "41376634c4a6c61fab0fde686e38869b477e3a941e0ca2562fd82d443135e599"
+      }
+    ],
+    "records": [
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data\\User\\globalStorage\\state.vscdb",
+        "key": "XGH.code-explanation-extension",
+        "values": {
+          "codeExplanation.progress.596e927f6873048219ce1078e50397793b1370a70e8bc9264a7d84419b1bdaa1": "a2fe0db7-1a00-40ad-8da5-94ccdee86cdf",
+          "codeExplanation.recent.279298c61eee3db873da7d634a9aeddea6f91641b2145700f14c4fb70fc656d1": [
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/fixture/project/.code-explanations/recent-a.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/external-b.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-21.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-20.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-19.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-18.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-17.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-16.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-15.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-14.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-13.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-12.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-11.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-10.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-9.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-8.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-7.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-6.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-5.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-4.json"
+          ],
+          "codeExplanation.progress.69b17ec3f168f818b8190135770081c8030bd5fd904286a8fb372f85a055da3f": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.2133291d36e65f4265ae246fdc74b3b6a0f438dbe7ad9f17f61c36be77e4c8dc": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.ce63891744c78c233dedb4d101579b9b6ca0a17a5c322688c8292a22b0f29a24": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.d259b3679853374b0e658c1ec82b415d93a8792d09595d178bf27a298da8fd41": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.fb73565e7dbb5ba987dcadda92513c99254c93a2c275d33595322e74041c961e": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.27553bf4c61b92cfcad0c58e974c04a080d54a3350ea5f8ebe829d69a8abee42": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.c8115da0590fdc2383c4e4f7622b7dde6d8186247802b3cf4b9035c3ef4a8ba1": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9065befc537764f5edb512df89e7aa7bb9cdee24f6e0979a2b9248b8619d0dfb": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.3df092c9e7a56067c1920f67d233c4eb21a7087299285f30f581c63d1350fa34": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.efb851ee0ada5a968130244db8895c6e84d33507f6750b52631cd5f6937c72d9": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.554e3d1522fd1795001ad33a59121b53e11780cbea6e449bc2ea7e761f964e3d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9474d4524c97e4bf4aa5503768216a28706c0b8555c9572bb68a0b5a994c07da": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.62ef435145aa06568c43865beff9f957087c709d17302d45d598a892ed1e8aa0": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.aa642f1e6a54ea71b64b4811b50dc4427e635a604e11ac995844883fe7c7a971": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9ca57f19243fc46acde36ad37c41f14287d4d8151b3ef78275ee245ab9dfa3f8": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.30972ddad9167ff6201cdaa26794d060e916add96ac3705154ce941674b8b990": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4cbfc79d24f69179cc64dc3120035cb2cda145d0a7bf2167f28c042c95580b3e": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4cdb2afbf80cf57a9f9752edfdef3db9f105a17fecb54a7da5d3149c079a5286": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.c7cbd8618be5dc1db7ff685531b3fb2ab208e7cad16d80b960250ae9ed1f3649": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.da02196e724d0a598a6c707bc6285ed52cc96cbf418fb80fa5113f14594dbeae": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.f7cda970c47b7e15b84054bf78c66b757238083cb370807c89b71e6bcc28273d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.733d77d762ee31c48f7f434be32ec5f03c3a7b5df5643ae154ecf5843765647d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.15dadbec4ca299d3f04ab2b40ca5a67efbbfa8a092738fb3241c8a4f72d760ef": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.60a678cf7b0decfc7215963df60c6d5af898fe127d79a8fa4058e7ee3b139e91": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4f3baf052a57465b8adc1490e2dbad6477c1c1c6a52ead918210da63e81818ab": "ca2584c2-f462-4294-b51a-568bb874d285",
+          "codeExplanation.recent.72d6c9e370c06678a5a53b357f69ab3683a1f58a35ee8c57ebc25dab167b26dd": [
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/other-fixture/project/.code-explanations/recent-other.json"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "phase": "recent-multiple-roots",
+    "extensionHostProcessId": 70252,
+    "sessionId": "someValue.sessionId",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\fixture\\project",
+    "mainProcessId": 67992,
+    "desktop": "CodeExplanationTest_e2998dd1afcf4683824c3207cfb46993",
+    "userDataDirectory": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data",
+    "databases": [
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data\\User\\globalStorage\\state.vscdb",
+        "size": 200704,
+        "modifiedAt": "2026-10-22T09:11:58.182Z",
+        "sha256": "f933d0df2a6b25e72c0cf7e9c030ccecd695dedfc761a5e202911851131f6524"
+      },
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\shared-data\\sharedStorage\\state.vscdb",
+        "size": 12288,
+        "modifiedAt": "2026-10-22T09:11:41.873Z",
+        "sha256": "cad25cf2c167a6b352a765540c9e978e76653b32b6bb1696853fba9d370b9627"
+      }
+    ],
+    "records": [
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data\\User\\globalStorage\\state.vscdb",
+        "key": "XGH.code-explanation-extension",
+        "values": {
+          "codeExplanation.progress.596e927f6873048219ce1078e50397793b1370a70e8bc9264a7d84419b1bdaa1": "a2fe0db7-1a00-40ad-8da5-94ccdee86cdf",
+          "codeExplanation.recent.279298c61eee3db873da7d634a9aeddea6f91641b2145700f14c4fb70fc656d1": [
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/fixture/project/.code-explanations/recent-a.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/external-b.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-21.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-20.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-19.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-18.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-17.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-16.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-15.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-14.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-13.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-12.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-11.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-10.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-9.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-8.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-7.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-6.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-5.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-4.json"
+          ],
+          "codeExplanation.progress.69b17ec3f168f818b8190135770081c8030bd5fd904286a8fb372f85a055da3f": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.2133291d36e65f4265ae246fdc74b3b6a0f438dbe7ad9f17f61c36be77e4c8dc": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.ce63891744c78c233dedb4d101579b9b6ca0a17a5c322688c8292a22b0f29a24": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.d259b3679853374b0e658c1ec82b415d93a8792d09595d178bf27a298da8fd41": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.fb73565e7dbb5ba987dcadda92513c99254c93a2c275d33595322e74041c961e": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.27553bf4c61b92cfcad0c58e974c04a080d54a3350ea5f8ebe829d69a8abee42": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.c8115da0590fdc2383c4e4f7622b7dde6d8186247802b3cf4b9035c3ef4a8ba1": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9065befc537764f5edb512df89e7aa7bb9cdee24f6e0979a2b9248b8619d0dfb": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.3df092c9e7a56067c1920f67d233c4eb21a7087299285f30f581c63d1350fa34": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.efb851ee0ada5a968130244db8895c6e84d33507f6750b52631cd5f6937c72d9": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.554e3d1522fd1795001ad33a59121b53e11780cbea6e449bc2ea7e761f964e3d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9474d4524c97e4bf4aa5503768216a28706c0b8555c9572bb68a0b5a994c07da": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.62ef435145aa06568c43865beff9f957087c709d17302d45d598a892ed1e8aa0": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.aa642f1e6a54ea71b64b4811b50dc4427e635a604e11ac995844883fe7c7a971": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9ca57f19243fc46acde36ad37c41f14287d4d8151b3ef78275ee245ab9dfa3f8": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.30972ddad9167ff6201cdaa26794d060e916add96ac3705154ce941674b8b990": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4cbfc79d24f69179cc64dc3120035cb2cda145d0a7bf2167f28c042c95580b3e": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4cdb2afbf80cf57a9f9752edfdef3db9f105a17fecb54a7da5d3149c079a5286": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.c7cbd8618be5dc1db7ff685531b3fb2ab208e7cad16d80b960250ae9ed1f3649": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.da02196e724d0a598a6c707bc6285ed52cc96cbf418fb80fa5113f14594dbeae": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.f7cda970c47b7e15b84054bf78c66b757238083cb370807c89b71e6bcc28273d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.733d77d762ee31c48f7f434be32ec5f03c3a7b5df5643ae154ecf5843765647d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.15dadbec4ca299d3f04ab2b40ca5a67efbbfa8a092738fb3241c8a4f72d760ef": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.60a678cf7b0decfc7215963df60c6d5af898fe127d79a8fa4058e7ee3b139e91": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4f3baf052a57465b8adc1490e2dbad6477c1c1c6a52ead918210da63e81818ab": "ca2584c2-f462-4294-b51a-568bb874d285",
+          "codeExplanation.recent.72d6c9e370c06678a5a53b357f69ab3683a1f58a35ee8c57ebc25dab167b26dd": [
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/other-fixture/project/.code-explanations/recent-other.json"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "phase": "recent-multiple-roots",
+    "extensionHostProcessId": 70252,
+    "sessionId": "someValue.sessionId",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\other-fixture\\project",
+    "mainProcessId": 67992,
+    "desktop": "CodeExplanationTest_e2998dd1afcf4683824c3207cfb46993",
+    "userDataDirectory": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data",
+    "databases": [
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data\\User\\globalStorage\\state.vscdb",
+        "size": 200704,
+        "modifiedAt": "2026-10-22T09:11:58.182Z",
+        "sha256": "f933d0df2a6b25e72c0cf7e9c030ccecd695dedfc761a5e202911851131f6524"
+      },
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\shared-data\\sharedStorage\\state.vscdb",
+        "size": 12288,
+        "modifiedAt": "2026-10-22T09:11:41.873Z",
+        "sha256": "cad25cf2c167a6b352a765540c9e978e76653b32b6bb1696853fba9d370b9627"
+      }
+    ],
+    "records": [
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data\\User\\globalStorage\\state.vscdb",
+        "key": "XGH.code-explanation-extension",
+        "values": {
+          "codeExplanation.progress.596e927f6873048219ce1078e50397793b1370a70e8bc9264a7d84419b1bdaa1": "a2fe0db7-1a00-40ad-8da5-94ccdee86cdf",
+          "codeExplanation.recent.279298c61eee3db873da7d634a9aeddea6f91641b2145700f14c4fb70fc656d1": [
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/fixture/project/.code-explanations/recent-a.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/external-b.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-21.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-20.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-19.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-18.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-17.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-16.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-15.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-14.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-13.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-12.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-11.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-10.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-9.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-8.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-7.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-6.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-5.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-4.json"
+          ],
+          "codeExplanation.progress.69b17ec3f168f818b8190135770081c8030bd5fd904286a8fb372f85a055da3f": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.2133291d36e65f4265ae246fdc74b3b6a0f438dbe7ad9f17f61c36be77e4c8dc": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.ce63891744c78c233dedb4d101579b9b6ca0a17a5c322688c8292a22b0f29a24": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.d259b3679853374b0e658c1ec82b415d93a8792d09595d178bf27a298da8fd41": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.fb73565e7dbb5ba987dcadda92513c99254c93a2c275d33595322e74041c961e": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.27553bf4c61b92cfcad0c58e974c04a080d54a3350ea5f8ebe829d69a8abee42": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.c8115da0590fdc2383c4e4f7622b7dde6d8186247802b3cf4b9035c3ef4a8ba1": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9065befc537764f5edb512df89e7aa7bb9cdee24f6e0979a2b9248b8619d0dfb": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.3df092c9e7a56067c1920f67d233c4eb21a7087299285f30f581c63d1350fa34": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.efb851ee0ada5a968130244db8895c6e84d33507f6750b52631cd5f6937c72d9": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.554e3d1522fd1795001ad33a59121b53e11780cbea6e449bc2ea7e761f964e3d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9474d4524c97e4bf4aa5503768216a28706c0b8555c9572bb68a0b5a994c07da": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.62ef435145aa06568c43865beff9f957087c709d17302d45d598a892ed1e8aa0": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.aa642f1e6a54ea71b64b4811b50dc4427e635a604e11ac995844883fe7c7a971": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9ca57f19243fc46acde36ad37c41f14287d4d8151b3ef78275ee245ab9dfa3f8": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.30972ddad9167ff6201cdaa26794d060e916add96ac3705154ce941674b8b990": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4cbfc79d24f69179cc64dc3120035cb2cda145d0a7bf2167f28c042c95580b3e": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4cdb2afbf80cf57a9f9752edfdef3db9f105a17fecb54a7da5d3149c079a5286": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.c7cbd8618be5dc1db7ff685531b3fb2ab208e7cad16d80b960250ae9ed1f3649": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.da02196e724d0a598a6c707bc6285ed52cc96cbf418fb80fa5113f14594dbeae": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.f7cda970c47b7e15b84054bf78c66b757238083cb370807c89b71e6bcc28273d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.733d77d762ee31c48f7f434be32ec5f03c3a7b5df5643ae154ecf5843765647d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.15dadbec4ca299d3f04ab2b40ca5a67efbbfa8a092738fb3241c8a4f72d760ef": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.60a678cf7b0decfc7215963df60c6d5af898fe127d79a8fa4058e7ee3b139e91": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4f3baf052a57465b8adc1490e2dbad6477c1c1c6a52ead918210da63e81818ab": "ca2584c2-f462-4294-b51a-568bb874d285",
+          "codeExplanation.recent.72d6c9e370c06678a5a53b357f69ab3683a1f58a35ee8c57ebc25dab167b26dd": [
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/other-fixture/project/.code-explanations/recent-other.json"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "phase": "recent-restore-final",
+    "extensionHostProcessId": 58776,
+    "sessionId": "someValue.sessionId",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\fixture\\project",
+    "mainProcessId": 71376,
+    "desktop": "CodeExplanationTest_f148db37f6d5419980a7cd96bffa121c",
+    "userDataDirectory": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data",
+    "databases": [
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data\\User\\globalStorage\\state.vscdb",
+        "size": 200704,
+        "modifiedAt": "2026-10-22T09:12:21.021Z",
+        "sha256": "2e661c12391d954a8840181e5c0a441af153e323bddf90e3677aaa251819df4a"
+      },
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\shared-data\\sharedStorage\\state.vscdb",
+        "size": 12288,
+        "modifiedAt": "2026-10-22T09:12:10.824Z",
+        "sha256": "fcbcd809d5da95ee5de9eb51b16f1c2eaaeabd002676d868b1d95978d3bf0078"
+      }
+    ],
+    "records": [
+      {
+        "file": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\user-data\\User\\globalStorage\\state.vscdb",
+        "key": "XGH.code-explanation-extension",
+        "values": {
+          "codeExplanation.progress.596e927f6873048219ce1078e50397793b1370a70e8bc9264a7d84419b1bdaa1": "a2fe0db7-1a00-40ad-8da5-94ccdee86cdf",
+          "codeExplanation.recent.279298c61eee3db873da7d634a9aeddea6f91641b2145700f14c4fb70fc656d1": [
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/fixture/project/.code-explanations/recent-a.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/external-b.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-21.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-20.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-19.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-18.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-17.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-16.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-15.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-14.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-13.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-12.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-11.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-10.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-9.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-8.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-7.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-6.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-5.json",
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/recent/limit-4.json"
+          ],
+          "codeExplanation.progress.69b17ec3f168f818b8190135770081c8030bd5fd904286a8fb372f85a055da3f": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.2133291d36e65f4265ae246fdc74b3b6a0f438dbe7ad9f17f61c36be77e4c8dc": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.ce63891744c78c233dedb4d101579b9b6ca0a17a5c322688c8292a22b0f29a24": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.d259b3679853374b0e658c1ec82b415d93a8792d09595d178bf27a298da8fd41": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.fb73565e7dbb5ba987dcadda92513c99254c93a2c275d33595322e74041c961e": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.27553bf4c61b92cfcad0c58e974c04a080d54a3350ea5f8ebe829d69a8abee42": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.c8115da0590fdc2383c4e4f7622b7dde6d8186247802b3cf4b9035c3ef4a8ba1": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9065befc537764f5edb512df89e7aa7bb9cdee24f6e0979a2b9248b8619d0dfb": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.3df092c9e7a56067c1920f67d233c4eb21a7087299285f30f581c63d1350fa34": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.efb851ee0ada5a968130244db8895c6e84d33507f6750b52631cd5f6937c72d9": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.554e3d1522fd1795001ad33a59121b53e11780cbea6e449bc2ea7e761f964e3d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9474d4524c97e4bf4aa5503768216a28706c0b8555c9572bb68a0b5a994c07da": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.62ef435145aa06568c43865beff9f957087c709d17302d45d598a892ed1e8aa0": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.aa642f1e6a54ea71b64b4811b50dc4427e635a604e11ac995844883fe7c7a971": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.9ca57f19243fc46acde36ad37c41f14287d4d8151b3ef78275ee245ab9dfa3f8": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.30972ddad9167ff6201cdaa26794d060e916add96ac3705154ce941674b8b990": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4cbfc79d24f69179cc64dc3120035cb2cda145d0a7bf2167f28c042c95580b3e": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4cdb2afbf80cf57a9f9752edfdef3db9f105a17fecb54a7da5d3149c079a5286": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.c7cbd8618be5dc1db7ff685531b3fb2ab208e7cad16d80b960250ae9ed1f3649": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.da02196e724d0a598a6c707bc6285ed52cc96cbf418fb80fa5113f14594dbeae": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.f7cda970c47b7e15b84054bf78c66b757238083cb370807c89b71e6bcc28273d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.733d77d762ee31c48f7f434be32ec5f03c3a7b5df5643ae154ecf5843765647d": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.15dadbec4ca299d3f04ab2b40ca5a67efbbfa8a092738fb3241c8a4f72d760ef": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.60a678cf7b0decfc7215963df60c6d5af898fe127d79a8fa4058e7ee3b139e91": "b079a802-5580-4510-b9e9-98a3ca49c496",
+          "codeExplanation.progress.4f3baf052a57465b8adc1490e2dbad6477c1c1c6a52ead918210da63e81818ab": "ca2584c2-f462-4294-b51a-568bb874d285",
+          "codeExplanation.recent.72d6c9e370c06678a5a53b357f69ab3683a1f58a35ee8c57ebc25dab167b26dd": [
+            "file:///f%3A/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/background/20261022-170857-faf29de9/other-fixture/project/.code-explanations/recent-other.json"
+          ]
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,102 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.2.0",
+  "packageSha256": "2B225F3A49776CCB903B7EA094EEE2C1781C1D7B7FB04230E0BCD9A7015B5EEC",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-164911-0c433b71\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-164911-0c433b71\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T08:49:20.461Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:49:20.529Z"
+    },
+    {
+      "name": "普通脚本定位与长 Markdown 原生显示",
+      "startedAt": "2026-10-22T08:49:20.531Z",
+      "screenshot": "02-markdown-bottom.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:49:23.589Z"
+    },
+    {
+      "name": "固定 Git 普通文件与 diff 左侧删除行",
+      "startedAt": "2026-10-22T08:49:23.590Z",
+      "screenshot": "03-diff-left.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:49:26.519Z"
+    },
+    {
+      "name": "同一真实 diff 右侧新增行",
+      "startedAt": "2026-10-22T08:49:26.523Z",
+      "screenshot": "04-diff-right.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:49:27.651Z"
+    },
+    {
+      "name": "两侧目标同时高亮且正文只在右侧",
+      "startedAt": "2026-10-22T08:49:27.653Z",
+      "screenshot": "05-diff-both.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:49:28.634Z"
+    },
+    {
+      "name": "暂存和未暂存内容同时出现在当前比较",
+      "startedAt": "2026-10-22T08:49:28.636Z",
+      "screenshot": "06-working.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:49:30.065Z"
+    },
+    {
+      "name": "整个新增文件和整个删除文件",
+      "startedAt": "2026-10-22T08:49:30.066Z",
+      "screenshot": "08-deleted.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:49:33.253Z"
+    },
+    {
+      "name": "最后一步不自动停止，停止清理及主动恢复",
+      "startedAt": "2026-10-22T08:49:33.254Z",
+      "screenshot": "11-resumed.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:49:45.057Z"
+    },
+    {
+      "name": "真实步骤列表选择和取消打开保留当前阅读",
+      "startedAt": "2026-10-22T08:49:45.058Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:49:57.928Z"
+    },
+    {
+      "name": "新建未落盘源码可普通阅读和比较，修改后立即重检",
+      "startedAt": "2026-10-22T08:49:57.930Z",
+      "result": "失败",
+      "error": "Error: 等待后台界面超时：比较新增的未保存源码\n\tat wait (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:45:11)\n\tat async f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:415:70\n\tat async checkpoint (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:85:7)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:385:5)\n\tat async exports.activate (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\driver.cjs:26:5)\n\tat async BI._activate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16068)\n\tat async BI._waitForDepsThenActivate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16010)\n\tat async BI._initialize (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:15377)",
+      "finishedAt": "2026-10-22T08:50:28.365Z"
+    }
+  ],
+  "startedAt": "2026-10-22T08:49:20.258Z",
+  "decorationSample": [
+    {
+      "side": "file",
+      "x": 433.66668701171875,
+      "y": 143.6666717529297,
+      "height": 19,
+      "className": "cdr ced-1-TextEditorDecorationType29-0"
+    },
+    {
+      "side": "file",
+      "x": 433.66668701171875,
+      "y": 162.6666717529297,
+      "height": 19,
+      "className": "cdr ced-1-TextEditorDecorationType29-0"
+    }
+  ],
+  "markdownScroll": {
+    "scrollTop": 80.66666412353516,
+    "scrollHeight": 345,
+    "clientHeight": 264,
+    "lastVisible": true
+  },
+  "result": "失败",
+  "error": "Error: 等待后台界面超时：比较新增的未保存源码\n\tat wait (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:45:11)\n\tat async f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:415:70\n\tat async checkpoint (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:85:7)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:385:5)\n\tat async exports.activate (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\driver.cjs:26:5)\n\tat async BI._activate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16068)\n\tat async BI._waitForDepsThenActivate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16010)\n\tat async BI._initialize (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:15377)"
+}

@@ -1,0 +1,113 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.2.0",
+  "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170710-e6ebf731\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170710-e6ebf731\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:07:27.301Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:07:27.519Z"
+    },
+    {
+      "name": "活动栏图标打开专用侧栏，缺少默认目录显示实际路径且不创建目录",
+      "startedAt": "2026-10-22T09:07:27.864Z",
+      "screenshot": "sidebar-empty.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:07:29.556Z"
+    },
+    {
+      "name": "子目录和同名文件均列出，无效JSON显示文件名并保持其他文件可读",
+      "startedAt": "2026-10-22T09:07:29.578Z",
+      "screenshot": "sidebar-expanded.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:07:31.700Z"
+    },
+    {
+      "name": "点击步骤在真实代码旁阅读，现有上下步同步侧栏，标题恢复保存步骤",
+      "startedAt": "2026-10-22T09:07:31.703Z",
+      "screenshot": "sidebar-file-progress.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:07:40.263Z"
+    },
+    {
+      "name": "跨讲解点击diff步骤，代码比较和侧栏当前步骤一致",
+      "startedAt": "2026-10-22T09:07:40.265Z",
+      "screenshot": "sidebar-diff-progress.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:07:45.258Z"
+    },
+    {
+      "name": "新增、修改、删除和恢复其他文件只刷新列表，不抢当前diff",
+      "startedAt": "2026-10-22T09:07:45.260Z",
+      "screenshot": "sidebar-watch.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:07:46.599Z"
+    },
+    {
+      "name": "旧步骤标识或被替换讲解不能按旧编号打开，失败保留当前阅读",
+      "startedAt": "2026-10-22T09:07:46.600Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:07:51.768Z"
+    },
+    {
+      "name": "项目目录设置立即重读，新旧目录更新均不切换当前阅读",
+      "startedAt": "2026-10-22T09:07:51.790Z",
+      "screenshot": "sidebar-directory-setting.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:07:55.662Z"
+    },
+    {
+      "name": "配置位置实际不是目录时显示读取错误，恢复目录设置后仍可继续",
+      "startedAt": "2026-10-22T09:07:55.664Z",
+      "screenshot": "sidebar-directory-unreadable.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:07:57.250Z"
+    },
+    {
+      "name": "停止保留侧栏和代码页，目录外手动打开仍使用原阅读入口",
+      "startedAt": "2026-10-22T09:07:57.268Z",
+      "screenshot": "sidebar-light.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:07:58.867Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:08:16.534Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:08:16.855Z"
+    },
+    {
+      "name": "多根工作区按项目列出同名讲解，点击步骤使用其所属项目",
+      "startedAt": "2026-10-22T09:08:17.503Z",
+      "screenshot": "sidebar-multiple-projects.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:08:30.222Z"
+    },
+    {
+      "name": "多项目手动打开外部JSON明确选择项目，取消保留原阅读",
+      "startedAt": "2026-10-22T09:08:30.227Z",
+      "screenshot": "sidebar-manual-project.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:08:32.308Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:08:44.431Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:08:44.527Z"
+    },
+    {
+      "name": "无项目侧栏说明先打开文件夹，手动入口不创建阅读",
+      "startedAt": "2026-10-22T09:08:44.732Z",
+      "screenshot": "sidebar-no-project.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:08:46.137Z"
+    }
+  ],
+  "startedAt": "2026-10-22T09:07:26.896Z",
+  "finishedAt": "2026-10-22T09:08:46.826Z",
+  "result": "通过"
+}

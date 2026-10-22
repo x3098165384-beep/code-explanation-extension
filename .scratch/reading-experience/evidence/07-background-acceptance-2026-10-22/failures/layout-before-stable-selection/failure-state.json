@@ -1,0 +1,73 @@
+{
+  "title": "[Extension Development Host] 后台验收 20261022-171606-85bf245f invoice.js",
+  "comments": [
+    {
+      "text": "席位账单的调用、历史修改和当前修改 · 第 1 步，共 9 步\n行内代码讲解\n从账单函数跟到金额计算\n\tconst label = \"中文 C:\\temp\";\n\nreturn label;\n\n\n复制这段代码\n\n用变量 label 保存文字，再返回 label。",
+      "x": 352.66668701171875,
+      "y": 187.6666717529297,
+      "side": "file",
+      "range": "Comment thread with 1 comments on lines 4 through 5. 席位账单的调用、历史修改和当前修改 · 第 1 步，共 9 步.",
+      "ancestors": [
+        "zone-widget-container review-widget",
+        "zone-widget",
+        "overlayWidgets",
+        "overflow-guard",
+        "monaco-editor inline-comment no-user-select  showUnused showDeprecated vs-dark focused",
+        "editor-instance",
+        "editor-container",
+        "editor-group-container active",
+        "split-view-view visible",
+        "split-view-container",
+        "monaco-scrollable-element ",
+        "monaco-split-view2 vertical separator-border",
+        "monaco-grid-branch-node",
+        "monaco-grid-view",
+        "grid-view-container",
+        "content",
+        "part editor editor-tabs-multiple floating-editor-outer-top floating-editor-outer-right",
+        "split-view-view visible",
+        "split-view-container",
+        "monaco-scrollable-element ",
+        "monaco-split-view2 vertical",
+        "monaco-grid-branch-node",
+        "split-view-view visible",
+        "split-view-container",
+        "monaco-scrollable-element ",
+        "monaco-split-view2 horizontal",
+        "monaco-grid-branch-node",
+        "split-view-view visible",
+        "split-view-container",
+        "monaco-scrollable-element ",
+        "monaco-split-view2 vertical",
+        "monaco-grid-branch-node",
+        "monaco-grid-view",
+        "monaco-reduce-motion modern-ui modern-ui-tabs modern-ui-connected-editor-tabs modern-ui-notifications-dialogs monaco-workbench windows chromium floating-panels panel-position-bottom panel-alignment-center file-icons-enabled noauxiliarybar vs-dark vscode-theme-defaults-themes-dark_modern-json modern-ui-frosted-glass floating-panel-outer-right",
+        "agent-status-enabled unified-agents-bar",
+        ""
+      ],
+      "markdown": "<h2>从账单函数跟到金额计算</h2>\n<blockquote><pre><code>\t<span style=\"color:#569cd6;\">const</span> label = <span style=\"color:#ce9178;\">\"中文 C:\\temp\"</span>;\n\n<span style=\"color:#569cd6;\">return</span> label;\n</code></pre></blockquote><p><a href=\"\" data-href=\"command:codeExplanation.copyCodeBlock?%5B%22342a2073-efbc-4a35-9527-f52ea1588310%22%5D\">复制这段代码</a></p>\n<p>用变量 label 保存文字，再返回 label。</p>\n"
+    }
+  ],
+  "status": " main*+\n 上一步\n 1/9：从账单函数跟到金额计算\n下一步 \n 查看正文\n 停止讲解\n 0 \n 0\n Activating Extensions...\nJavaScript\nLF\nUTF-8\nSpaces: 2\nLn 1, Col 1",
+  "highlights": [
+    {
+      "side": "file",
+      "x": 433.66668701171875,
+      "y": 143.6666717529297,
+      "height": 19,
+      "className": "cdr ced-1-TextEditorDecorationType86-0"
+    },
+    {
+      "side": "file",
+      "x": 433.66668701171875,
+      "y": 162.6666717529297,
+      "height": 19,
+      "className": "cdr ced-1-TextEditorDecorationType86-0"
+    }
+  ],
+  "highlightColor": "rgba(234, 92, 0, 0.33)",
+  "highlightSelectors": [
+    ".monaco-editor .ced-1-TextEditorDecorationType86-0"
+  ],
+  "text": "File\nEdit\nSelection\nView\nGo\nRun\nTerminal\nHelp\n[Extension Development Host] 后台验收 20261022-171606-85bf245f invoice.js\nOpen in Agents\nSign In\n2\nExplorer\nproject\nsrc\ncharge.js\nformat-amount.js\ninvoice.js\npackage.json\nOutline\nTimeline\ninvoice.js\nsrc\ninvoice.js\n…\n1\n2\n3\n4\n5\n6\n7\nimport { calculateCharge } from './charge.js';\nexport function createInvoice(unitPrice, seats) {\n  const amount = calculateCharge(unitPrice, seats);\n  return { seats, amount };\n}\n席位账单的调用、历史修改和当前修改 · 第 1 步，共 9 步\n行内代码讲解\n从账单函数跟到金额计算\n\tconst label = \"中文 C:\\temp\";\n\nreturn label;\n\n\n复制这段代码\n\n用变量 label 保存文字，再返回 label。\n\nProblems\nOutput\nDebug Console\nTerminal\nPorts\nComments\ninvoice.jssrc\n行内代码讲解\n·\n从账单函数跟到金额计算\n\tconst label = \"中文 C:\\temp\";\n\nreturn label;\n\n\n[Ln 4-5]\n\n main*+\n 上一步\n 1/9：从账单函数跟到金额计算\n下一步 \n 查看正文\n 停止讲解\n 0 \n 0\n Activating Extensions...\nJavaScript\nLF\nUTF-8\nSpaces: 2\nLn 1, Col 1"
+}

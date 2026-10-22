@@ -1,0 +1,74 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.2.0",
+  "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170144-98299cc7\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170144-98299cc7\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:02:08.005Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:02:08.211Z"
+    },
+    {
+      "name": "正式 JSON 读取 BOM、CRLF、简介及当前代码，行内显示为可选择文字",
+      "startedAt": "2026-10-22T09:02:10.334Z",
+      "screenshot": "json-file.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:02:14.483Z"
+    },
+    {
+      "name": "正式代码块真实拖选、保留 Tab 和空行的整块复制及过期入口",
+      "startedAt": "2026-10-22T09:02:14.485Z",
+      "screenshot": "json-selected.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:02:23.107Z"
+    },
+    {
+      "name": "历史普通文件、删行、增行及双侧 diff 的正式导航和复制",
+      "startedAt": "2026-10-22T09:02:23.108Z",
+      "screenshot": "json-diff.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:03:01.550Z"
+    },
+    {
+      "name": "当前未保存内容参与 diff，源码改变后清除失效位置",
+      "startedAt": "2026-10-22T09:03:01.552Z",
+      "screenshot": "json-source-recovered.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:03:32.799Z"
+    },
+    {
+      "name": "JSON 保存自动更新及重排按步骤标识保持，删除当前步骤回第一步",
+      "startedAt": "2026-10-22T09:03:32.805Z",
+      "screenshot": "json-updated.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:03:37.027Z"
+    },
+    {
+      "name": "无效 JSON 更新保留已接受正文，修复后自动恢复",
+      "startedAt": "2026-10-22T09:03:37.029Z",
+      "screenshot": "json-invalid-recovered.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:03:42.681Z"
+    },
+    {
+      "name": "旧 Markdown 与首次无效 JSON 被拒绝，不破坏当前阅读",
+      "startedAt": "2026-10-22T09:03:42.683Z",
+      "screenshot": "json-body-fallback.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:03:44.003Z"
+    },
+    {
+      "name": "停止后清除正文、范围及旧复制入口，源码和 Git 保持",
+      "startedAt": "2026-10-22T09:03:44.006Z",
+      "screenshot": "json-stopped.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:03:47.084Z"
+    }
+  ],
+  "startedAt": "2026-10-22T09:02:07.403Z",
+  "finishedAt": "2026-10-22T09:03:47.101Z",
+  "result": "通过"
+}

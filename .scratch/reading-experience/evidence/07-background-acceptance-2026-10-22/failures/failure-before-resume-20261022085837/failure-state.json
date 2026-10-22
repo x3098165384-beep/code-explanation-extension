@@ -1,0 +1,9 @@
+{
+  "title": "[Extension Development Host] 后台验收 20261022-165216-e2835d28 首版补充验收 · 正文",
+  "comments": [],
+  "status": " main*+\n 上一步\n 2/2：明确比较重命名前后路径\n下一步 \n 查看正文\n 停止讲解\n 0 \n 0",
+  "highlights": [],
+  "highlightColor": "rgba(39, 103, 130, 0.5)",
+  "highlightSelectors": [],
+  "text": "File\nEdit\nSelection\nView\nGo\nRun\nTerminal\nHelp\n[Extension Development Host] 后台验收 20261022-165216-e2835d28 首版补充验收 · 正文\nOpen in Agents\nSign In\n1\n2\nExplorer\nproject\nsrc\ncharge.js\nempty.js\nformat-label.js\ninvoice.js\npackage.json\nOutline\nTimeline\ninvoice.js\n改后文件存在，但内容为空\nformat-label.js\n明确比较重命名前后路径\nformat-label.js\n1\n2\n3\n4\nexport function formatAmount(amount) {\n  return `${amount.toFixed(2)} 元`;\n}\n1\n2\n3\n4\nexport function formatAmount(amount) {\n  return `${amount.toFixed(2)} 元`;\n}\n首版补充验收 · 正文\nProblems\nOutput\nDebug Console\nTerminal\nPorts\nComments\nThere are no comments in this workspace yet.\n main*+\n 上一步\n 2/2：明确比较重命名前后路径\n下一步 \n 查看正文\n 停止讲解\n 0 \n 0\nWarning: 步骤“明确比较重命名前后路径”无法定位：无法读取代码 src/format-amount.js：Git 提交 518ff4b867b0e5a79bfd955e6bf502622fc9097b 中实际存在 src/format-amount.js，不能显示为空白一侧。"
+}

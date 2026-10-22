@@ -130,7 +130,11 @@ export class Presentation implements vscode.Disposable {
       const snapshots = resolved.kind === 'file' ? [resolved.right] : [resolved.left!, resolved.right];
       requireCurrent(snapshots);
       // 从正文页切步时沿用可见的代码列，让正文继续留在旁边。
-      const viewColumn = vscode.window.activeTextEditor?.viewColumn ?? vscode.window.visibleTextEditors[0]?.viewColumn ??
+      const matchingGroup = vscode.window.tabGroups.all.find(group => group.tabs.some(tab =>
+        resolved.kind === 'diff'
+          ? tab.input instanceof vscode.TabInputTextDiff && sameUri(tab.input.original, resolved.left!.uri) && sameUri(tab.input.modified, resolved.right.uri)
+          : tab.input instanceof vscode.TabInputText && sameUri(tab.input.uri, resolved.right.uri)));
+      const viewColumn = matchingGroup?.viewColumn ?? vscode.window.visibleTextEditors[0]?.viewColumn ??
         (this.bodyView.active ? vscode.ViewColumn.Beside : vscode.ViewColumn.One);
       if (resolved.kind === 'file') {
         await vscode.window.showTextDocument(resolved.right.document, { preview: false, viewColumn });

@@ -23,12 +23,13 @@ exports.verify = async context => {
     await wait('讲解侧栏已打开', async () => (await treeText()).includes('项目讲解'));
   }
   async function rows(label, contains = '') {
-    return renderer.evaluate(`(() => [...document.querySelectorAll(${JSON.stringify(treeSelector)})].filter(${visible}).filter(row=>row.querySelector('.label-name')?.textContent.trim()===${JSON.stringify(label)}&&row.innerText.includes(${JSON.stringify(contains)})).map(row=>({text:row.innerText,expanded:row.getAttribute('aria-expanded')})))()`);
+    return renderer.evaluate(`(() => {let group='';return [...document.querySelectorAll(${JSON.stringify(treeSelector)})].map((row,index)=>{const label=row.querySelector('.label-name')?.textContent.trim();if(label==='最近打开'||label==='项目讲解')group=label;return{row,index,label,group};}).filter(item=>(${visible})(item.row)&&item.group==='项目讲解'&&item.label===${JSON.stringify(label)}&&item.row.innerText.includes(${JSON.stringify(contains)})).map(item=>({index:item.index,text:item.row.innerText,expanded:item.row.getAttribute('aria-expanded')}));})()`);
   }
   async function clickRow(label, contains = '', twistie = false) {
     await wait(`侧栏显示“${label}”`, async () => (await rows(label, contains)).length > 0);
+    const selected = (await rows(label, contains))[0];
     const point = await renderer.evaluate(`(() => {
-      const row=[...document.querySelectorAll(${JSON.stringify(treeSelector)})].filter(${visible}).find(row=>row.querySelector('.label-name')?.textContent.trim()===${JSON.stringify(label)}&&row.innerText.includes(${JSON.stringify(contains)}));
+      const row=document.querySelectorAll(${JSON.stringify(treeSelector)})[${selected.index}];
       const target=row.querySelector(${JSON.stringify(twistie ? '.monaco-tl-twistie' : '.label-name')});target.scrollIntoView({block:'nearest'});const r=target.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2};
     })()`);
     await clickPoint(point);
@@ -154,15 +155,23 @@ exports.verify = async context => {
     const changed = write(changedFile, changedValue);
     await checkpoint('项目目录设置立即重读，新旧目录更新均不切换当前阅读', async () => {
       await directorySetting(project, 'lecture-files[演示]');
-      await wait('新目录讲解显示旧目录讲解离开', async () => await has(changed.title) && !await has(b.title)); await shown(b, diffIndex);
+      await wait('新目录讲解显示旧目录讲解离开', async () => (await rows(changed.title)).length===1 && (await rows(b.title)).length===0); await shown(b, diffIndex);
       const old = { ...aValue, title: '旧目录不再列出' }; write(aFile, old);
-      await pause(250); assert.equal(await has(old.title), false); await shown(b, diffIndex);
+      await pause(250); assert.equal((await rows(old.title)).length, 0); await shown(b, diffIndex);
       fs.rmSync(changedDirectory, { recursive: true });
       await wait('新讲解根目录删除显示空状态', async () => await has(changedDirectory) && await has('尚不存在')); await shown(b, diffIndex);
       write(changedFile, changedValue);
       await wait('新讲解根目录恢复后重新列出', () => has(changed.title)); await shown(b, diffIndex);
       await expand(changed.title); await clickRow(`1. ${changed.steps[0].title}`); await shown(changed, 1);
     }, 'sidebar-directory-setting.png');
+    await checkpoint('配置位置实际不是目录时显示读取错误，恢复目录设置后仍可继续', async () => {
+      const notDirectory=path.join(project,'not-a-directory'); assert.equal(fs.existsSync(notDirectory),false);
+      fs.writeFileSync(notDirectory,'这里是文件，不能作为讲解目录读取。'); roots.push(notDirectory);
+      await directorySetting(project,'not-a-directory');
+      await wait('目录读取失败说明实际路径',async()=>await has('无法读取讲解目录')&&await has(notDirectory));
+      await shown(changed,1); await directorySetting(project,'lecture-files[演示]');
+      await wait('恢复后项目讲解重新出现',async()=>(await rows(changed.title)).length===1); await shown(changed,1);
+    },'sidebar-directory-unreadable.png');
     await checkpoint('停止保留侧栏和代码页，目录外手动打开仍使用原阅读入口', async () => {
       const before = vscode.window.tabGroups.all.flatMap(group => group.tabs).filter(tab => tab.input instanceof vscode.TabInputText || tab.input instanceof vscode.TabInputTextDiff).length;
       await stop(); assert.ok(await has(changed.title));
@@ -180,7 +189,10 @@ exports.verify = async context => {
         const parent = path.dirname(settings); if (fs.existsSync(parent) && !fs.readdirSync(parent).length) fs.rmdirSync(parent);
       }
     }
-    for (const directory of roots.reverse()) fs.rmSync(directory, { recursive: true, force: true });
+    for (const directory of roots.reverse()) {
+      assert.ok(path.resolve(directory).toLowerCase().startsWith(path.resolve(config.runRoot).toLowerCase()+path.sep));
+      fs.rmSync(directory, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+    }
     assertBaseline();
   }
 };

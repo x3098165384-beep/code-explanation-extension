@@ -1,0 +1,12 @@
+{
+  "identity": {
+    "station": "Service-0x0-54064$",
+    "desktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7"
+  },
+  "expected": {
+    "station": "Service-0x0-54064$",
+    "mainProcessId": 57284,
+    "uniqueStationPerRun": false,
+    "desktop": "CodeExplanationTest_a44a7b84360041a9ad80440ad62d47c7"
+  }
+}

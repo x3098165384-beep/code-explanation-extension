@@ -1,0 +1,83 @@
+[
+  {
+    "name": "深色普通行内跨行拖选",
+    "expected": "const label = \"中文 C:\\temp\";\n\nreturn label;",
+    "actual": "const label = \"中文 C:\\temp\";\r\n\r\nreturn label;",
+    "selected": "const label = \"中文 C:\\temp\";\n\nreturn label;",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2713,
+      "ownerProcessId": 63768,
+      "ownerThreadDesktop": "CodeExplanationTest_d726f72bf57d4e4f88242ff4f4792c96",
+      "text": "const label = \"中文 C:\\temp\";\r\n\r\nreturn label;"
+    },
+    "passed": true
+  },
+  {
+    "name": "深色普通行内整块复制",
+    "expected": "\tconst label = \"中文 C:\\temp\";\n\nreturn label;\n",
+    "actual": "\tconst label = \"中文 C:\\temp\";\n\nreturn label;\n",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2723,
+      "ownerProcessId": 63768,
+      "ownerThreadDesktop": "CodeExplanationTest_d726f72bf57d4e4f88242ff4f4792c96",
+      "text": "\tconst label = \"中文 C:\\temp\";\n\nreturn label;\n"
+    },
+    "passed": true
+  },
+  {
+    "name": "浅色普通行内跨行拖选",
+    "expected": "const label = \"中文 C:\\temp\";\n\nreturn label;",
+    "actual": "const label = \"中文 C:\\temp\";\r\n\r\nreturn label;",
+    "selected": "const label = \"中文 C:\\temp\";\n\nreturn label;",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2736,
+      "ownerProcessId": 63768,
+      "ownerThreadDesktop": "CodeExplanationTest_d726f72bf57d4e4f88242ff4f4792c96",
+      "text": "const label = \"中文 C:\\temp\";\r\n\r\nreturn label;"
+    },
+    "passed": true
+  },
+  {
+    "name": "浅色普通行内整块复制",
+    "expected": "\tconst label = \"中文 C:\\temp\";\n\nreturn label;\n",
+    "actual": "\tconst label = \"中文 C:\\temp\";\n\nreturn label;\n",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2746,
+      "ownerProcessId": 63768,
+      "ownerThreadDesktop": "CodeExplanationTest_d726f72bf57d4e4f88242ff4f4792c96",
+      "text": "\tconst label = \"中文 C:\\temp\";\n\nreturn label;\n"
+    },
+    "passed": true
+  },
+  {
+    "name": "窄双侧diff跨行拖选",
+    "expected": "const label = \"中文 C:\\temp\";\n\nreturn label;",
+    "actual": "const label = \"中文 C:\\temp\";\r\n\r\nreturn label;",
+    "selected": "const label = \"中文 C:\\temp\";\n\nreturn label;",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2759,
+      "ownerProcessId": 63768,
+      "ownerThreadDesktop": "CodeExplanationTest_d726f72bf57d4e4f88242ff4f4792c96",
+      "text": "const label = \"中文 C:\\temp\";\r\n\r\nreturn label;"
+    },
+    "passed": true
+  },
+  {
+    "name": "窄双侧diff整块复制",
+    "expected": "\tconst label = \"中文 C:\\temp\";\n\nreturn label;\n",
+    "actual": "\tconst label = \"中文 C:\\temp\";\n\nreturn label;\n",
+    "native": {
+      "station": "Service-0x0-54064$",
+      "sequence": 2769,
+      "ownerProcessId": 63768,
+      "ownerThreadDesktop": "CodeExplanationTest_d726f72bf57d4e4f88242ff4f4792c96",
+      "text": "\tconst label = \"中文 C:\\temp\";\n\nreturn label;\n"
+    },
+    "passed": true
+  }
+]

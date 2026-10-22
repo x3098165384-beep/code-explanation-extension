@@ -1,0 +1,142 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.2.0",
+  "packageSha256": "0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:09:22.743Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:09:22.847Z"
+    },
+    {
+      "name": "recent 启动只列出历史，不自动打开源码或开始讲解",
+      "startedAt": "2026-10-22T09:09:23.212Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:09:23.243Z"
+    },
+    {
+      "name": "首次成功打开目录内与目录外讲解，侧栏同时保留目录列表及最近记录",
+      "startedAt": "2026-10-22T09:09:23.265Z",
+      "screenshot": "recent-first-open.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:09:40.228Z"
+    },
+    {
+      "name": "取消、坏JSON和缺失文件不替换成功阅读及最近目标",
+      "startedAt": "2026-10-22T09:09:40.230Z",
+      "screenshot": "recent-open-failed.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:09:49.288Z"
+    },
+    {
+      "name": "真实打开22份案例后只保留最近20个文件，并按文件去重和成功打开次序排序",
+      "startedAt": "2026-10-22T09:09:49.293Z",
+      "screenshot": "recent-limited.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:10:13.858Z"
+    },
+    {
+      "name": "停止仍保留继续入口，真实普通进程写下文件位置和步骤后退出",
+      "startedAt": "2026-10-22T09:10:13.861Z",
+      "screenshot": "recent-stopped-before-restart.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:10:18.358Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:10:27.449Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:10:27.575Z"
+    },
+    {
+      "name": "recent-restore 启动只列出历史，不自动打开源码或开始讲解",
+      "startedAt": "2026-10-22T09:10:27.706Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:10:27.743Z"
+    },
+    {
+      "name": "关闭后重启同一普通配置，主动点击继续恢复目录外讲解的真实步骤",
+      "startedAt": "2026-10-22T09:10:27.753Z",
+      "screenshot": "recent-restored.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:10:49.204Z"
+    },
+    {
+      "name": "恢复重新读取最新文件，标题变化和重排保持步骤标识，删除和新讲解回第一步",
+      "startedAt": "2026-10-22T09:10:49.206Z",
+      "screenshot": "recent-updated-steps.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:10:56.728Z"
+    },
+    {
+      "name": "继续目标暂时缺失时说明具体文件，保留记录与已接受内容，恢复后仍能打开",
+      "startedAt": "2026-10-22T09:10:56.731Z",
+      "screenshot": "recent-missing-recovered.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:11:04.571Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:11:16.820Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:11:17.069Z"
+    },
+    {
+      "name": "recent-project 启动只列出历史，不自动打开源码或开始讲解",
+      "startedAt": "2026-10-22T09:11:17.539Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:11:17.568Z"
+    },
+    {
+      "name": "同一配置打开另一项目没有首项目历史，成功阅读后仅保存本项目记录",
+      "startedAt": "2026-10-22T09:11:17.587Z",
+      "screenshot": "recent-other-project.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:11:35.118Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:11:49.906Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:11:50.043Z"
+    },
+    {
+      "name": "recent-multiple-roots 启动只列出历史，不自动打开源码或开始讲解",
+      "startedAt": "2026-10-22T09:11:50.591Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:11:50.670Z"
+    },
+    {
+      "name": "多根工作区各项目分别显示继续入口、最近记录和自己的阅读进度",
+      "startedAt": "2026-10-22T09:11:50.678Z",
+      "screenshot": "recent-multiple-projects.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:12:09.369Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T09:12:16.716Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:12:16.799Z"
+    },
+    {
+      "name": "recent-restore-final 启动只列出历史，不自动打开源码或开始讲解",
+      "startedAt": "2026-10-22T09:12:16.845Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:12:16.870Z"
+    },
+    {
+      "name": "返回首项目再重启，主动继续仍恢复原项目步骤，不混入另一项目记录",
+      "startedAt": "2026-10-22T09:12:16.876Z",
+      "screenshot": "recent-final-restored.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T09:12:22.710Z"
+    }
+  ],
+  "startedAt": "2026-10-22T09:09:22.244Z",
+  "finishedAt": "2026-10-22T09:12:22.714Z",
+  "result": "通过"
+}

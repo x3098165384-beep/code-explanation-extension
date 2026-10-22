@@ -1,0 +1,224 @@
+[
+  {
+    "group": "core",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-165216-e2835d28\\fixture\\project",
+    "before": {
+      "head": "2f41b1715a06de7ef6c23ed39dae1b5bce029a3b",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      },
+      "stagedDiffSha256": "7c06b08be7a759301c0b13d7533bae06a43d7a537f41c4768483e5a1e7a7c061",
+      "unstagedDiffSha256": "de55455355a8c797fe93235af089988bdc8288dca395be477e7e8c79c61651fc"
+    },
+    "after": {
+      "head": "9bfcfc9f9ea5c3a5527d233182392c87d324ccde",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      }
+    },
+    "sourceDiskUnchanged": true,
+    "indexUnchanged": true,
+    "statusExcludingKnownTestLectureUnchanged": true,
+    "intentionalTestChanges": "核心组使用空提交检查 HEAD 改变后的失效；最近记录组创建自己的 recent-a.json。其他项目的提交、空文件和重命名是隔离案例准备步骤。"
+  },
+  {
+    "group": "json",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170144-98299cc7\\fixture\\project",
+    "before": {
+      "head": "f95960cb4ed6dfd7394884668afa0930e951a0b5",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      },
+      "stagedDiffSha256": "7c06b08be7a759301c0b13d7533bae06a43d7a537f41c4768483e5a1e7a7c061",
+      "unstagedDiffSha256": "de55455355a8c797fe93235af089988bdc8288dca395be477e7e8c79c61651fc"
+    },
+    "after": {
+      "head": "f95960cb4ed6dfd7394884668afa0930e951a0b5",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      }
+    },
+    "sourceDiskUnchanged": true,
+    "indexUnchanged": true,
+    "statusExcludingKnownTestLectureUnchanged": true,
+    "intentionalTestChanges": "核心组使用空提交检查 HEAD 改变后的失效；最近记录组创建自己的 recent-a.json。其他项目的提交、空文件和重命名是隔离案例准备步骤。"
+  },
+  {
+    "group": "body",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170354-80e9c083\\fixture\\project",
+    "before": {
+      "head": "9441a07c0dd262846ea1a303c8b2b7ceab1c7960",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      },
+      "stagedDiffSha256": "7c06b08be7a759301c0b13d7533bae06a43d7a537f41c4768483e5a1e7a7c061",
+      "unstagedDiffSha256": "de55455355a8c797fe93235af089988bdc8288dca395be477e7e8c79c61651fc"
+    },
+    "after": {
+      "head": "9441a07c0dd262846ea1a303c8b2b7ceab1c7960",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      }
+    },
+    "sourceDiskUnchanged": true,
+    "indexUnchanged": true,
+    "statusExcludingKnownTestLectureUnchanged": true,
+    "intentionalTestChanges": "核心组使用空提交检查 HEAD 改变后的失效；最近记录组创建自己的 recent-a.json。其他项目的提交、空文件和重命名是隔离案例准备步骤。"
+  },
+  {
+    "group": "sidebar",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170710-e6ebf731\\fixture\\project",
+    "before": {
+      "head": "514e145a9364e715be54299f8907758e64fb99f1",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      },
+      "stagedDiffSha256": "7c06b08be7a759301c0b13d7533bae06a43d7a537f41c4768483e5a1e7a7c061",
+      "unstagedDiffSha256": "de55455355a8c797fe93235af089988bdc8288dca395be477e7e8c79c61651fc"
+    },
+    "after": {
+      "head": "514e145a9364e715be54299f8907758e64fb99f1",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      }
+    },
+    "sourceDiskUnchanged": true,
+    "indexUnchanged": true,
+    "statusExcludingKnownTestLectureUnchanged": true,
+    "intentionalTestChanges": "核心组使用空提交检查 HEAD 改变后的失效；最近记录组创建自己的 recent-a.json。其他项目的提交、空文件和重命名是隔离案例准备步骤。"
+  },
+  {
+    "group": "recent",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-170857-faf29de9\\fixture\\project",
+    "before": {
+      "head": "8778c998b36567e9a6cc6182f86f4da0c00bdd2d",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      },
+      "stagedDiffSha256": "7c06b08be7a759301c0b13d7533bae06a43d7a537f41c4768483e5a1e7a7c061",
+      "unstagedDiffSha256": "de55455355a8c797fe93235af089988bdc8288dca395be477e7e8c79c61651fc"
+    },
+    "after": {
+      "head": "8778c998b36567e9a6cc6182f86f4da0c00bdd2d",
+      "status": "MM src/charge.js\n?? .code-explanations/\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      }
+    },
+    "sourceDiskUnchanged": true,
+    "indexUnchanged": true,
+    "statusExcludingKnownTestLectureUnchanged": true,
+    "intentionalTestChanges": "核心组使用空提交检查 HEAD 改变后的失效；最近记录组创建自己的 recent-a.json。其他项目的提交、空文件和重命名是隔离案例准备步骤。"
+  },
+  {
+    "group": "conversion",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-171226-55cd5458\\fixture\\project",
+    "before": {
+      "head": "59eae261b9ebfd4a81917143be691160b4a6990c",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      },
+      "stagedDiffSha256": "7c06b08be7a759301c0b13d7533bae06a43d7a537f41c4768483e5a1e7a7c061",
+      "unstagedDiffSha256": "de55455355a8c797fe93235af089988bdc8288dca395be477e7e8c79c61651fc"
+    },
+    "after": {
+      "head": "59eae261b9ebfd4a81917143be691160b4a6990c",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      }
+    },
+    "sourceDiskUnchanged": true,
+    "indexUnchanged": true,
+    "statusExcludingKnownTestLectureUnchanged": true,
+    "intentionalTestChanges": "核心组使用空提交检查 HEAD 改变后的失效；最近记录组创建自己的 recent-a.json。其他项目的提交、空文件和重命名是隔离案例准备步骤。"
+  },
+  {
+    "group": "layout-final",
+    "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-171741-37c6a626\\fixture\\project",
+    "before": {
+      "head": "aa9b0181d58f03a0ea687a01257c0989c736ad1d",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      },
+      "stagedDiffSha256": "7c06b08be7a759301c0b13d7533bae06a43d7a537f41c4768483e5a1e7a7c061",
+      "unstagedDiffSha256": "de55455355a8c797fe93235af089988bdc8288dca395be477e7e8c79c61651fc"
+    },
+    "after": {
+      "head": "aa9b0181d58f03a0ea687a01257c0989c736ad1d",
+      "status": "MM src/charge.js\n",
+      "index": "100644 6ee67b03113d504170f37f61362cb10c215d551e 0\tpackage.json\n100644 3c5449fb562e17b5256c3dbaab7ecdf198efc274 0\tsrc/charge.js\n100644 a5b4966f72d7229c899111ddf34f485157937b24 0\tsrc/format-amount.js\n100644 9f5182539a16ad3195abe28262eba4b64d5396e3 0\tsrc/invoice.js\n",
+      "disk": {
+        "package.json": "273414221c92b08b7d293a81192f94bdd20472c4be276a607aaab151c7213f43",
+        "src/charge.js": "7a9583e22d87e1428c53fc1d871f33173922da6c278f1fe57b9a6fc423f88a69",
+        "src/format-amount.js": "08cca95a749ed05ac1caf07695c2bce3b6f4539031623642a560619b3b5af6af",
+        "src/invoice.js": "eda4088ec45f3253d78062be87e09f254179de77a8c9fd96e0a117145df22784"
+      }
+    },
+    "sourceDiskUnchanged": true,
+    "indexUnchanged": true
+  }
+]
