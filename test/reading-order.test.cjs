@@ -31,6 +31,7 @@ function environment() {
   class Uri {
     constructor(value) { this.fsPath = path.resolve(value); this.path = this.fsPath.replaceAll('\\', '/'); this.scheme = 'file'; }
     static file(value) { return new Uri(value); }
+    static parse(value) { if (!value.startsWith('file://')) throw new Error('不是文件位置'); return new Uri(value.slice(7)); }
     static joinPath(uri, ...parts) { return new Uri(path.join(uri.fsPath, ...parts)); }
     toString() { return 'file://' + this.path; }
   }
@@ -111,6 +112,21 @@ test('源码尚在读取时查看正文，不取消当前步骤的行内定位',
   assert.equal(env.snapshots.at(-1).fallback, undefined);
   assert.equal(env.snapshots.at(-1).step, 'first');
   assert.deepEqual(env.errors, []);
+  env.reader.dispose();
+});
+
+test('先点击的文件读取迟到，不进入最近讲解或覆盖继续目标', async () => {
+  const env = environment();
+  const pending = deferred();
+  env.setRead(file => file.toString() === env.file.toString() ? pending.promise : undefined);
+  const older = env.reader.open(env.file);
+  await new Promise(resolve => setImmediate(resolve));
+  const another = env.Uri.file('test-project/newest.json');
+  env.files.set(another.toString(), document('newest'));
+  await env.reader.open(another);
+  pending.resolve(document()); await older;
+  assert.deepEqual(env.reader.recentFiles(env.reader.position.project).map(file => file.toString()), [another.toString()]);
+  assert.equal(env.reader.position.explanationId, 'newest');
   env.reader.dispose();
 });
 

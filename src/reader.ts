@@ -17,7 +17,7 @@ type ReadingOperation = vscode.CancellationTokenSource & { kind: 'opening' | 're
 
 export interface OpenLocation {
   project: vscode.Uri;
-  explanationId: string;
+  explanationId?: string;
   stepId?: string;
 }
 
@@ -50,6 +50,8 @@ export class Reader implements vscode.Disposable {
   private operation?: ReadingOperation;
   private readonly changed = new vscode.EventEmitter<void>();
   readonly onDidChangeReading = this.changed.event;
+  private readonly opened = new vscode.EventEmitter<vscode.Uri>();
+  readonly onDidOpenExplanation = this.opened.event;
 
   constructor(
     private readonly sources: SourceReader,
@@ -66,6 +68,34 @@ export class Reader implements vscode.Disposable {
 
   savedStep(project: vscode.Uri, file: vscode.Uri, explanationId: string): string | undefined {
     return this.progress.get<string>(this.progressKey(project, file, explanationId));
+  }
+
+  private recentKey(project: vscode.Uri): string {
+    const location = process.platform === 'win32' ? project.toString().toLowerCase() : project.toString();
+    return 'codeExplanation.recent.' + sha256(location);
+  }
+
+  recentFiles(project: vscode.Uri): vscode.Uri[] {
+    const stored = this.progress.get<unknown>(this.recentKey(project));
+    if (!Array.isArray(stored)) return [];
+    const files: vscode.Uri[] = [];
+    for (const value of stored) {
+      if (typeof value !== 'string') continue;
+      try {
+        const file = vscode.Uri.parse(value);
+        if (file.scheme === 'file' && !files.some(previous => sameUri(previous, file))) files.push(file);
+      } catch { /* 忽略无法还原为文件位置的记录。 */ }
+      if (files.length === 20) break;
+    }
+    return files;
+  }
+
+  private remember(project: vscode.Uri, file: vscode.Uri): void {
+    const files = [file, ...this.recentFiles(project).filter(previous => !sameUri(previous, file))].slice(0, 20);
+    void this.progress.update(this.recentKey(project), files.map(value => value.toString())).then(undefined, error => {
+      console.warn(`无法保存项目“${project.fsPath}”的最近讲解：${message(error)}`);
+    });
+    this.opened.fire(project);
   }
 
   private begin(kind: ReadingOperation['kind'] = 'reading'): ReadingOperation {
@@ -150,7 +180,7 @@ export class Reader implements vscode.Disposable {
       try {
         const explanation = await this.readSaved(chosen);
         if (!this.current(operation)) return;
-        if (location && explanation.id !== location.explanationId) throw new Error('讲解标识已更改，请在更新后的列表中重新选择。');
+        if (location?.explanationId && explanation.id !== location.explanationId) throw new Error('讲解标识已更改，请在更新后的列表中重新选择。');
         if (location?.stepId && !explanation.steps.some(step => step.id === location.stepId)) throw new Error('所选步骤已被删除，请在更新后的列表中重新选择。');
         operation.kind = 'reading';
         const previous = this.reading;
@@ -167,6 +197,7 @@ export class Reader implements vscode.Disposable {
         this.presentation.setFileError();
         this.subscribe(reading);
         this.saveProgress(reading);
+        this.remember(reading.project, reading.file);
         await this.display(reading, operation);
       } catch (error) {
         if (!this.current(operation)) return;
@@ -299,5 +330,5 @@ export class Reader implements vscode.Disposable {
     this.changed.fire();
   }
 
-  dispose(): void { this.stop(); this.changed.dispose(); }
+  dispose(): void { this.stop(); this.changed.dispose(); this.opened.dispose(); }
 }

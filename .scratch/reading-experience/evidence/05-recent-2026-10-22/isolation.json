@@ -1,0 +1,46 @@
+﻿{
+    "startedAt":  "2026-10-22T08:43:58.0893350Z",
+    "switchedDesktop":  false,
+    "phases":  [
+                   {
+                       "processId":  35272,
+                       "exitCode":  0,
+                       "name":  "首次流程",
+                       "desktop":  "CodeExplanationTest_63eb97b04cfd425f949333a75dfb9df9"
+                   },
+                   {
+                       "processId":  26048,
+                       "exitCode":  0,
+                       "name":  "recent-restore",
+                       "desktop":  "CodeExplanationTest_a720ab78b14c4fe78f1bd7e76a127cc6"
+                   },
+                   {
+                       "processId":  56936,
+                       "exitCode":  0,
+                       "name":  "recent-project",
+                       "desktop":  "CodeExplanationTest_d312230ac6774997abb0ae508678f144"
+                   },
+                   {
+                       "processId":  48296,
+                       "exitCode":  0,
+                       "name":  "recent-multiple-roots",
+                       "desktop":  "CodeExplanationTest_12566e404b804da4b8f217f1a6602edd"
+                   },
+                   {
+                       "processId":  71872,
+                       "exitCode":  0,
+                       "name":  "recent-restore-final",
+                       "desktop":  "CodeExplanationTest_bd7851e84a484690a70facfe5df6fedc"
+                   }
+               ],
+    "inputDesktopAfter":  "Default",
+    "desktop":  "CodeExplanationTest_63eb97b04cfd425f949333a75dfb9df9",
+    "sentInput":  false,
+    "inputDesktopBefore":  "Default",
+    "processId":  35272,
+    "clipboardIsolated":  true,
+    "finishedAt":  "2026-10-22T08:45:51.5835785Z",
+    "windowStation":  "Service-0x0-54064$",
+    "runRoot":  "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-164353-c8aaade4",
+    "exitCode":  0
+}
