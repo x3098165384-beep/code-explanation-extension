@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { randomUUID } from 'node:crypto';
 import type { CodeSnapshot, Explanation, ResolvedStep, Step } from './model';
 import { normalizeText } from './explanation';
+import { displayMarkdown } from './markdown-display';
 
 const bodyScheme = 'code-explanation-body';
 
@@ -159,10 +160,12 @@ export class Presentation implements vscode.Disposable {
       const anchorSnapshot = anchor.side === 'left' ? resolved.left! : resolved.right;
       const markdown = new vscode.MarkdownString();
       markdown.isTrusted = false;
-      markdown.supportHtml = false;
+      markdown.supportHtml = true;
       markdown.supportThemeIcons = false;
       if (file) markdown.baseUri = file;
-      markdown.appendMarkdown(`## ${step.title}\n\n${step.body}`);
+      const theme = vscode.window.activeColorTheme.kind;
+      markdown.appendMarkdown(displayMarkdown(`## ${step.title}\n\n${step.body}`,
+        theme === vscode.ColorThemeKind.Light || theme === vscode.ColorThemeKind.HighContrastLight));
       for (const notice of resolved.notices) {
         markdown.appendMarkdown('\n\n---\n\n');
         markdown.appendText(notice);
@@ -176,6 +179,8 @@ export class Presentation implements vscode.Disposable {
       thread.label = `${explanation.title} · 第 ${index + 1} 步，共 ${explanation.steps.length} 步`;
       thread.canReply = false;
       thread.collapsibleState = vscode.CommentThreadCollapsibleState.Expanded;
+      const anchorEditor = anchor.side === 'left' ? editors[0] : editors.at(-1)!;
+      anchorEditor.revealRange(new vscode.Range(anchor.range.end, anchor.range.end), vscode.TextEditorRevealType.AtTop);
     } finally {
       this.finish(operation);
     }

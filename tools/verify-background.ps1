@@ -1,4 +1,5 @@
-﻿param([string]$CodePath, [int]$TimeoutSeconds = 600)
+﻿param([string]$CodePath, [int]$TimeoutSeconds = 600, [switch]$LayoutOnly,
+    [string]$ExplanationPath, [string]$ExplanationProject)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $runName = (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + [Guid]::NewGuid().ToString('N').Substring(0, 8)
@@ -48,12 +49,17 @@ $configuration = @{
     runName = $runName; runRoot = $runRoot; fixture = $fixture; port = $port
     codePath = $CodePath; packagePath = $package; packageSha256 = $packageHash
 }
+if ($ExplanationPath -or $ExplanationProject) {
+    if (-not $ExplanationPath -or -not $ExplanationProject) { throw '需要同时指定讲解文件和对应代码项目。' }
+    $configuration.explanationPath = (Resolve-Path -LiteralPath $ExplanationPath).Path
+    $configuration.explanationProject = (Resolve-Path -LiteralPath $ExplanationProject).Path
+}
 $configuration | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runRoot 'configuration.json') -Encoding utf8
 $env:CODE_EXPLANATION_BACKGROUND_RUN = $runRoot
 $env:ELECTRON_RUN_AS_NODE = $null
 $env:VSCODE_IPC_HOOK_CLI = $null
 $env:VSCODE_PORTABLE = $null
-$env:CODE_EXPLANATION_BACKGROUND_PHASE = $null
+$env:CODE_EXPLANATION_BACKGROUND_PHASE = if ($LayoutOnly) { 'layout' } else { $null }
 Add-Type -Path (Join-Path $PSScriptRoot 'IsolatedDesktop.cs')
 $arguments = @(
     '--new-window', '--skip-welcome', '--skip-release-notes', '--disable-workspace-trust', '--locale=en',
@@ -85,7 +91,8 @@ try {
     if ((Get-Content -LiteralPath (Join-Path $runRoot 'results.json') -Raw -Encoding UTF8 | ConvertFrom-Json).result -ne '通过') { throw '后台检查尚未全部通过。' }
     $record.phases = @(@{ name = '首次流程'; desktop = $session.DesktopName; processId = $session.ProcessId; exitCode = $session.ExitCode })
     $session.Dispose(); $session = $null
-    foreach ($phase in @('restore', 'project', 'lecture-edit', 'multiple-roots', 'no-project')) {
+    $phases = if ($LayoutOnly) { @() } else { @('restore', 'project', 'lecture-edit', 'multiple-roots', 'no-project', 'layout') }
+    foreach ($phase in $phases) {
         $env:CODE_EXPLANATION_BACKGROUND_PHASE = $phase
         $phaseResult = Get-Content -LiteralPath (Join-Path $runRoot 'results.json') -Raw -Encoding UTF8 | ConvertFrom-Json
         $phaseResult.result = '进行中'

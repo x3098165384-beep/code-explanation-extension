@@ -36,7 +36,7 @@ exports.connect = async function (config) {
   });
   const evaluate = async expression => {
     const result = await call('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true });
-    if (result.exceptionDetails) throw new Error(result.exceptionDetails.text);
+    if (result.exceptionDetails) throw new Error(result.exceptionDetails.exception?.description || result.exceptionDetails.text);
     return result.result.value;
   };
   const title = await evaluate('document.title');

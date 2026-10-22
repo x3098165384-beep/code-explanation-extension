@@ -1,0 +1,56 @@
+﻿{
+    "runRoot":  "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-141450-6986da69",
+    "sentInput":  false,
+    "finishedAt":  "2026-10-22T06:18:58.7752062Z",
+    "desktop":  "CodeExplanationTest_19403fbd1ba7419c88cf3ebeb9bd4d27",
+    "phases":  [
+                   {
+                       "processId":  24128,
+                       "exitCode":  0,
+                       "name":  "首次流程",
+                       "desktop":  "CodeExplanationTest_19403fbd1ba7419c88cf3ebeb9bd4d27"
+                   },
+                   {
+                       "processId":  63108,
+                       "exitCode":  0,
+                       "name":  "restore",
+                       "desktop":  "CodeExplanationTest_b71737055e714a8c84f84804a1994946"
+                   },
+                   {
+                       "processId":  60300,
+                       "exitCode":  0,
+                       "name":  "project",
+                       "desktop":  "CodeExplanationTest_26d7eefcce9344039c7ec28f53fb616a"
+                   },
+                   {
+                       "processId":  63256,
+                       "exitCode":  0,
+                       "name":  "lecture-edit",
+                       "desktop":  "CodeExplanationTest_eb785fe3811d49cdaa7d3a7a8d0d3c3a"
+                   },
+                   {
+                       "processId":  56368,
+                       "exitCode":  0,
+                       "name":  "multiple-roots",
+                       "desktop":  "CodeExplanationTest_9dce4fedfdb0455c8e07ae15d5ebfc56"
+                   },
+                   {
+                       "processId":  61464,
+                       "exitCode":  0,
+                       "name":  "no-project",
+                       "desktop":  "CodeExplanationTest_2f2e231cd427435bbe24c2c21dae3949"
+                   },
+                   {
+                       "processId":  62764,
+                       "exitCode":  0,
+                       "name":  "layout",
+                       "desktop":  "CodeExplanationTest_f79b8f59549a427280436328bf8cdac0"
+                   }
+               ],
+    "inputDesktopAfter":  "Default",
+    "inputDesktopBefore":  "Default",
+    "processId":  24128,
+    "startedAt":  "2026-10-22T06:14:54.5561768Z",
+    "switchedDesktop":  false,
+    "exitCode":  0
+}

@@ -10,3 +10,6 @@ tsconfig.json
 tools/**
 node_modules/@types/**
 node_modules/typescript/**
+node_modules/highlight.js/es/**
+node_modules/highlight.js/styles/**
+node_modules/highlight.js/scss/**

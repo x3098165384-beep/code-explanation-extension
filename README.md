@@ -15,6 +15,8 @@
 
 当前工作依据见[首版规格](.scratch/first-release/spec.md)，文件约定见[Markdown 讲解文件格式](.scratch/first-release/explanation-format.md)，可阅读[完整讲解示例](.scratch/first-release/explanation.example.md)。规格和[8 项首版任务](.scratch/first-release/issues)保存在本地 Markdown 任务记录中。任务 01 至 08 已完成，验收勾选和对应证据已补齐；没有推送或发布扩展市场。
 
+0.1.3 按[确认的效果图](docs/plans/images/inline-explanation-approved.png)为行内代码块增加独立底色、细边框、留白和高亮，代码下方使用简短翻译。讲解仍是普通 Markdown，插件在内存中生成矢量代码框；原文可通过“查看正文”读取和复制，不修改主题或编辑器安装文件。实际运行结果见[后台验收说明](docs/background-verification.md)。
+
 ## 构建与使用
 
 需要 Node.js、Git 及 VS Code。执行 `npm.cmd install`、`npm.cmd run check`、`npm.cmd run build`；按 F5 可启动扩展开发窗口。执行 `npm.cmd run package` 可生成本地 VSIX，通过 VS Code 的“从 VSIX 安装”手动安装。扩展不会在启动时自动打开讲解。

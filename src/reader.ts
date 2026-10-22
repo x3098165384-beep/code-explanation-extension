@@ -74,6 +74,7 @@ export class Reader implements vscode.Disposable {
       else void this.refresh();
     };
     reading.subscriptions.push(this.sources.watch(reading.project, reading.explanation, changed));
+    reading.subscriptions.push(vscode.window.onDidChangeActiveColorTheme(changed));
     const parent = vscode.Uri.joinPath(reading.file, '..');
     const watcher = vscode.workspace.createFileSystemWatcher(new vscode.RelativePattern(parent, '*'));
     const savedFileChanged = (uri: vscode.Uri): void => {

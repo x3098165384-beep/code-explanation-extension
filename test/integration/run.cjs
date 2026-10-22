@@ -23,7 +23,7 @@ exports.run = async function () {
   assert.ok(extension.extensionPath.toLowerCase().startsWith(root.toLowerCase()));
   const { parseExplanation, normalizeText, sha256 } = require(path.join(extension.extensionPath, 'dist/explanation'));
   const disk = parseExplanation(diskRaw), unsaved = parseExplanation(fs.readFileSync(unsavedFile, 'utf8'));
-  const results = process.env.CODE_EXPLANATION_BACKGROUND_PHASE ? JSON.parse(fs.readFileSync(path.join(root, 'results.json'), 'utf8')) : {
+  const results = process.env.CODE_EXPLANATION_BACKGROUND_PHASE && fs.existsSync(path.join(root, 'results.json')) ? JSON.parse(fs.readFileSync(path.join(root, 'results.json'), 'utf8')) : {
     vscodeVersion: vscode.version, extensionVersion: extension.packageJSON.version, packageSha256: config.packageSha256,
     extensionPath: extension.extensionPath, project, cases: [], startedAt: new Date().toISOString(),
   };
@@ -125,6 +125,10 @@ exports.run = async function () {
       const state = await renderer.state();
       assert.equal(state.comments.length, 0); assert.ok(!state.status.includes('停止讲解'));
     });
+    if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE === 'layout') {
+      await require('./layout.cjs').verify({ config, renderer, checkpoint, wait, command, parseExplanation, sha256, normalizeText, disk, diskFile });
+      results.finishedAt = new Date().toISOString(); results.result = '通过'; save(); return;
+    }
     if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE) {
       if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE === 'restore') {
         await checkpoint('真实重启后主动恢复进度，已记录步骤删除后回第一步', async () => {
@@ -300,7 +304,7 @@ exports.run = async function () {
       const state = await open(diskFile, disk);
       assertAnchor(state, 'file', 4, 5);
       assert.match(state.comments[0].markdown, /<ol>/); assert.match(state.comments[0].markdown, /<strong>/);
-      assert.match(state.comments[0].markdown, /<pre(?:\s|>)|monaco-tokenized-source/); assert.match(state.comments[0].markdown, /<a /);
+      assert.match(state.comments[0].markdown, /data:image\/svg\+xml;base64,/); assert.match(state.comments[0].markdown, /<a /);
       assert.equal(vscode.window.activeTextEditor.document.uri.fsPath.toLowerCase(), uri('src/invoice.js').fsPath.toLowerCase());
       results.decorationSample = state.highlights;
       await renderer.screenshot('01-current-markdown.png');

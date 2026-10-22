@@ -58,6 +58,7 @@ function environment() {
       onDidSaveTextDocument(callback) { savedListeners.add(callback); return { dispose() { savedListeners.delete(callback); } }; },
     },
     window: {
+      onDidChangeActiveColorTheme: disposable,
       showWarningMessage(value) { warnings.push(value); return Promise.resolve(); },
       showErrorMessage(value) { errors.push(value); return Promise.resolve(); },
       showQuickPick() { return Promise.resolve(undefined); },
