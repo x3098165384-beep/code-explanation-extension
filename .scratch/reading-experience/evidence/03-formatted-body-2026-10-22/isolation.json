@@ -1,0 +1,22 @@
+﻿{
+    "startedAt":  "2026-10-22T08:21:00.6523370Z",
+    "switchedDesktop":  false,
+    "phases":  [
+                   {
+                       "processId":  70652,
+                       "exitCode":  0,
+                       "name":  "首次流程",
+                       "desktop":  "CodeExplanationTest_44988aa3b4f940b3b16e92600b08b940"
+                   }
+               ],
+    "inputDesktopAfter":  "Default",
+    "desktop":  "CodeExplanationTest_44988aa3b4f940b3b16e92600b08b940",
+    "sentInput":  false,
+    "inputDesktopBefore":  "Default",
+    "processId":  70652,
+    "clipboardIsolated":  true,
+    "finishedAt":  "2026-10-22T08:21:29.5282914Z",
+    "windowStation":  "Service-0x0-54064$",
+    "runRoot":  "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-162055-652d1e46",
+    "exitCode":  0
+}

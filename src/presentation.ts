@@ -1,10 +1,9 @@
 import * as vscode from 'vscode';
 import { randomUUID } from 'node:crypto';
 import type { CodeSnapshot, Explanation, ResolvedStep, Step } from './model';
-import { normalizeText } from './explanation';
 import { displayMarkdown } from './markdown-display';
+import { BodyView } from './body-view';
 
-const bodyScheme = 'code-explanation-body';
 const copyCommand = 'codeExplanation.copyCodeBlock';
 
 function sameUri(left: vscode.Uri, right: vscode.Uri): boolean {
@@ -27,14 +26,12 @@ export class Presentation implements vscode.Disposable {
   private readonly body = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 102);
   private readonly stop = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 101);
   private readonly fileError = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
-  private readonly bodyProvider: vscode.Disposable;
-  private readonly bodyClosed: vscode.Disposable;
+  private readonly bodyView = new BodyView();
   private readonly copyHandler: vscode.Disposable;
   private readonly copies = new Map<string, string>();
   private thread?: vscode.CommentThread;
   private decoration?: vscode.TextEditorDecorationType;
   private pending?: vscode.CancellationTokenSource;
-  private acceptedBody?: { uri: vscode.Uri; text: string };
 
   constructor() {
     this.copyHandler = vscode.commands.registerCommand(copyCommand, async (id: unknown) => {
@@ -43,18 +40,6 @@ export class Presentation implements vscode.Disposable {
       if (code === undefined) return false;
       await vscode.env.clipboard.writeText(code);
       return true;
-    });
-    this.bodyProvider = vscode.workspace.registerTextDocumentContentProvider(bodyScheme, {
-      provideTextDocumentContent: (uri, token) => {
-        if (token.isCancellationRequested) throw new vscode.CancellationError();
-        if (!this.acceptedBody || !sameUri(uri, this.acceptedBody.uri)) {
-          throw new Error('这份讲解已停止或已被替换，请主动打开讲解后查看当前步骤正文。');
-        }
-        return this.acceptedBody.text;
-      },
-    });
-    this.bodyClosed = vscode.workspace.onDidCloseTextDocument(document => {
-      if (this.acceptedBody && sameUri(document.uri, this.acceptedBody.uri)) this.releaseBody();
     });
   }
 
@@ -70,7 +55,11 @@ export class Presentation implements vscode.Disposable {
   }
 
   releaseBody(): void {
-    this.acceptedBody = undefined;
+    this.bodyView.dispose();
+  }
+
+  updateBody(file: vscode.Uri, explanation: Explanation, step: Step, fileError?: string): void {
+    this.bodyView.update(file, explanation, step, fileError);
   }
 
   private begin(token: vscode.CancellationToken): { source: vscode.CancellationTokenSource; cancel: vscode.Disposable } {
@@ -140,14 +129,17 @@ export class Presentation implements vscode.Disposable {
       this.check(operation.source);
       const snapshots = resolved.kind === 'file' ? [resolved.right] : [resolved.left!, resolved.right];
       requireCurrent(snapshots);
+      // 从正文页切步时沿用可见的代码列，让正文继续留在旁边。
+      const viewColumn = vscode.window.activeTextEditor?.viewColumn ?? vscode.window.visibleTextEditors[0]?.viewColumn ??
+        (this.bodyView.active ? vscode.ViewColumn.Beside : vscode.ViewColumn.One);
       if (resolved.kind === 'file') {
-        await vscode.window.showTextDocument(resolved.right.document, { preview: false });
+        await vscode.window.showTextDocument(resolved.right.document, { preview: false, viewColumn });
       } else {
         const active = vscode.window.tabGroups.activeTabGroup.activeTab?.input;
         const existing = active instanceof vscode.TabInputTextDiff &&
           sameUri(active.original, resolved.left!.uri) && sameUri(active.modified, resolved.right.uri);
         if (!existing) {
-          await vscode.commands.executeCommand('vscode.diff', resolved.left!.uri, resolved.right.uri, step.title, { preview: false });
+          await vscode.commands.executeCommand('vscode.diff', resolved.left!.uri, resolved.right.uri, step.title, { preview: false, viewColumn });
         }
       }
       this.check(operation.source);
@@ -202,6 +194,7 @@ export class Presentation implements vscode.Disposable {
   }
 
   updateNavigation(explanation: Explanation, index: number, error?: string, loading = false): void {
+    if (!loading) this.bodyView.setNotice(error);
     this.previous.text = '$(arrow-left) 上一步';
     this.previous.command = index > 0 ? 'codeExplanation.previous' : undefined;
     this.previous.color = index > 0 ? undefined : new vscode.ThemeColor('disabledForeground');
@@ -215,7 +208,7 @@ export class Presentation implements vscode.Disposable {
     this.progress.tooltip = `${explanation.title}\n${loading ? '正在读取并核对本步代码，完成后会显示讲解。读取期间可以选择其他步骤或停止。' : error ?? '选择要阅读的步骤'}`;
     this.body.text = '$(markdown) 查看正文';
     this.body.command = 'codeExplanation.body';
-    this.body.tooltip = '查看当前步骤的讲解正文';
+    this.body.tooltip = '查看完整讲解，并定位当前步骤';
     this.stop.text = '$(primitive-square) 停止讲解';
     this.stop.command = 'codeExplanation.stop';
     for (const item of [this.previous, this.progress, this.next, this.body, this.stop]) item.show();
@@ -238,47 +231,15 @@ export class Presentation implements vscode.Disposable {
     this.fileError.show();
   }
 
-  async showBody(file: vscode.Uri, explanation: Explanation, step: Step, token: vscode.CancellationToken): Promise<void> {
-    const operation = this.begin(token);
-    try {
-      this.check(operation.source);
-      let stale = true;
-      try {
-        const saved = await vscode.workspace.fs.readFile(file);
-        this.check(operation.source);
-        stale = normalizeText(new TextDecoder('utf-8', { fatal: true }).decode(saved)) !== explanation.text;
-      } catch (error) {
-        this.check(operation.source);
-        if (error instanceof vscode.CancellationError) throw error;
-      }
-      this.check(operation.source);
-      const lines = [...(stale ? ['# 上一次成功加载的讲解', ''] : []), `# ${explanation.title}`, '', explanation.description, ''];
-      let headingLine = 0;
-      for (const current of explanation.steps) {
-        if (current.id === step.id) headingLine = lines.join('\n').split('\n').length;
-        lines.push(`## ${current.title}`, '', normalizeText(current.body), '');
-      }
-      const text = lines.join('\n');
-      if (this.acceptedBody?.text !== text) {
-        this.acceptedBody = { uri: vscode.Uri.from({ scheme: bodyScheme, path: stale ? '/上一次成功加载的讲解.md' : '/讲解正文.md', query: randomUUID() }), text };
-      }
-      const document = await vscode.workspace.openTextDocument(this.acceptedBody.uri);
-      this.check(operation.source);
-      const range = new vscode.Range(headingLine, 0, headingLine, 0);
-      const editor = await vscode.window.showTextDocument(document, { preview: false, selection: range });
-      this.check(operation.source);
-      editor.revealRange(range, vscode.TextEditorRevealType.InCenterIfOutsideViewport);
-    } finally {
-      this.finish(operation);
-    }
+  async showBody(file: vscode.Uri, explanation: Explanation, step: Step, token: vscode.CancellationToken, fileError?: string): Promise<void> {
+    if (token.isCancellationRequested) throw new vscode.CancellationError();
+    this.bodyView.show(file, explanation, step, fileError);
   }
 
   dispose(): void {
     this.clear();
     this.releaseBody();
     this.controller.dispose();
-    this.bodyProvider.dispose();
-    this.bodyClosed.dispose();
     this.copyHandler.dispose();
     for (const item of [this.previous, this.progress, this.next, this.body, this.stop, this.fileError]) item.dispose();
   }

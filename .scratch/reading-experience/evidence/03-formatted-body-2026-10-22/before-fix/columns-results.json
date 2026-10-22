@@ -1,0 +1,39 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.2.0",
+  "packageSha256": "A56762F9E731D4E0DE2D80BE5CB2D8FFB2BA8361BEB9642B919B18BE4295C631",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-161514-d3fa812b\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-161514-d3fa812b\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T08:15:25.501Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:15:25.598Z"
+    },
+    {
+      "name": "正式完整正文显示标题简介全部步骤，并按稳定标识定位当前步骤",
+      "startedAt": "2026-10-22T08:15:26.188Z",
+      "screenshot": "body-complete.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:15:33.475Z"
+    },
+    {
+      "name": "正文实际拖选、普通复制和整块复制保留字符、Tab与空行",
+      "startedAt": "2026-10-22T08:15:33.477Z",
+      "screenshot": "body-copied.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:15:36.304Z"
+    },
+    {
+      "name": "保存和重排更新同一正文页，保持当前步骤且不夺取代码焦点",
+      "startedAt": "2026-10-22T08:15:36.305Z",
+      "result": "失败",
+      "error": "Error: 等待后台界面超时：正文已定位当前步骤\n\tat wait (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:45:11)\n\tat async bodyWait (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\body.cjs:84:5)\n\tat async current (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\body.cjs:89:5)\n\tat async f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\body.cjs:166:29\n\tat async checkpoint (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:81:7)\n\tat async exports.verify (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\body.cjs:164:5)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:143:7)\n\tat async exports.activate (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\driver.cjs:26:5)\n\tat async BI._activate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16068)\n\tat async BI._waitForDepsThenActivate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16010)\n\tat async BI._initialize (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:15377)",
+      "finishedAt": "2026-10-22T08:16:01.800Z"
+    }
+  ],
+  "startedAt": "2026-10-22T08:15:25.205Z",
+  "result": "失败",
+  "error": "Error: 等待后台界面超时：正文已定位当前步骤\n\tat wait (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:45:11)\n\tat async bodyWait (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\body.cjs:84:5)\n\tat async current (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\body.cjs:89:5)\n\tat async f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\body.cjs:166:29\n\tat async checkpoint (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:81:7)\n\tat async exports.verify (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\body.cjs:164:5)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:143:7)\n\tat async exports.activate (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\driver.cjs:26:5)\n\tat async BI._activate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16068)\n\tat async BI._waitForDepsThenActivate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16010)\n\tat async BI._initialize (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:15377)"
+}

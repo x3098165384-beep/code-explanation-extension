@@ -1,0 +1,67 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.2.0",
+  "packageSha256": "812FDE0EC186DABCECEEFBE6F0BAB299E84F3F13A33CDA76E7335D14DD89A36D",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-162055-652d1e46\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-162055-652d1e46\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T08:21:06.698Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:21:06.831Z"
+    },
+    {
+      "name": "正式完整正文显示标题简介全部步骤，并按稳定标识定位当前步骤",
+      "startedAt": "2026-10-22T08:21:07.376Z",
+      "screenshot": "body-complete.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:21:13.999Z"
+    },
+    {
+      "name": "正文实际拖选、普通复制和整块复制保留字符、Tab与空行",
+      "startedAt": "2026-10-22T08:21:14.001Z",
+      "screenshot": "body-copied.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:21:17.221Z"
+    },
+    {
+      "name": "保存和重排更新同一正文页，保持当前步骤且不夺取代码焦点",
+      "startedAt": "2026-10-22T08:21:17.222Z",
+      "screenshot": "body-updated.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:21:19.905Z"
+    },
+    {
+      "name": "无效JSON和暂时读不到文件保留完整旧正文，修复后移除旧内容标识",
+      "startedAt": "2026-10-22T08:21:19.907Z",
+      "screenshot": "body-json-recovered.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:21:22.029Z"
+    },
+    {
+      "name": "代码失效移除行内范围并说明原因，正文可复制，修复恢复行内阅读",
+      "startedAt": "2026-10-22T08:21:22.031Z",
+      "screenshot": "body-source-recovered.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:21:24.754Z"
+    },
+    {
+      "name": "删除步骤和更换讲解使用阅读流程的结果，关闭后不自行重建",
+      "startedAt": "2026-10-22T08:21:24.756Z",
+      "screenshot": "body-reopened.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:21:27.581Z"
+    },
+    {
+      "name": "停止释放正文，保存和迟到更新不能重新显示，源码及Git保持原样",
+      "startedAt": "2026-10-22T08:21:27.583Z",
+      "screenshot": "body-stopped.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:21:29.039Z"
+    }
+  ],
+  "startedAt": "2026-10-22T08:21:06.384Z",
+  "finishedAt": "2026-10-22T08:21:29.047Z",
+  "result": "通过"
+}
