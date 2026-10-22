@@ -1,0 +1,323 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.1.2",
+  "packageSha256": "BCCA661BCF9CAA8C311CD241EA8EA69A3C80D20BFB7846B49719F296685E7CFA",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-093319-822f467e\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-093319-822f467e\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T01:33:26.484Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:33:26.534Z"
+    },
+    {
+      "name": "普通脚本定位与长 Markdown 原生显示",
+      "startedAt": "2026-10-22T01:33:26.536Z",
+      "screenshot": "02-markdown-bottom.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:33:29.755Z"
+    },
+    {
+      "name": "固定 Git 普通文件与 diff 左侧删除行",
+      "startedAt": "2026-10-22T01:33:29.756Z",
+      "screenshot": "03-diff-left.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:33:32.663Z"
+    },
+    {
+      "name": "同一真实 diff 右侧新增行",
+      "startedAt": "2026-10-22T01:33:32.664Z",
+      "screenshot": "04-diff-right.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:33:33.670Z"
+    },
+    {
+      "name": "两侧目标同时高亮且正文只在右侧",
+      "startedAt": "2026-10-22T01:33:33.671Z",
+      "screenshot": "05-diff-both.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:33:34.617Z"
+    },
+    {
+      "name": "暂存和未暂存内容同时出现在当前比较",
+      "startedAt": "2026-10-22T01:33:34.618Z",
+      "screenshot": "06-working.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:33:36.002Z"
+    },
+    {
+      "name": "整个新增文件和整个删除文件",
+      "startedAt": "2026-10-22T01:33:36.004Z",
+      "screenshot": "08-deleted.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:33:39.204Z"
+    },
+    {
+      "name": "最后一步不自动停止，停止清理及主动恢复",
+      "startedAt": "2026-10-22T01:33:39.206Z",
+      "screenshot": "11-resumed.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:33:50.995Z"
+    },
+    {
+      "name": "真实步骤列表选择和取消打开保留当前阅读",
+      "startedAt": "2026-10-22T01:33:50.996Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:33:56.850Z"
+    },
+    {
+      "name": "新建未落盘源码可普通阅读和比较，修改后立即重检",
+      "startedAt": "2026-10-22T01:33:56.852Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:00.809Z"
+    },
+    {
+      "name": "BOM 和 CRLF 可读，正文中的步骤标记不创建步骤",
+      "startedAt": "2026-10-22T01:34:00.810Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:11.649Z"
+    },
+    {
+      "name": "讲解正文中的命令链接和 HTML 不获得执行或插入代码权限",
+      "startedAt": "2026-10-22T01:34:11.650Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:12.802Z"
+    },
+    {
+      "name": "真实未保存文档参与 diff 且不写盘",
+      "startedAt": "2026-10-22T01:34:12.803Z",
+      "screenshot": "12-unsaved.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:16.758Z"
+    },
+    {
+      "name": "分号前空格和缩进变化自动继续",
+      "startedAt": "2026-10-22T01:34:16.759Z",
+      "screenshot": "13-formatting-accepted.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:18.180Z"
+    },
+    {
+      "name": "数字变化移除正文并回到 Markdown，恢复后自动回来",
+      "startedAt": "2026-10-22T01:34:18.181Z",
+      "screenshot": "15-code-restored.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:20.180Z"
+    },
+    {
+      "name": "停止和重新打开仍保留未保存内容",
+      "startedAt": "2026-10-22T01:34:20.181Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:26.760Z"
+    },
+    {
+      "name": "插行后的唯一重新定位与重复目标拒绝",
+      "startedAt": "2026-10-22T01:34:26.761Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:27.932Z"
+    },
+    {
+      "name": "目标外修改允许唯一原文继续，模板内部空格不放宽",
+      "startedAt": "2026-10-22T01:34:27.933Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:33.953Z"
+    },
+    {
+      "name": "双侧目标任一失效时清除整步",
+      "startedAt": "2026-10-22T01:34:33.955Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:39.742Z"
+    },
+    {
+      "name": "保存正文和重排后保留步骤标识，删除后回第一步",
+      "startedAt": "2026-10-22T01:34:39.743Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:43.724Z"
+    },
+    {
+      "name": "讲解标识改变从第一步开始",
+      "startedAt": "2026-10-22T01:34:43.726Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:46.764Z"
+    },
+    {
+      "name": "无效更新保留旧正文，源码变化仍检查，只读正文及恢复",
+      "startedAt": "2026-10-22T01:34:46.765Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:52.919Z"
+    },
+    {
+      "name": "讲解暂时不可读时提供只读正文并自动恢复",
+      "startedAt": "2026-10-22T01:34:52.920Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:53.740Z"
+    },
+    {
+      "name": "首次无效文件和另一份无效讲解不替换有效阅读",
+      "startedAt": "2026-10-22T01:34:53.741Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:54.239Z"
+    },
+    {
+      "name": "同标识讲解移到新位置不混用进度",
+      "startedAt": "2026-10-22T01:34:54.240Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:34:57.630Z"
+    },
+    {
+      "name": "不存在的固定提交提示错误，恢复后继续",
+      "startedAt": "2026-10-22T01:34:57.631Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:00.626Z"
+    },
+    {
+      "name": "不存在的 Git 文件路径不被当作空白成功",
+      "startedAt": "2026-10-22T01:35:00.628Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:02.494Z"
+    },
+    {
+      "name": "未加载的当前源码缺失，恢复文件后自动继续",
+      "startedAt": "2026-10-22T01:35:02.495Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:05.022Z"
+    },
+    {
+      "name": "目标删除清除行内正文，恢复后重新显示",
+      "startedAt": "2026-10-22T01:35:05.024Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:05.461Z"
+    },
+    {
+      "name": "真实空文件按存在处理，不冒充不存在侧",
+      "startedAt": "2026-10-22T01:35:05.462Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:06.077Z"
+    },
+    {
+      "name": "新 HEAD 使未提交比较失效，固定历史仍可读",
+      "startedAt": "2026-10-22T01:35:06.078Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:13.270Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T01:35:19.661Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:19.740Z"
+    },
+    {
+      "name": "真实重启后主动恢复进度，已记录步骤删除后回第一步",
+      "startedAt": "2026-10-22T01:35:19.742Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:29.380Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T01:35:36.052Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:36.114Z"
+    },
+    {
+      "name": "同一讲解在另一项目中不混用进度",
+      "startedAt": "2026-10-22T01:35:36.116Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:40.012Z"
+    },
+    {
+      "name": "固定 Git 中真实存在的空文件保持存在状态",
+      "startedAt": "2026-10-22T01:35:40.014Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:43.901Z"
+    },
+    {
+      "name": "明确重命名前后路径可比较，固定摘要和存在状态错误不借用内容",
+      "startedAt": "2026-10-22T01:35:43.903Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:54.394Z"
+    },
+    {
+      "name": "当前整个文件删除时右侧确实为空，已有文件不能冒充不存在",
+      "startedAt": "2026-10-22T01:35:54.396Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:35:57.137Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T01:36:03.325Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:36:03.443Z"
+    },
+    {
+      "name": "未保存的讲解编辑不替换正文，回看使用只读成功内容",
+      "startedAt": "2026-10-22T01:36:03.445Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:36:12.542Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T01:36:17.124Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:36:17.193Z"
+    },
+    {
+      "name": "多个项目明确选择，讲解文件的位置不决定代码项目",
+      "startedAt": "2026-10-22T01:36:17.195Z",
+      "screenshot": "30-selected-project.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:36:21.422Z"
+    },
+    {
+      "name": "取消项目选择保留原讲解，重新选择首个项目使用其源码",
+      "startedAt": "2026-10-22T01:36:21.424Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:36:25.250Z"
+    },
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T01:36:29.505Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:36:29.553Z"
+    },
+    {
+      "name": "没有项目时说明先打开文件夹，不创建活动讲解",
+      "startedAt": "2026-10-22T01:36:29.555Z",
+      "screenshot": "35-no-project.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T01:36:30.116Z"
+    }
+  ],
+  "startedAt": "2026-10-22T01:33:26.276Z",
+  "decorationSample": [
+    {
+      "side": "file",
+      "x": 433.66668701171875,
+      "y": 143.6666717529297,
+      "height": 19,
+      "className": "cdr ced-1-TextEditorDecorationType36-0"
+    },
+    {
+      "side": "file",
+      "x": 433.66668701171875,
+      "y": 162.6666717529297,
+      "height": 19,
+      "className": "cdr ced-1-TextEditorDecorationType36-0"
+    }
+  ],
+  "markdownScroll": {
+    "scrollTop": 26,
+    "scrollHeight": 290,
+    "clientHeight": 264,
+    "lastVisible": true
+  },
+  "untrustedBody": {
+    "external": true,
+    "script": false,
+    "executed": false
+  },
+  "invalidUpdateVariants": 10,
+  "finishedAt": "2026-10-22T01:36:30.117Z",
+  "result": "通过",
+  "otherProject": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-093319-822f467e\\other-fixture\\project"
+}

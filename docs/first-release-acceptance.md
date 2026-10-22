@@ -1,14 +1,29 @@
 # 首版验收记录
 
-记录日期：2026-10-21。
+记录日期：2026-10-21 至 2026-10-22。
 
-0.1.2 最终后台运行已通过 35 项真实 VS Code 检查，覆盖下表 26 项的主要行为，并保存 29 张通过截图。另有 34 项格式及可控异步顺序检查通过。结果、隔离方式和未单独运行的变体见[后台验收说明](background-verification.md)；此前人工截图继续保留，不要求重复手测已覆盖场景。
+0.1.2 最终后台运行已通过 45 项真实 VS Code 检查，覆盖下表 26 项及补充场景，保存 37 张通过截图。另有 34 项格式及可控异步顺序检查通过，首版 01–08 项任务的验收清单已完成。结果、隔离方式和环境限制见[后台验收说明](background-verification.md)；此前人工截图继续保留，不要求重复手测已覆盖场景。
 
 此前已取得请求者手动打开第 1 至 9 步、停止及主动恢复的截图，本轮补齐了独立后台实例的实际流程结果。逐项证据见下表；尚未运行的变体明确说明，操作步骤和预期结果不能当作通过记录。构建、类型检查和可控读取顺序检查的实际结果见[首版实现记录](../.scratch/first-release/implementation-results.md)，它们不能代替界面观察。
 
 [任务 01 的记录](../.scratch/first-release/verification/results.md)已证明最小验证扩展能使用原生行内 Markdown、左右 diff 定位、单处正文、步骤切换及停止清理。那些截图使用固定案例；它们不能证明正式插件已经正确读取讲解文件、重新定位、自动更新或恢复进度。
 
 请求者自己的窗口仍由请求者操作。随后请求者授权在不抢夺控制权、不切换窗口的条件下自行验证；代理仅驱动独立 Windows 窗口环境中的 VS Code，使用独立工程、配置和扩展目录。方法与限制见[后台验收说明](background-verification.md)。未覆盖的行为继续明确保留，不能把自动检查当成任意环境都已通过。
+
+## 2026-10-22 补充结果
+
+本轮[完整结果](../.scratch/first-release/evidence/background-0.1.2-2026-10-22/results.json)记录 45 项通过，[六个进程阶段](../.scratch/first-release/evidence/background-0.1.2-2026-10-22/isolation.json)均正常退出，输入桌面前后均为 Default。下方原有 26 项的证据仍有效，本轮已重复实际流程并补上以下场景。
+
+| 场景 | 实际结果与证据 |
+| --- | --- |
+| 多个项目根目录、取消选择、没有项目 | 明确选择另一个项目后，代码来自所选目录；取消保留原阅读，再选首个项目恢复对应进度。见[目录选择](../.scratch/first-release/evidence/background-0.1.2-2026-10-22/30-selected-project.png)。没有项目时说明先打开文件夹，不创建活动阅读，见[提示](../.scratch/first-release/evidence/background-0.1.2-2026-10-22/35-no-project.png)。 |
+| 新建未落盘源码 | 编辑器文档已关联具体项目路径，普通讲解和 diff 都读取同一文档；数字变化后清除正文，恢复后显示，停止仍未保存且磁盘无文件。见[普通阅读](../.scratch/first-release/evidence/background-0.1.2-2026-10-22/31-untitled-file.png)、[新增比较](../.scratch/first-release/evidence/background-0.1.2-2026-10-22/32-untitled-diff.png)及[变化后失效](../.scratch/first-release/evidence/background-0.1.2-2026-10-22/33-untitled-changed.png)。 |
+| 明确重命名路径和固定 HEAD | 两个真实提交中的路径明确写在讲解中；固定引用是 HEAD 时也不借用编辑器未保存修改。摘要不符、错误存在状态和范围越界均清除整步，恢复后继续。见[比较](../.scratch/first-release/evidence/background-0.1.2-2026-10-22/36-renamed-paths.png)。 |
+| 当前整个文件删除 | 专用文件先提交，再在未打开的条件下删除；右侧确实不存在，正文在左侧。恢复磁盘文件后不能继续声称空白侧，自动清除正文。见[删除比较](../.scratch/first-release/evidence/background-0.1.2-2026-10-22/37-working-deletion.png)。 |
+| 讲解格式和错误输入 | 文件开头 BOM 标记及 Windows 换行可读，代码围栏、引用和缩进代码内的步骤标记不增加步骤。10 种无效更新覆盖未完成 JSON、未知版本、重复步骤标识、非法范围、重复 JSON 属性、缺失字段、未知字段、非法摘要、项目外路径及绝对路径，均保留旧讲解并提示。 |
+| 正文链接、HTML 和代码块 | 普通外部链接正常显示；实际尝试正文中的测试命令链接，没有执行已注册命令；HTML 没有形成脚本元素或执行。源码和 Git 基准保持不变，见[正文](../.scratch/first-release/evidence/background-0.1.2-2026-10-22/34-untrusted-body.png)。 |
+
+外部链接启动浏览器、Windows 原生文件对话框外观仍未单独操作；实际文件选择取消使用 VS Code 简化对话框。它们不计入通过结果，也不要求为本轮再次操作请求者窗口。
 
 ## 准备正式插件和独立工程
 

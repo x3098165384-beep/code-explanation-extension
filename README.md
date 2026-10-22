@@ -11,9 +11,9 @@
 
 ## 当前状态
 
-2026-10-21 已接通讲解读取、真实 Git diff、代码对应检查、导航、自动更新及进度恢复。JavaScript 支持可确认的空格、Tab 和缩进变化；其他语言与固定 Git 继续严格核对。0.1.2 修复了旧源码变化通知取消新讲解打开的问题。34 项自动检查及真实 VS Code 后台流程已通过，包含未保存内容、格式变化、更新、失效清理、停止和重启恢复。实际范围及截图见[首版验收记录](docs/first-release-acceptance.md)，不扩大为任意系统、主题和语言都已验证。
+截至 2026-10-22，首版讲解读取、真实 Git diff、代码对应检查、导航、自动更新及进度恢复均已完成。JavaScript 支持可确认的空格、Tab 和缩进变化；其他语言与固定 Git 继续严格核对。0.1.2 修复了旧源码变化通知取消新讲解打开的问题。34 项自动检查和 45 项真实 VS Code 检查通过，保存 37 张截图，覆盖未保存及新建未落盘源码、格式变化、更新、失效清理、停止、重启恢复和多目录选择。实际范围及限制见[首版验收记录](docs/first-release-acceptance.md)，不扩大为任意系统、主题和语言都已验证。
 
-当前工作依据见[首版规格](.scratch/first-release/spec.md)，文件约定见[Markdown 讲解文件格式](.scratch/first-release/explanation-format.md)，可阅读[完整讲解示例](.scratch/first-release/explanation.example.md)。规格和[8 项首版任务](.scratch/first-release/issues)保存在本地 Markdown 任务记录中。任务 02 至 07 已实现；任务 08 已记录实际安装包的后台流程结果，未单独运行的变体仍明确列出。
+当前工作依据见[首版规格](.scratch/first-release/spec.md)，文件约定见[Markdown 讲解文件格式](.scratch/first-release/explanation-format.md)，可阅读[完整讲解示例](.scratch/first-release/explanation.example.md)。规格和[8 项首版任务](.scratch/first-release/issues)保存在本地 Markdown 任务记录中。任务 01 至 08 已完成，验收勾选和对应证据已补齐；没有推送或发布扩展市场。
 
 ## 构建与使用
 

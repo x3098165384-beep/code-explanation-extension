@@ -1,0 +1,50 @@
+﻿{
+    "runRoot":  "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-093319-822f467e",
+    "sentInput":  false,
+    "finishedAt":  "2026-10-22T01:36:30.4280860Z",
+    "desktop":  "CodeExplanationTest_f5f2fc7651c14436bf49d5bd75fd34ab",
+    "phases":  [
+                   {
+                       "processId":  35636,
+                       "exitCode":  0,
+                       "name":  "首次流程",
+                       "desktop":  "CodeExplanationTest_f5f2fc7651c14436bf49d5bd75fd34ab"
+                   },
+                   {
+                       "processId":  28780,
+                       "exitCode":  0,
+                       "name":  "restore",
+                       "desktop":  "CodeExplanationTest_e197d5e7960e4081ab3ea78f3c4f1612"
+                   },
+                   {
+                       "processId":  34368,
+                       "exitCode":  0,
+                       "name":  "project",
+                       "desktop":  "CodeExplanationTest_ff70c12d644e47c4bc63fb7a01c54dda"
+                   },
+                   {
+                       "processId":  35488,
+                       "exitCode":  0,
+                       "name":  "lecture-edit",
+                       "desktop":  "CodeExplanationTest_7c4a9437fbae4759806ef1610ffd5967"
+                   },
+                   {
+                       "processId":  1392,
+                       "exitCode":  0,
+                       "name":  "multiple-roots",
+                       "desktop":  "CodeExplanationTest_d77a763a172643089611c35dd4b862b7"
+                   },
+                   {
+                       "processId":  36224,
+                       "exitCode":  0,
+                       "name":  "no-project",
+                       "desktop":  "CodeExplanationTest_0ba936ade4f945d9aa0ab6e38ec0cdbf"
+                   }
+               ],
+    "inputDesktopAfter":  "Default",
+    "inputDesktopBefore":  "Default",
+    "processId":  35636,
+    "startedAt":  "2026-10-22T01:33:22.3937065Z",
+    "switchedDesktop":  false,
+    "exitCode":  0
+}

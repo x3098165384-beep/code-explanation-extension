@@ -85,7 +85,7 @@ try {
     if ((Get-Content -LiteralPath (Join-Path $runRoot 'results.json') -Raw -Encoding UTF8 | ConvertFrom-Json).result -ne '通过') { throw '后台检查尚未全部通过。' }
     $record.phases = @(@{ name = '首次流程'; desktop = $session.DesktopName; processId = $session.ProcessId; exitCode = $session.ExitCode })
     $session.Dispose(); $session = $null
-    foreach ($phase in @('restore', 'project', 'lecture-edit')) {
+    foreach ($phase in @('restore', 'project', 'lecture-edit', 'multiple-roots', 'no-project')) {
         $env:CODE_EXPLANATION_BACKGROUND_PHASE = $phase
         $phaseResult = Get-Content -LiteralPath (Join-Path $runRoot 'results.json') -Raw -Encoding UTF8 | ConvertFrom-Json
         $phaseResult.result = '进行中'
@@ -99,6 +99,16 @@ try {
             $configuration | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runRoot 'configuration.json') -Encoding utf8
             $phaseArguments[$phaseArguments.Count - 1] = '"' + $configuration.otherProject + '"'
         }
+        if ($phase -eq 'multiple-roots') {
+            $workspaceFile = Join-Path $runRoot 'two-projects.code-workspace'
+            $workspace = @{ folders = @(
+                @{ name = '首个项目'; path = (Join-Path $fixture 'project') },
+                @{ name = '另一个项目'; path = $configuration.otherProject }
+            ) }
+            [IO.File]::WriteAllText($workspaceFile, ($workspace | ConvertTo-Json -Depth 5))
+            $phaseArguments[$phaseArguments.Count - 1] = '"' + $workspaceFile + '"'
+        }
+        if ($phase -eq 'no-project') { $phaseArguments = $phaseArguments[0..($phaseArguments.Count - 2)] }
         $session = [CodeExplanationVerification.IsolatedDesktop]::Start($CodePath, ($phaseArguments -join ' '), $projectRoot, (Join-Path $runRoot ($phase + '.log')))
         $deadline = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
         while (-not $session.Wait(1000)) {

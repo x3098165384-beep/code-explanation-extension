@@ -113,6 +113,10 @@ exports.run = async function () {
       return `<!-- ${kind}\n${JSON.stringify(value, null, 2)}\n-->`;
     });
   }
+  function lectureText(header, steps) {
+    return `<!-- code-explanation\n${JSON.stringify(header)}\n-->\n# 首版补充验收\n\n` + steps.map(({ metadata, title, body }) =>
+      `<!-- step\n${JSON.stringify(metadata)}\n-->\n## ${title}\n\n${body}\n\n`).join('');
+  }
 
   try {
     await extension.activate();
@@ -150,6 +154,44 @@ exports.run = async function () {
           await vscode.window.showTextDocument(document); await vscode.commands.executeCommand('workbench.action.files.revert');
           assert.equal(document.isDirty, false); await open(diskFile, disk, 5); await stop();
         });
+      } else if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE === 'no-project') {
+        await checkpoint('没有项目时说明先打开文件夹，不创建活动讲解', async () => {
+          assert.equal(vscode.workspace.workspaceFolders, undefined);
+          await command('open', vscode.Uri.file(diskFile));
+          const state = await wait('没有项目的操作说明', value => value.text.includes('请先在 VS Code 中打开项目文件夹'));
+          assert.equal(state.comments.length, 0); assert.ok(!state.status.includes('停止讲解'));
+        }, '35-no-project.png');
+      } else if (process.env.CODE_EXPLANATION_BACKGROUND_PHASE === 'multiple-roots') {
+        async function chooseProject(label) {
+          await wait('选择讲解所对应的项目', state => state.text.includes('选择讲解所对应的项目'));
+          await renderer.evaluate(`(() => {
+            const input = document.querySelector('.quick-input-widget input');
+            input.value = ${JSON.stringify(label)};
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+          })()`);
+          await wait('项目筛选结果', () => renderer.evaluate(`(() => {
+            const rows = [...document.querySelectorAll('.quick-input-list .monaco-list-row')].filter(row => row.getBoundingClientRect().height > 0);
+            return rows.length === 1 && rows[0].innerText.includes(${JSON.stringify(label)});
+          })()`));
+          await vscode.commands.executeCommand('workbench.action.acceptSelectedQuickOpenItem');
+        }
+        await checkpoint('多个项目明确选择，讲解文件的位置不决定代码项目', async () => {
+          assert.equal(vscode.workspace.workspaceFolders.length, 2);
+          const opening = command('open', vscode.Uri.file(diskFile));
+          await chooseProject('另一个项目'); await opening; await shown(disk, 1);
+          assert.equal(vscode.window.activeTextEditor.document.uri.fsPath.toLowerCase(), path.join(config.otherProject, 'src/invoice.js').toLowerCase());
+        }, '30-selected-project.png');
+        await checkpoint('取消项目选择保留原讲解，重新选择首个项目使用其源码', async () => {
+          const opening = command('open', vscode.Uri.file(diskFile));
+          await wait('再次选择项目', state => state.text.includes('选择讲解所对应的项目'));
+          await vscode.commands.executeCommand('workbench.action.closeQuickOpen'); await opening;
+          await shown(disk, 1);
+          assert.equal(vscode.window.activeTextEditor.document.uri.fsPath.toLowerCase(), path.join(config.otherProject, 'src/invoice.js').toLowerCase());
+          const another = command('open', vscode.Uri.file(diskFile));
+          await chooseProject('首个项目'); await another; await shown(disk, 5);
+          assert.equal(activeDiff().original.authority, manifest.beforeCommit);
+          await stop();
+        });
       } else {
         await checkpoint('同一讲解在另一项目中不混用进度', async () => {
           assert.notEqual(vscode.workspace.workspaceFolders[0].uri.fsPath.toLowerCase(), project.toLowerCase());
@@ -178,6 +220,78 @@ exports.run = async function () {
           const input = activeDiff(); assert.equal(JSON.parse(input.modified.query).exists, true);
           assert.equal((await vscode.workspace.openTextDocument(input.modified)).getText(), '');
           await renderer.screenshot('29-git-empty-file.png'); await stop();
+        });
+        await checkpoint('明确重命名前后路径可比较，固定摘要和存在状态错误不借用内容', async () => {
+          const otherGit = (...args) => execFileSync('git', ['--no-optional-locks', '-c', 'core.fsmonitor=false', '-C', config.otherProject, ...args], { encoding: 'utf8', windowsHide: true, env: gitEnvironment });
+          const before = otherGit('rev-parse', 'HEAD').trim();
+          const code = normalizeText(otherGit('show', `${before}:src/format-amount.js`));
+          fs.renameSync(path.join(config.otherProject, 'src/format-amount.js'), path.join(config.otherProject, 'src/format-label.js'));
+          otherGit('add', '--', 'src/format-amount.js', 'src/format-label.js');
+          otherGit('-c', 'user.name=XGH', '-c', 'user.email=xgh@example.invalid', '-c', 'commit.gpgsign=false', '-c', `core.hooksPath=${path.join(path.dirname(config.otherProject), 'empty-hooks')}`,
+            'commit', '--only', '-m', '后台验收：明确重命名路径', '--', 'src/format-amount.js', 'src/format-label.js');
+          const after = otherGit('rev-parse', 'HEAD').trim();
+          const target = { startLine: 2, endLine: 2, sha256: sha256(code.split('\n')[1]) };
+          const header = { version: 1, id: 'rename-paths', sources: {
+            before: { kind: 'git', path: 'src/format-amount.js', exists: true, commit: before, sha256: sha256(code) },
+            after: { kind: 'git', path: 'src/format-label.js', exists: true, commit: after, sha256: sha256(code) },
+          } };
+          const steps = [
+            { metadata: { id: 'fixed-head', kind: 'file', source: 'after', target }, title: 'HEAD 的固定内容仍来自 Git', body: '即使编辑器另有修改，固定引用仍读取提交。' },
+            { metadata: { id: 'rename', kind: 'diff', comparison: 'commits', left: 'before', right: 'after', targets: { right: target } }, title: '明确比较重命名前后路径', body: '左右路径由讲解明确提供，不搜索其他文件。' },
+          ];
+          const filename = path.join(path.dirname(config.otherProject), 'lecture-rename.md');
+          const raw = lectureText(header, steps), lecture = parseExplanation(raw); fs.writeFileSync(filename, raw);
+          const current = await vscode.workspace.openTextDocument(vscode.Uri.file(path.join(config.otherProject, 'src/format-label.js')));
+          const change = new vscode.WorkspaceEdit(); change.insert(current.uri, new vscode.Position(0, 0), '// 编辑器中的未保存变化\n');
+          assert.equal(await vscode.workspace.applyEdit(change), true);
+          await open(filename, lecture); assert.equal(vscode.window.activeTextEditor.document.getText(), code);
+          assert.equal(vscode.window.activeTextEditor.document.uri.scheme, 'code-explanation-source');
+          await go(lecture, 2);
+          assert.equal(JSON.parse(activeDiff().original.query).path, 'src/format-amount.js');
+          assert.equal(JSON.parse(activeDiff().modified.query).path, 'src/format-label.js');
+          assert.equal(current.isDirty, true); await renderer.screenshot('36-renamed-paths.png');
+          for (const wrong of ['hash', 'exists', 'range']) {
+            const changed = structuredClone(header), changedSteps = structuredClone(steps);
+            if (wrong === 'hash') changed.sources.before.sha256 = '0'.repeat(64);
+            if (wrong === 'exists') { changed.sources.before.exists = false; delete changed.sources.before.sha256; }
+            if (wrong === 'range') changedSteps[1].metadata.targets.right.endLine = 999;
+            fs.writeFileSync(filename, lectureText(changed, changedSteps));
+            await wait('固定引用错误清除正文', state => !state.comments.length && !state.highlights.length &&
+              state.status.includes('2/2：') && !state.status.includes('正在读取') && !state.status.includes('新讲解尚未加载') &&
+              vscode.window.activeTextEditor?.document.uri.scheme !== 'code-explanation-source');
+            fs.writeFileSync(filename, raw); await shown(lecture, 2);
+          }
+          assert.equal(current.isDirty, true); await stop();
+        });
+        await checkpoint('当前整个文件删除时右侧确实为空，已有文件不能冒充不存在', async () => {
+          const otherGit = (...args) => execFileSync('git', ['--no-optional-locks', '-c', 'core.fsmonitor=false', '-C', config.otherProject, ...args], { encoding: 'utf8', windowsHide: true, env: gitEnvironment });
+          const relative = 'src/deleted-current.js';
+          const file = path.join(config.otherProject, relative);
+          fs.writeFileSync(file, 'export function removed() {\n  return 2;\n}\n');
+          otherGit('add', '--', relative);
+          otherGit('-c', 'user.name=XGH', '-c', 'user.email=xgh@example.invalid', '-c', 'commit.gpgsign=false', '-c', `core.hooksPath=${path.join(path.dirname(config.otherProject), 'empty-hooks')}`,
+            'commit', '--only', '-m', '后台验收：准备当前删除文件', '--', relative);
+          const head = otherGit('rev-parse', 'HEAD').trim();
+          assert.ok(!vscode.workspace.textDocuments.some(document => document.uri.fsPath.toLowerCase() === file.toLowerCase()));
+          const bytes = fs.readFileSync(file), code = normalizeText(bytes.toString('utf8'));
+          const header = { version: 1, id: 'deleted-current-file', sources: {
+            before: { kind: 'git', path: relative, exists: true, commit: head, sha256: sha256(code) },
+            current: { kind: 'workspace', path: relative, exists: false },
+          } };
+          const raw = lectureText(header, [{ metadata: { id: 'deletion', kind: 'diff', comparison: 'working-tree', left: 'before', right: 'current',
+            targets: { left: { startLine: 2, endLine: 2, sha256: sha256(code.split('\n')[1]) } } },
+          title: '当前整个文件已删除', body: '左侧仍来自最近提交，右侧已经没有文件，不能借用别的内容。' }]);
+          const filename = path.join(path.dirname(config.otherProject), 'lecture-working-delete.md'); fs.writeFileSync(filename, raw);
+          fs.unlinkSync(file);
+          try {
+            await open(filename, parseExplanation(raw));
+            assert.equal((await vscode.workspace.openTextDocument(activeDiff().modified)).getText(), '');
+            await renderer.screenshot('37-working-deletion.png');
+            fs.writeFileSync(file, bytes);
+            await wait('已恢复文件不能继续显示空白侧', state => !state.comments.length && !state.highlights.length && !state.status.includes('正在读取') &&
+              vscode.window.activeTextEditor?.document.uri.toString() === vscode.Uri.file(filename).toString());
+            assert.equal(fs.readFileSync(file).equals(bytes), true); await stop();
+          } finally { fs.writeFileSync(file, bytes); }
         });
       }
       results.finishedAt = new Date().toISOString(); results.result = '通过'; save(); return;
@@ -245,6 +359,74 @@ exports.run = async function () {
       await wait('文件选择', () => renderer.evaluate(`!!document.querySelector('.quick-input-widget:not([style*="display: none"])')`));
       await vscode.commands.executeCommand('workbench.action.closeQuickOpen'); await cancelled; await shown(disk, 1);
       await go(disk, 9);
+    });
+    await checkpoint('新建未落盘源码可普通阅读和比较，修改后立即重检', async () => {
+      const file = uri('src/new-unsaved.js');
+      assert.equal(fs.existsSync(file.fsPath), false);
+      const document = await vscode.workspace.openTextDocument(file.with({ scheme: 'untitled' }));
+      const code = 'export const fee = 2;\n';
+      const change = new vscode.WorkspaceEdit(); change.insert(document.uri, new vscode.Position(0, 0), code);
+      assert.equal(await vscode.workspace.applyEdit(change), true);
+      assert.equal(document.isUntitled, true); assert.equal(document.isDirty, true);
+      const target = { startLine: 1, endLine: 1, sha256: sha256(code.trimEnd()) };
+      const raw = lectureText({ version: 1, id: 'new-unsaved', sources: {
+        before: { kind: 'git', path: 'src/new-unsaved.js', commit: manifest.afterCommit, exists: false },
+        current: { kind: 'workspace', path: 'src/new-unsaved.js', exists: true, sha256: sha256(code) },
+      } }, [
+        { metadata: { id: 'plain', kind: 'file', source: 'current', target }, title: '读取新建未保存源码', body: '`fee` 为 2。代码只在编辑器中，磁盘还没有该文件。' },
+        { metadata: { id: 'diff', kind: 'diff', comparison: 'working-tree', left: 'before', right: 'current', targets: { right: target } }, title: '比较新增的未保存源码', body: '最近提交中没有该文件，右侧直接使用未保存文档。' },
+      ]);
+      const filename = path.join(config.fixture, 'lecture-new-unsaved.md'); fs.writeFileSync(filename, raw);
+      const lecture = parseExplanation(raw);
+      const state = await open(filename, lecture); assertAnchor(state, 'file', 1);
+      assert.equal(vscode.window.activeTextEditor.document, document);
+      await renderer.screenshot('31-untitled-file.png');
+      await go(lecture, 2); assert.equal(activeDiff().modified.toString(), document.uri.toString());
+      assert.equal((await vscode.workspace.openTextDocument(activeDiff().original)).getText(), '');
+      await renderer.screenshot('32-untitled-diff.png');
+      const modified = new vscode.WorkspaceEdit(); modified.replace(document.uri, new vscode.Range(0, 0, 0, code.trimEnd().length), 'export const fee = 3;');
+      assert.equal(await vscode.workspace.applyEdit(modified), true);
+      await wait('未保存新文件变化清除正文', value => !value.comments.length && !value.highlights.length && !value.status.includes('正在读取') &&
+        vscode.window.activeTextEditor?.document.uri.toString() === vscode.Uri.file(filename).toString());
+      await renderer.screenshot('33-untitled-changed.png');
+      const restore = new vscode.WorkspaceEdit(); restore.replace(document.uri, new vscode.Range(document.positionAt(0), document.positionAt(document.getText().length)), code);
+      assert.equal(await vscode.workspace.applyEdit(restore), true); await shown(lecture, 2);
+      await stop(); assert.equal(document.isDirty, true); assert.equal(normalizeText(document.getText()), code);
+      assert.equal(fs.existsSync(file.fsPath), false); assertBaseline(); await open(diskFile, disk, 9);
+    });
+    await checkpoint('BOM 和 CRLF 可读，正文中的步骤标记不创建步骤', async () => {
+      await go(disk, 1);
+      const literal = '\n\n```md\n<!-- step\n{}\n-->\n## 代码中的标题\n```\n\n> <!-- step\n> {}\n> -->\n> ## 引用中的标题\n\n    <!-- step\n    {}\n    -->\n\n## 正文中的小标题\n\n这仍是第一步正文。';
+      const raw = '\uFEFF' + diskRaw.replace(disk.steps[0].body, disk.steps[0].body + literal).replace(/\n/g, '\r\n');
+      fs.writeFileSync(diskFile, raw);
+      await shown(disk, 1, value => value.comments[0].text.includes('这仍是第一步正文。'));
+      assert.equal(parseExplanation(raw).steps.length, disk.steps.length);
+      fs.writeFileSync(diskFile, diskRaw); await shown(disk, 1, value => !value.comments[0].text.includes('这仍是第一步正文。'));
+      await go(disk, 9);
+    });
+    await checkpoint('讲解正文中的命令链接和 HTML 不获得执行或插入代码权限', async () => {
+      let executed = 0;
+      const registration = vscode.commands.registerCommand('codeExplanationBackgroundProbe', () => { executed++; });
+      const filename = path.join(config.fixture, 'lecture-untrusted.md');
+      const raw = lectureText({ version: 1, id: 'untrusted-body', sources: { current: disk.sources['invoice-current'] } },
+      [{ metadata: { id: 'untrusted-step', kind: 'file', source: 'current', target: disk.steps[0].target },
+        title: '正文只用于阅读', body: '[普通资料](https://example.com/reading)\n\n[不应执行](command:codeExplanationBackgroundProbe)\n\n<script>document.body.dataset.codeExplanationExecuted = "yes";</script>\n\n```js\nthrow new Error("这里只是正文");\n```' }]);
+      fs.writeFileSync(filename, raw);
+      try {
+        await open(filename, parseExplanation(raw));
+        const links = await renderer.evaluate(`(() => {
+          const body = document.querySelector('.review-widget .rendered-markdown');
+          const anchors = [...body.querySelectorAll('a')];
+          const command = anchors.find(a => (a.getAttribute('data-href') || a.getAttribute('href') || '').startsWith('command:'));
+          command?.click();
+          return { external: anchors.some(a => (a.getAttribute('data-href') || a.getAttribute('href') || '').startsWith('https://example.com/reading')),
+            script: !!body.querySelector('script'), executed: document.body.dataset.codeExplanationExecuted === 'yes' };
+        })()`);
+        assert.equal(links.external, true); assert.equal(links.script, false); assert.equal(links.executed, false);
+        await command('next'); await shown(parseExplanation(raw), 1); assert.equal(executed, 0); assertBaseline();
+        results.untrustedBody = links; await renderer.screenshot('34-untrusted-body.png');
+      } finally { registration.dispose(); await stop(); }
+      await open(diskFile, disk, 9);
     });
     await checkpoint('真实未保存文档参与 diff 且不写盘', async () => {
       const document = await edit('src/charge.js', originalCharge.replace('return subtotal;', 'return subtotal + 2;'));
@@ -327,8 +509,16 @@ exports.run = async function () {
     await checkpoint('无效更新保留旧正文，源码变化仍检查，只读正文及恢复', async () => {
       const invalidUpdates = [diskRaw.slice(0, 30), replaceMetadata(diskRaw, (kind, value) => { if (kind === 'code-explanation') value.version = 99; }),
         replaceMetadata(diskRaw, (kind, value) => { if (kind === 'step') value.id = 'duplicate'; }),
-        replaceMetadata(diskRaw, (kind, value) => { if (kind === 'step' && value.target) value.target.startLine = 0; })];
+        replaceMetadata(diskRaw, (kind, value) => { if (kind === 'step' && value.target) value.target.startLine = 0; }),
+        diskRaw.replace('"version": 1,', '"version": 1, "version": 1,'),
+        replaceMetadata(diskRaw, (kind, value) => { if (kind === 'code-explanation') delete value.sources; }),
+        replaceMetadata(diskRaw, (kind, value) => { if (kind === 'code-explanation') value.unknown = true; }),
+        replaceMetadata(diskRaw, (kind, value) => { if (kind === 'code-explanation') value.sources['invoice-current'].sha256 = 'INVALID'; }),
+        replaceMetadata(diskRaw, (kind, value) => { if (kind === 'code-explanation') value.sources['invoice-current'].path = '../project/src/invoice.js'; }),
+        replaceMetadata(diskRaw, (kind, value) => { if (kind === 'code-explanation') value.sources['invoice-current'].path = uri('src/invoice.js').fsPath; })];
+      results.invalidUpdateVariants = invalidUpdates.length;
       for (const raw of invalidUpdates) {
+        assert.notEqual(raw, diskRaw, '每项无效更新必须实际改变讲解文件');
         fs.writeFileSync(diskFile, raw);
         await shown(disk, 1, state => state.status.includes('新讲解尚未加载'));
         fs.writeFileSync(diskFile, diskRaw); await shown(disk, 1, state => !state.status.includes('新讲解尚未加载'));
