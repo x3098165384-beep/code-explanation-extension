@@ -1,8 +1,30 @@
 # 不切换窗口的后台验收
 
-## 后续版本：行内文字选择与复制验证
+## 0.2.0：JSON、讲解侧栏与真实文字复制
 
-2026-10-22，[任务 01](../.scratch/reading-experience/issues/01-select-and-copy-verification.md)已在独立后台 VS Code 1.142.0 中通过 10 项检查、17 次真实选择或整块复制比较；[实际结果](../.scratch/reading-experience/evidence/01-select-copy-2026-10-22/results.json)、[复制内容](../.scratch/reading-experience/evidence/01-select-copy-2026-10-22/copy-results.json)及[普通代码选区](../.scratch/reading-experience/evidence/01-select-copy-2026-10-22/copy-file-selected.png)已保留。验证驱动构造最小文字评论及正文页，既有 0.1.3 包只提供实际代码引用和 diff；生产插件尚未改为新方案。
+0.2.0 已完成 JSON 阅读、完整正文页、项目讲解侧栏、最近记录、继续上次讲解及旧文件转换。正式安装包已在 VS Code 1.142.0 完成六组后台验收及额外布局检查：规格全部 22 项操作通过，111 项不同检查、包含重启及续跑的 126 次通过记录，另有 41 次真实剪贴板比较通过。类型检查、构建、打包及 46 项已有检查也已通过。
+
+全部最终通过组对应同一安装包，SHA-256 为 `0C304332AA3B9A71403A913412A2E59FC3CF8D7B979E5FB0E273690A83E45AFA`。[完整验收表](../.scratch/reading-experience/evidence/07-background-acceptance-2026-10-22/acceptance.md)、[逐组结果](../.scratch/reading-experience/evidence/07-background-acceptance-2026-10-22/results.json)、[复制内容](../.scratch/reading-experience/evidence/07-background-acceptance-2026-10-22/copy-results.json)和[隔离记录](../.scratch/reading-experience/evidence/07-background-acceptance-2026-10-22/isolation.json)已保存。原失败、修复及使用同一安装包继续运行的过程均保留，没有将失败尝试计为通过。后台进程均已退出。
+
+实际截图：[代码区域与简短翻译](../.scratch/reading-experience/evidence/07-background-acceptance-2026-10-22/conversion-begin-step.png)、[侧栏展开步骤](../.scratch/reading-experience/evidence/07-background-acceptance-2026-10-22/sidebar-expanded.png)、[重启后恢复及真实 diff](../.scratch/reading-experience/evidence/07-background-acceptance-2026-10-22/recent-restored.png)、[窄 diff 代码区域](../.scratch/reading-experience/evidence/07-background-acceptance-2026-10-22/layout-narrow-diff.png)。额外布局检查仅调整独立测试配置，确认 1000 像素宽窗口中左右两列实际并排，分别约 306 像素宽，并重新完成 6 次真实复制。原自动改为单列的截图和拖选尚未稳定时的失败记录保留。
+
+下列任务记录是各阶段的实际结果，版本和包摘要各自独立；最终交付以本节上方使用同一安装包的验收为准。
+
+| 阶段 | 实际通过结果 | 证据 |
+| --- | --- | --- |
+| 正式 JSON 阅读 | 9 项界面检查、16 次复制比较 | [任务 02](../.scratch/reading-experience/evidence/02-json-reading-2026-10-22/README.md) |
+| 完整正文页 | 8 项界面检查、7 次复制比较 | [任务 03](../.scratch/reading-experience/evidence/03-formatted-body-2026-10-22/README.md) |
+| 项目讲解侧栏 | 3 个进程、14 项检查 | [任务 04](../.scratch/reading-experience/issues/04-project-sidebar.md) |
+| 最近记录和恢复 | 5 个进程、20 项检查，真实打开 22 份讲解并读取磁盘数据库，确认上限 20 条 | [任务 05](../.scratch/reading-experience/issues/05-recent-and-resume.md) |
+| 转换后的真实讲解 | 12 步定位、18 项检查、6 次复制比较 | [任务 06](../.scratch/reading-experience/evidence/06-generation-and-conversion-2026-10-22/README.md) |
+
+各阶段使用真实 VS Code 1.142.0 和本地 VSIX。代码框为可选择的文字，整块复制使用当前显示所对应的代码；原生 `CF_UNICODETEXT` 与选择结果逐字比较。所有实际复制运行均使用用户桌面以外的窗口站，按顺序运行，不覆盖用户的 `WinSta0` 剪贴板。只有独立桌面不足以隔离剪贴板。
+
+新版本使用方法见[使用说明](first-release-usage.md)。下方保留旧版本及任务 01 的先行验证，明确区分当时的最小试验、旧图片显示与当前生产功能。
+
+## 任务 01：行内文字选择与复制先行验证
+
+2026-10-22，[任务 01](../.scratch/reading-experience/issues/01-select-and-copy-verification.md)已在独立后台 VS Code 1.142.0 中通过 10 项检查、17 次真实选择或整块复制比较；[实际结果](../.scratch/reading-experience/evidence/01-select-copy-2026-10-22/results.json)、[复制内容](../.scratch/reading-experience/evidence/01-select-copy-2026-10-22/copy-results.json)及[普通代码选区](../.scratch/reading-experience/evidence/01-select-copy-2026-10-22/copy-file-selected.png)已保留。当时由验证驱动构造最小文字评论及正文页，既有 0.1.3 包只提供实际代码引用和 diff，生产插件尚未改为新方案。
 
 本轮确认可使用原生引用块底色及受控 `pre/code` 文字，适度简化外框；Tab 与换行先编码为 HTML 实体，避免 Markdown 预处理改变代码。普通围栏将 Tab 展为空格的失败调查保留，不计入通过数量。
 
@@ -34,7 +56,7 @@
 
 ## 怎样隔离
 
-`tools/IsolatedDesktop.cs` 用 Windows `CreateDesktop` 创建新的窗口环境，通过 `CreateProcess` 的桌面参数把测试进程放进去。它没有切换桌面、激活窗口或发送输入的接口。创建失败时停止，不改为在当前桌面启动。启动前后记录输入桌面名称。
+`tools/IsolatedDesktop.cs` 先取得系统允许使用的非交互窗口站，确认它不是用户的 `WinSta0`，再用 Windows `CreateDesktop` 创建本轮桌面，通过 `CreateProcess` 把测试进程放进去。这样窗口和剪贴板都与用户桌面分开；只有单独桌面不能隔离剪贴板。它没有切换桌面、激活窗口或发送输入的接口。创建失败时停止，不改为在当前桌面启动。启动前后记录输入桌面名称。
 
 每轮测试都在 `.scratch/first-release/runtime/background/` 下新建目录，分别保存演示 Git 仓库、解包后的被测扩展、用户配置、扩展目录、共享数据、日志和截图。原演示工程、原讲解和编辑器未保存内容不参与写入。原生进程使用 Windows Job Object 管理；完成、超时或收到停止文件时，只结束本轮进程及其子进程，并释放句柄。
 
@@ -57,13 +79,17 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/verify-background.
 
 默认每个进程最多运行 600 秒，可用 `-TimeoutSeconds` 调整。在日志打印的本轮目录中创建名为 `stop` 的文件可停止该轮，不会关闭其他 VS Code 实例。
 
-只检查代码框时，加 `-LayoutOnly`。需要核对已有讲解时，同时传入 `-ExplanationPath '讲解文件完整路径'` 和 `-ExplanationProject '代码项目完整路径'`；目前这两个参数用于当前文件引用的讲解，脚本只将讲解及所引用文件复制到独立工程中。省略时使用已有演示讲解。默认完整流程最后也运行代码框检查。
+默认流程依次运行原有代码与 Git 检查、JSON 阅读与复制、完整正文、侧栏和最近记录。各组使用独立案例及配置，安装包摘要必须一致；最近记录组内部的五个普通进程使用同一配置，以验证真实重启。顶层目录的 `suite.json` 记录各组实际目录、包摘要和结果，每组 `results.json` 保留逐项操作。
+
+只复验一部分时，可使用 `-CoreOnly`、`-JsonOnly`、`-BodyOnly`、`-SidebarOnly` 或 `-RecentOnly`。`-LayoutOnly` 仅检查代码区域；`-CopyOnly` 保留任务 01 的先行显示实验，不代替生产插件复制验收。
+
+本轮核对转换后的 12 步案例时，额外显式传入 `-ExplanationPath '讲解 JSON 完整路径'` 和 `-ExplanationProject '代码项目完整路径'`，默认流程会追加转换案例组；单独运行它可加 `-ConversionOnly`。驱动只将讲解及引用的当前文件复制到独立工程，原输入保持只读。默认无参数流程不依赖 Vonimir 或其他外部项目；旧价格示例缺失的 Git 对象仍按原转换记录报告，不重新计算引用来制造通过。
 
 ## 结果含义
 
 `results.json` 逐项记录结果，PNG 是该实例实际渲染的界面。`isolation.json` 记录进程、独立窗口环境、退出结果及前后输入桌面。失败会保留截图和界面状态；存在结果文件不等于通过，所有阶段都须正常结束且结果明确通过。
 
-首次曾使用 VS Code 官方的 `extensionTestsPath` 入口；该模式会使用内存存储，不能据此判断进度跨进程持久化。因此最终流程改由 `test/integration` 中的独立测试扩展驱动普通 VS Code 实例，使用真实磁盘存储，依次运行首次流程、同项目重启、另一个项目、未保存讲解、多目录项目和没有项目六个阶段；0.1.3 再增加代码框阶段。未修改生产插件接口，也未替换阅读进度对象。
+首次曾使用 VS Code 官方的 `extensionTestsPath` 入口；该模式会使用内存存储，不能据此判断进度跨进程持久化。因此改由 `test/integration` 中的独立测试扩展驱动普通 VS Code 实例，使用真实磁盘存储。旧版本先后验证首次流程、重启、另一个项目、未保存讲解、多目录项目、没有项目及代码框；0.2.0 另增加 JSON、正文、侧栏和最近记录组。最近记录检查只读实际 `state.vscdb` 数据库并跨进程主动恢复，不替换或预置生产持久记录。
 
 真实运行可证明本次路径中的编辑器内容、Git 读取、正文、定位、更新和清理；不能自动扩大为任意主题、窗口尺寸、语言或系统版本都已经验证。原有可控读取顺序检查继续覆盖手动与普通运行都难以稳定制造的迟到结果。
 

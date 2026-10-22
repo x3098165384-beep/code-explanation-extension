@@ -166,16 +166,16 @@ Status: ready-for-agent
 - 保存完整源码副本、放宽原有代码对应检查、重新定义 Git 比较或扩大语言格式容错范围。
 - 跨项目或文件位置变化的历史进度迁移、云端同步、项目外自动扫描。
 - 修改 VS Code 安装、用户主题或全局设置；仅用侧栏或独立正文页替代行内讲解。
-- 拆分任务、推送仓库、发布插件或将待验证的方案记录为已通过。
+- 推送仓库、发布插件或将待验证的方案记录为已通过。
 
 ## 补充说明
 
 本规格是后续版本的工作依据；与首版关于文件封装、打开入口、正文回看和代码图片显示的要求冲突时，以本规格为准。其他首版要求继续适用，不因重写读取或显示模块而丢失。
 
-- [JSON 讲解格式](explanation-format.md)：本轮规格的具体文件约定，尚无实现。
+- [JSON 讲解格式](explanation-format.md)：0.2.0 的具体文件约定。
 - [本轮讨论及逐项选择](../../docs/plans/initial-design/discussion-notes.md#2026-10-22打开讲解文件格式与代码复制的后续讨论)。
 - [JSON 文件决定](../../docs/adr/0001-json-explanation-files.md)。
 - [首版规格](../first-release/spec.md)和[旧格式中的代码引用与检查](../first-release/explanation-format.md)：保留行为的依据。
 - [已有后台验证方式](../../docs/background-verification.md)：沿用隔离方式，不把历史通过项视为本规格结果。
 
-下一步建议使用 `$to-tickets`，分别组织文字显示与复制验证、JSON 及外部工具调整、侧栏与持久记录、一次性转换及整体后台验收，声明依赖后再实施。本次不拆票、不实现。
+本规格已使用 `$to-tickets` 拆为[7 项任务](issues/README.md)，随后按请求者授权全部完成。正式 0.2.0 安装包的全部 22 项操作已通过独立后台验收；[完整结果](evidence/07-background-acceptance-2026-10-22/acceptance.md)记录实际运行、复制内容、截图、失败修复及环境限制。
