@@ -1,0 +1,99 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.2.0",
+  "packageSha256": "D1E1CBB3B4D2F011356CED3F79D64B63885395CF99DA25C2D2DF6E66BD53EF83",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-163139-2aabe4b0\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-163139-2aabe4b0\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T08:31:48.817Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:48.894Z"
+    },
+    {
+      "name": "只读复制转换后的 JSON 及其实际磁盘引用，保持原标识、正文和摘要",
+      "startedAt": "2026-10-22T08:31:49.629Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:49.687Z"
+    },
+    {
+      "name": "转换讲解第 1 步：配置与字段：保存动作、进度和恢复位置，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:31:49.689Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:50.821Z"
+    },
+    {
+      "name": "转换讲解第 2 步：Play：记录原状态并启动第一项，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:31:50.823Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:51.840Z"
+    },
+    {
+      "name": "转换讲解第 3 步：BeginStep：准备并启动当前动作，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:31:51.841Z",
+      "screenshot": "conversion-begin-step.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:53.710Z"
+    },
+    {
+      "name": "转换讲解第 4 步：PreparePath：准备路径坐标、长度和次数，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:31:53.711Z",
+      "screenshot": "conversion-prepare-path.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:54.176Z"
+    },
+    {
+      "name": "转换讲解第 5 步：Update：继续移动、等待播片或结束当前项，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:31:54.177Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:54.379Z"
+    },
+    {
+      "name": "转换讲解第 6 步：MoveAlongPath：推进距离，走满次数后换项，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:31:54.380Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:54.605Z"
+    },
+    {
+      "name": "转换讲解第 7 步：PositionAtDistance：按进度取得世界位置，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:31:54.606Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:54.795Z"
+    },
+    {
+      "name": "转换讲解第 8 步：NextStep：换到下一项，全部完成后发事件，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:31:54.797Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:55.010Z"
+    },
+    {
+      "name": "转换讲解第 9 步：StopCutscene：解除引用并结束当前播片，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:31:55.011Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:55.191Z"
+    },
+    {
+      "name": "转换讲解第 10 步：Cancel：取消播放并恢复演员，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:31:55.192Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:55.375Z"
+    },
+    {
+      "name": "转换讲解第 11 步：ClearPlayback 与 Finite：清理进度并检查数值，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:31:55.376Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:31:55.545Z"
+    },
+    {
+      "name": "转换讲解第 12 步：BindCompletion：把完成事件绑定到对应出生点，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:31:55.546Z",
+      "result": "失败",
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(state.highlights.some(item => item.side === 'file'))\n\n\tat f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\conversion.cjs:124:16\n\tat async checkpoint (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:81:7)\n\tat async exports.verify (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\conversion.cjs:119:7)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:144:7)\n\tat async exports.activate (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\driver.cjs:26:5)\n\tat async BI._activate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16068)\n\tat async BI._waitForDepsThenActivate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16010)\n\tat async BI._initialize (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:15377)",
+      "finishedAt": "2026-10-22T08:31:56.177Z"
+    }
+  ],
+  "startedAt": "2026-10-22T08:31:48.600Z",
+  "result": "失败",
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(state.highlights.some(item => item.side === 'file'))\n\n\tat f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\conversion.cjs:124:16\n\tat async checkpoint (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:81:7)\n\tat async exports.verify (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\conversion.cjs:119:7)\n\tat async exports.run (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\run.cjs:144:7)\n\tat async exports.activate (f:\\Sync\\MyProjects\\code-explanation-extension\\test\\integration\\driver.cjs:26:5)\n\tat async BI._activate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16068)\n\tat async BI._waitForDepsThenActivate (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:16010)\n\tat async BI._initialize (file:///f:/Sync/MyProjects/code-explanation-extension/.scratch/first-release/runtime/vscode-1.142.0-archive/app/6d62b1d5da/resources/app/out/vs/workbench/api/node/extensionHostProcess.js:165:15377)"
+}

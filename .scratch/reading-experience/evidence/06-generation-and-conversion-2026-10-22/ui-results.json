@@ -1,0 +1,126 @@
+{
+  "vscodeVersion": "1.142.0",
+  "extensionVersion": "0.2.0",
+  "packageSha256": "D1E1CBB3B4D2F011356CED3F79D64B63885395CF99DA25C2D2DF6E66BD53EF83",
+  "extensionPath": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-163233-d8d70137\\package\\extension",
+  "project": "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-163233-d8d70137\\fixture\\project",
+  "cases": [
+    {
+      "name": "启动后不自动开始讲解",
+      "startedAt": "2026-10-22T08:32:45.115Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:45.224Z"
+    },
+    {
+      "name": "只读复制转换后的 JSON 及其实际磁盘引用，保持原标识、正文和摘要",
+      "startedAt": "2026-10-22T08:32:45.713Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:45.756Z"
+    },
+    {
+      "name": "转换讲解第 1 步：配置与字段：保存动作、进度和恢复位置，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:32:45.758Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:48.568Z"
+    },
+    {
+      "name": "转换讲解第 2 步：Play：记录原状态并启动第一项，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:32:48.571Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:49.130Z"
+    },
+    {
+      "name": "转换讲解第 3 步：BeginStep：准备并启动当前动作，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:32:49.133Z",
+      "screenshot": "conversion-begin-step.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:50.680Z"
+    },
+    {
+      "name": "转换讲解第 4 步：PreparePath：准备路径坐标、长度和次数，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:32:50.681Z",
+      "screenshot": "conversion-prepare-path.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:51.183Z"
+    },
+    {
+      "name": "转换讲解第 5 步：Update：继续移动、等待播片或结束当前项，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:32:51.185Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:51.434Z"
+    },
+    {
+      "name": "转换讲解第 6 步：MoveAlongPath：推进距离，走满次数后换项，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:32:51.436Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:51.656Z"
+    },
+    {
+      "name": "转换讲解第 7 步：PositionAtDistance：按进度取得世界位置，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:32:51.657Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:51.880Z"
+    },
+    {
+      "name": "转换讲解第 8 步：NextStep：换到下一项，全部完成后发事件，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:32:51.882Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:52.092Z"
+    },
+    {
+      "name": "转换讲解第 9 步：StopCutscene：解除引用并结束当前播片，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:32:52.094Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:52.315Z"
+    },
+    {
+      "name": "转换讲解第 10 步：Cancel：取消播放并恢复演员，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:32:52.317Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:52.530Z"
+    },
+    {
+      "name": "转换讲解第 11 步：ClearPlayback 与 Finite：清理进度并检查数值，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:32:52.532Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:52.750Z"
+    },
+    {
+      "name": "转换讲解第 12 步：BindCompletion：把完成事件绑定到对应出生点，目标与实际引用一致",
+      "startedAt": "2026-10-22T08:32:52.751Z",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:53.328Z"
+    },
+    {
+      "name": "转换正文保留直接翻译，路径判断代码真实拖选并复制",
+      "startedAt": "2026-10-22T08:32:53.331Z",
+      "screenshot": "conversion-path-condition-selected.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:32:57.492Z"
+    },
+    {
+      "name": "实际 diff 第 3 步：改前目标及代码复制",
+      "startedAt": "2026-10-22T08:32:59.116Z",
+      "screenshot": "conversion-diff-3.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:33:05.577Z"
+    },
+    {
+      "name": "实际 diff 第 4 步：改后目标及代码复制",
+      "startedAt": "2026-10-22T08:33:05.579Z",
+      "screenshot": "conversion-diff-4.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:33:09.583Z"
+    },
+    {
+      "name": "实际 diff 第 5 步：双侧目标及代码复制",
+      "startedAt": "2026-10-22T08:33:09.585Z",
+      "screenshot": "conversion-diff-5.png",
+      "result": "通过",
+      "finishedAt": "2026-10-22T08:33:13.606Z"
+    }
+  ],
+  "startedAt": "2026-10-22T08:32:44.827Z",
+  "finishedAt": "2026-10-22T08:33:14.017Z",
+  "result": "通过"
+}
