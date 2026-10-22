@@ -15,6 +15,21 @@ interface Reading {
 
 type ReadingOperation = vscode.CancellationTokenSource & { kind: 'opening' | 'reading' };
 
+export interface OpenLocation {
+  project: vscode.Uri;
+  explanationId: string;
+  stepId?: string;
+}
+
+export interface ReadingPosition {
+  project: vscode.Uri;
+  file: vscode.Uri;
+  explanationId: string;
+  stepId: string;
+  index: number;
+  total: number;
+}
+
 function sameUri(left: vscode.Uri, right: vscode.Uri): boolean {
   const a = left.toString();
   const b = right.toString();
@@ -33,12 +48,25 @@ function decodeExplanation(bytes: Uint8Array): string {
 export class Reader implements vscode.Disposable {
   private reading?: Reading;
   private operation?: ReadingOperation;
+  private readonly changed = new vscode.EventEmitter<void>();
+  readonly onDidChangeReading = this.changed.event;
 
   constructor(
     private readonly sources: SourceReader,
     private readonly presentation: Presentation,
     private readonly progress: vscode.Memento,
   ) {}
+
+  get position(): ReadingPosition | undefined {
+    const reading = this.reading;
+    if (!reading) return undefined;
+    return { project: reading.project, file: reading.file, explanationId: reading.explanation.id,
+      stepId: reading.explanation.steps[reading.index].id, index: reading.index, total: reading.explanation.steps.length };
+  }
+
+  savedStep(project: vscode.Uri, file: vscode.Uri, explanationId: string): string | undefined {
+    return this.progress.get<string>(this.progressKey(project, file, explanationId));
+  }
 
   private begin(kind: ReadingOperation['kind'] = 'reading'): ReadingOperation {
     this.operation?.cancel();
@@ -52,15 +80,15 @@ export class Reader implements vscode.Disposable {
     return this.operation === operation && !operation.token.isCancellationRequested;
   }
 
-  private progressKey(reading: Reading): string {
+  private progressKey(project: vscode.Uri, file: vscode.Uri, explanationId: string): string {
     const location = (uri: vscode.Uri): string => process.platform === 'win32' ? uri.toString().toLowerCase() : uri.toString();
-    return 'codeExplanation.progress.' + sha256([location(reading.project), location(reading.file), reading.explanation.id].join('\0'));
+    return 'codeExplanation.progress.' + sha256([location(project), location(file), explanationId].join('\0'));
   }
 
   private saveProgress(reading: Reading): void {
     const step = reading.explanation.steps[reading.index];
     const title = reading.explanation.title;
-    void this.progress.update(this.progressKey(reading), step.id).then(undefined, error => {
+    void this.progress.update(this.progressKey(reading.project, reading.file, reading.explanation.id), step.id).then(undefined, error => {
       console.warn(`无法保存讲解“${title}”的阅读进度：${message(error)}`);
     });
   }
@@ -93,7 +121,7 @@ export class Reader implements vscode.Disposable {
     return parseExplanation(text);
   }
 
-  async open(file?: vscode.Uri): Promise<void> {
+  async open(file?: vscode.Uri, location?: OpenLocation): Promise<void> {
     const operation = this.begin('opening');
     try {
       const folders = vscode.workspace.workspaceFolders;
@@ -101,12 +129,13 @@ export class Reader implements vscode.Disposable {
         void vscode.window.showWarningMessage('请先在 VS Code 中打开项目文件夹，再打开讲解。代码路径将相对所选项目解析。');
         return;
       }
-      const folder = folders.length === 1 ? folders[0] : await vscode.window.showQuickPick(
+      const folder = location ? folders.find(value => sameUri(value.uri, location.project)) : folders.length === 1 ? folders[0] : await vscode.window.showQuickPick(
         folders.map(value => ({ label: value.name, description: value.uri.fsPath, folder: value })),
         { title: '选择讲解所对应的项目' }, operation.token,
       ).then(value => value?.folder);
       if (!this.current(operation)) return;
       if (!folder) {
+        if (location) void vscode.window.showWarningMessage(`讲解所属项目“${location.project.fsPath}”已不在当前窗口中，请重新打开该项目。`);
         return;
       }
       if (folder.uri.scheme !== 'file') {
@@ -121,6 +150,8 @@ export class Reader implements vscode.Disposable {
       try {
         const explanation = await this.readSaved(chosen);
         if (!this.current(operation)) return;
+        if (location && explanation.id !== location.explanationId) throw new Error('讲解标识已更改，请在更新后的列表中重新选择。');
+        if (location?.stepId && !explanation.steps.some(step => step.id === location.stepId)) throw new Error('所选步骤已被删除，请在更新后的列表中重新选择。');
         operation.kind = 'reading';
         const previous = this.reading;
         if (previous) {
@@ -128,9 +159,8 @@ export class Reader implements vscode.Disposable {
           for (const subscription of previous.subscriptions) subscription.dispose();
         }
         this.presentation.clear();
-        this.presentation.releaseBody();
         const reading: Reading = { project: folder.uri, file: chosen, explanation, index: 0, subscriptions: [] };
-        const saved = this.progress.get<string>(this.progressKey(reading));
+        const saved = location?.stepId ?? this.savedStep(reading.project, reading.file, explanation.id);
         const index = explanation.steps.findIndex(step => step.id === saved);
         if (index >= 0) reading.index = index;
         this.reading = reading;
@@ -166,7 +196,6 @@ export class Reader implements vscode.Disposable {
         this.saveProgress(reading);
         reading.explanation = explanation;
         reading.index = explanation.id === previous.id ? Math.max(0, explanation.steps.findIndex(step => step.id === stepId)) : 0;
-        this.presentation.releaseBody();
         this.subscribe(reading);
         this.saveProgress(reading);
       }
@@ -183,7 +212,9 @@ export class Reader implements vscode.Disposable {
   private async display(reading: Reading, operation: vscode.CancellationTokenSource): Promise<void> {
     if (!this.current(operation)) return;
     const step = reading.explanation.steps[reading.index];
-    this.presentation.updateNavigation(reading.explanation, reading.index, reading.fileError, true);
+    this.changed.fire();
+    this.presentation.updateBody(reading.file, reading.explanation, step, reading.fileError);
+    this.presentation.updateNavigation(reading.explanation, reading.index, undefined, true);
     try {
       const resolved = await this.sources.resolve(reading.project, reading.explanation, step, operation.token);
       if (!this.current(operation)) return;
@@ -201,15 +232,15 @@ export class Reader implements vscode.Disposable {
         }
         return;
       }
-      if (this.current(operation)) this.presentation.updateNavigation(reading.explanation, reading.index, reading.fileError);
+      if (this.current(operation)) this.presentation.updateNavigation(reading.explanation, reading.index);
     } catch (error) {
       if (!this.current(operation)) return;
       this.presentation.clear();
       const reason = `步骤“${step.title}”无法定位：${message(error)}`;
-      this.presentation.updateNavigation(reading.explanation, reading.index, [reading.fileError, reason].filter(Boolean).join('\n'));
+      this.presentation.updateNavigation(reading.explanation, reading.index, reason);
       void vscode.window.showWarningMessage(reason);
       try {
-        await this.presentation.showBody(reading.file, reading.explanation, step, operation.token);
+        await this.presentation.showBody(reading.file, reading.explanation, step, operation.token, reading.fileError);
       } catch (bodyError) {
         if (this.current(operation)) void vscode.window.showErrorMessage(`无法显示步骤正文：${message(bodyError)}`);
       }
@@ -241,10 +272,10 @@ export class Reader implements vscode.Disposable {
 
   async showBody(): Promise<void> {
     const reading = this.reading;
-    if (!reading) return;
-    const operation = this.begin();
+    const operation = this.operation;
+    if (!reading || !operation) return;
     try {
-      await this.presentation.showBody(reading.file, reading.explanation, reading.explanation.steps[reading.index], operation.token);
+      await this.presentation.showBody(reading.file, reading.explanation, reading.explanation.steps[reading.index], operation.token, reading.fileError);
     } catch (error) {
       if (this.current(operation)) void vscode.window.showErrorMessage(`无法显示步骤正文：${message(error)}`);
     }
@@ -265,7 +296,8 @@ export class Reader implements vscode.Disposable {
     this.presentation.releaseBody();
     this.presentation.hideNavigation();
     this.presentation.setFileError();
+    this.changed.fire();
   }
 
-  dispose(): void { this.stop(); }
+  dispose(): void { this.stop(); this.changed.dispose(); }
 }

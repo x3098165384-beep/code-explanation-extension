@@ -1,0 +1,34 @@
+﻿{
+    "startedAt":  "2026-10-22T08:25:53.8398962Z",
+    "switchedDesktop":  false,
+    "phases":  [
+                   {
+                       "processId":  70332,
+                       "exitCode":  0,
+                       "name":  "首次流程",
+                       "desktop":  "CodeExplanationTest_be1b1edb0e82468db3667600f4d8b784"
+                   },
+                   {
+                       "processId":  54528,
+                       "exitCode":  0,
+                       "name":  "sidebar-multiple-roots",
+                       "desktop":  "CodeExplanationTest_f4afebbf01a14240a245ebb932641134"
+                   },
+                   {
+                       "processId":  26788,
+                       "exitCode":  0,
+                       "name":  "sidebar-no-project",
+                       "desktop":  "CodeExplanationTest_1003f1666d5c4421b8072f933a8648d7"
+                   }
+               ],
+    "inputDesktopAfter":  "Default",
+    "desktop":  "CodeExplanationTest_be1b1edb0e82468db3667600f4d8b784",
+    "sentInput":  false,
+    "inputDesktopBefore":  "Default",
+    "processId":  70332,
+    "clipboardIsolated":  true,
+    "finishedAt":  "2026-10-22T08:26:49.7536684Z",
+    "windowStation":  "Service-0x0-54064$",
+    "runRoot":  "F:\\Sync\\MyProjects\\code-explanation-extension\\.scratch\\first-release\\runtime\\background\\20261022-162547-ce9420cc",
+    "exitCode":  0
+}

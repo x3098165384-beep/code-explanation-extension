@@ -29,7 +29,8 @@
     "commands": [
       {
         "command": "codeExplanation.open",
-        "title": "行内代码讲解：打开讲解"
+        "title": "行内代码讲解：打开讲解",
+        "icon": "$(go-to-file)"
       },
       {
         "command": "codeExplanation.previous",
@@ -51,7 +52,44 @@
         "command": "codeExplanation.stop",
         "title": "行内代码讲解：停止讲解"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "icon": "assets/explanations.svg",
+          "id": "codeExplanation",
+          "title": "行内代码讲解"
+        }
+      ]
+    },
+    "views": {
+      "codeExplanation": [
+        {
+          "id": "codeExplanation.lectures",
+          "name": "项目讲解"
+        }
+      ]
+    },
+    "configuration": {
+      "properties": {
+        "codeExplanation.directory": {
+          "description": "项目内保存 JSON 讲解的相对目录。包含子目录，不扫描项目其他位置。",
+          "scope": "resource",
+          "default": ".code-explanations",
+          "type": "string"
+        }
+      },
+      "title": "行内代码讲解"
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "codeExplanation.open",
+          "group": "navigation",
+          "when": "view == codeExplanation.lectures"
+        }
+      ]
+    }
   },
   "capabilities": {
     "untrustedWorkspaces": {

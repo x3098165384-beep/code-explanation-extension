@@ -42,6 +42,11 @@ function environment() {
   const disposable = () => ({ dispose() {} });
   const vscode = {
     Uri, CancellationTokenSource,
+    EventEmitter: class {
+      constructor() { this.listeners = new Set(); this.event = listener => { this.listeners.add(listener); return { dispose: () => this.listeners.delete(listener) }; }; }
+      fire(value) { for (const listener of this.listeners) listener(value); }
+      dispose() { this.listeners.clear(); }
+    },
     RelativePattern: class { constructor(base, pattern) { this.base = base; this.pattern = pattern; } },
     workspace: {
       workspaceFolders: [{ name: '项目', uri: Uri.file('test-project') }],
@@ -73,7 +78,7 @@ function environment() {
   };
   const presentation = {
     clear() { clearCount++; snapshots.length = 0; },
-    releaseBody() {}, hideNavigation() {}, setFileError() {}, updateNavigation() {},
+    releaseBody() {}, hideNavigation() {}, setFileError() {}, updateNavigation() {}, updateBody() {},
     async show(resolved, explanation, step, index, token) { snapshots.push({ lecture: explanation.id, step: step.id, body: step.body, index }); },
     async showBody(file, explanation, step, token) { snapshots.push({ fallback: true, step: step.id, body: step.body }); },
   };
@@ -94,6 +99,20 @@ function environment() {
     clearCount: () => clearCount,
   };
 }
+
+test('源码尚在读取时查看正文，不取消当前步骤的行内定位', async () => {
+  const env = environment();
+  const source = deferred();
+  env.setResolve(() => source.promise);
+  const opening = env.reader.open(env.file);
+  await new Promise(resolve => setImmediate(resolve));
+  await env.reader.showBody();
+  source.resolve(); await opening;
+  assert.equal(env.snapshots.at(-1).fallback, undefined);
+  assert.equal(env.snapshots.at(-1).step, 'first');
+  assert.deepEqual(env.errors, []);
+  env.reader.dispose();
+});
 
 for (const outcome of ['success', 'failure']) {
   test(`连续保存：旧读取迟到的${outcome === 'success' ? '成功' : '失败'}不覆盖新正文`, async () => {
